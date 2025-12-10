@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Gemini AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    /* Dark background gradient from the Daminī Codesphere style */
+    body{background:linear-gradient(135deg,#0f172a,#0b1220,#071124);color:#e0e0e0;line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
+    .container{max-width:1200px;margin:auto;padding:0 20px;}
+    
+    /* Header (Kept from Daminī Codesphere style) */
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;background: rgba(15,23,42,0.95);}
+    header h1{font-size:1.8rem;font-weight:800;background:linear-gradient(to right,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    nav a{margin-left:20px;font-weight:600;transition:0.3s;}
+    nav a:hover{color:#ec4899;}
+    section{padding:40px 0;}
+    
+    /* Main AI Section */
+    .ai-header { text-align: center; padding: 40px 0 20px; }
+    .ai-header h2 { 
+      font-size: 2.5rem; 
+      font-weight: 800;
+      color: #fff; /* White for main title */
+      margin-bottom: 5px;
+    }
+    .ai-header p { 
+      color: #a0a0a0; 
+      margin-top: 5px; 
+      font-size: 1rem;
+    }
+
+    /* What Would You Like To Do (The Luna AI look) */
+    .cta-section { 
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .cta-section h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .cta-buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%; /* Full width in container */
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      color: white;
+      transition: background 0.3s;
+      /* Background similar to Luna AI buttons */
+      background: #3e276f; 
+    }
+    .cta-buttons a:hover {
+      background: #5a3a9a; 
+    }
+    .cta-buttons i {
+      margin-right: 10px;
+    }
+    
+    /* Features & Chat Box */
+    .grid-2 { 
+      display: grid; 
+      gap: 30px; 
+      grid-template-columns: 1fr;
+    }
+    @media(min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 2fr; }
+    }
+
+    .card{
+      background: rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:20px;
+      border-radius:12px;
+      transition:0.3s;
+      margin-bottom:20px;
+    }
+    
+    /* Chat Specific Styles */
+    #chatBox{
+      background: rgba(0,0,0,0.2); /* Slightly darker background for chat history */
+      padding:15px;
+      border-radius:8px;
+      max-height:300px;
+      overflow-y:auto;
+      margin-top:20px;
+      color: #cfd8dc;
+    }
+    #userMessage{
+      width:100%;
+      padding:12px;
+      border-radius:6px;
+      border:1px solid #7c3aed;
+      margin-top:10px;
+      background:rgba(255,255,255,0.1);
+      color:white;
+      resize: none;
+    }
+    .btn-chat {
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      display:inline-block;
+      text-align:center;
+      margin-top:10px;
+    }
+    .btn-primary-chat {
+      background:linear-gradient(to right,#7c3aed,#ec4899);
+      color:white;
+      border:none;
+    }
+    .btn-primary-chat:hover { opacity:0.9; }
+
+    /* Features List */
+    .features-list {
+        list-style: none;
+        padding: 0;
+    }
+    .features-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+    .features-list li i {
+        font-size: 1.2rem;
+        margin-right: 15px;
+        color: #ec4899; /* Icon color */
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Daminī Codesphere</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ai.html">AI Chat</a>
+    </nav>
+  </header>
+  
+  <section class="ai-header">
+    <img src="gemini.jpg" alt="Gemini Icon" style="width: 60px; height: 60px; margin-bottom: 10px;">
+    <h2>Gemini AI Chat</h2>
+    <p>Your intelligent assistant for coding help, tips, and general queries.</p>
+  </section>
+
+  <div class="grid-2">
+    <div class="sidebar">
+      <div class="cta-section">
+        <h4>What would you like to do today?</h4>
+        <div class="cta-buttons">
+          <a href="#" onclick="document.getElementById('userMessage').value='Help me write a Python function'; document.getElementById('userMessage').focus(); return false;"><i class="fas fa-keyboard"></i> Let's write code</a>
+          <a href="#" onclick="document.getElementById('userMessage').value='Give me a CSS flexbox example'; document.getElementById('userMessage').focus(); return false;"><i class="fas fa-palette"></i> Let's design styling</a>
+          <a href="#" onclick="document.getElementById('userMessage').value='Explain what a promise in JavaScript is'; document.getElementById('userMessage').focus(); return false;"><i class="fas fa-lightbulb"></i> Let's learn concepts</a>
+          <a href="#" onclick="document.getElementById('userMessage').value='Suggest a mini-project idea for a beginner'; document.getElementById('userMessage').focus(); return false;"><i class="fas fa-puzzle-piece"></i> Let's brainstorm</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Features</h4>
+        <ul class="features-list">
+          <li><i class="fas fa-comment-dots"></i> AI Chat for instant answers</li>
+          <li><i class="fas fa-code"></i> Code snippet generation & explanation</li>
+          <li><i class="fas fa-lightbulb"></i> Programming concept tutorials</li>
+          <li><i class="fas fa-search"></i> General knowledge queries (Search Integration)</li>
+        </ul>
+      </div>
+      
+    </div>
+    
+    <div class="chat-interface">
+      <div class="card">
+        <h3>Live Chat with Gemini 💬</h3>
+        <div id="chatBox">
+          <div style="color:#ec4899;margin-bottom:10px;">
+            Gemini: Hello! I am the Daminī Codesphere AI assistant. How can I help you with your coding, projects, or questions today?
+          </div>
+        </div>
+        <textarea id="userMessage" rows="3" placeholder="Ask me anything about code, web development, Python, or more..."></textarea>
+        <button id="sendBtn" class="btn-chat btn-primary-chat">Send Message</button>
+      </div>
+
+<a href="#" class="card" style="text-align: center; display: block; padding: 20px; text-decoration: none;">
+    <img src="primis.jpg" alt="PRIMIS AI Logo" style="width: 60px; height: 60px; margin-bottom: 10px; opacity: 0.5;">
+    <h4>Chat with PRIMIS AI</h4>
+    <span style="font-size:1rem;font-weight:600;color:#f87171;margin-top:10px;display:block;">Coming Soon 🔜</span>
+</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const sendBtn = document.getElementById('sendBtn');
+const chatBox = document.getElementById('chatBox');
+const userMessageInput = document.getElementById('userMessage');
+
+// Function to handle sending message
+async function sendMessage() {
+  const message = userMessageInput.value.trim();
+  if(!message) return;
+  
+  // Display user message
+  chatBox.innerHTML += `<div style="color:#7c3aed;margin-bottom:10px;">You: ${message}</div>`;
+  userMessageInput.value = '';
+  
+  // Scroll to bottom of chat
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  // Placeholder for loading state (optional)
+  const loadingIndicator = document.createElement('div');
+  loadingIndicator.id = 'loading';
+  loadingIndicator.style.color = '#a0a0a0';
+  loadingIndicator.style.marginBottom = '10px';
+  loadingIndicator.innerHTML = 'Gemini: Typing...';
+  chatBox.appendChild(loadingIndicator);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+
+  // Call your backend
+  try {
+    const res = await fetch('/.netlify/functions/gemini', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message })
+    });
+    
+    // Remove loading indicator
+    document.getElementById('loading').remove();
+
+    const data = await res.json();
+    chatBox.innerHTML += `<div style="color:#ec4899;margin-bottom:10px;">Gemini: ${data.reply}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  } catch(err){
+    // Remove loading indicator on error
+    if (document.getElementById('loading')) {
+      document.getElementById('loading').remove();
+    }
+    chatBox.innerHTML += `<div style="color:#f87171;margin-bottom:10px;">Error connecting to Gemini. Please check the backend URL.</div>`;
+    console.error(err);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+}
+
+// Event listeners
+sendBtn.addEventListener('click', sendMessage);
+userMessageInput.addEventListener('keypress', (e) => {
+    // Check for Enter key (keyCode 13 or key 'Enter')
+    if (e.key === 'Enter' && !e.shiftKey) { 
+        e.preventDefault(); // Prevent new line in textarea
+        sendMessage();
+    }
+});
+</script>
+</body>
+  </html>
+  
