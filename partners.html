@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership - Daminī Codesphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
+    a { text-decoration:none; color: inherit; }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    nav a { margin-left:20px; font-weight:600; transition:0.3s; }
+    nav a:hover { color:#ec4899; }
+    section { padding:60px 0; text-align: center; }
+    section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .grid { display:grid; gap:20px; }
+    /* Adjusted to handle 5 cards by using a 2-2-1 or 3-2 grid layout on desktop */
+    .grid-stats { grid-template-columns:1fr; } 
+    @media(min-width:768px){ .grid-stats { grid-template-columns:repeat(3,1fr); } }
+    @media(min-width:1024px){ .grid-stats { grid-template-columns:repeat(5,1fr); } } 
+    
+    .card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; height: 100%; display: flex; flex-direction: column; justify-content: center;}
+    .stat-number { font-size: 2.2rem; font-weight: 800; color: #ec4899; }
+    .stat-label { font-size: 0.9rem; color: #cfd8dc; }
+    .btn { padding:15px 30px; margin-top:40px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; font-size: 1.2rem; }
+    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
+    .btn-primary:hover { opacity:0.9; }
+    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
+    @media(max-width:768px){ header { flex-direction:column; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Daminī Codesphere</h1>
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#courses">Courses</a>
+        <a href="index.html#join">Join</a>
+        <a href="index.html#rules">Rules</a>
+        <a href="ai.html">AI Chat</a>
+        <a href="partners.html">Partners</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>PARTNER WITH US</h2>
+      <p style="max-width: 800px; margin: 0 auto 40px; color: #cfd8dc;">
+        Join our growing ecosystem! By partnering with Daminī Codesphere, you reach a community dedicated to open-source development, coding education, and cutting-edge technology.
+      </p>
+
+      <div class="grid grid-stats">
+        <div class="card">
+          <div class="stat-number" data-target="1000">0</div>
+          <div class="stat-label">ACTIVE MEMBERS</div>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">CONTRIBUTORS</div>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-label">MERGED PULL REQUESTS</div>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">GITHUB PROJECTS</div>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-target="30">0</div>
+          <div class="stat-label">COUNTRIES REPRESENTED</div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn btn-primary">PARTNER WITH US</a>
+
+      <div style="margin-top: 60px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <h3>Why Collaborate?</h3>
+        <p><strong>Visibility:</strong> Showcase your organization or technology directly to thousands of passionate developers and students.</p>
+        <p><strong>Talent Access:</strong> Recruit skilled developers from a pool of active community members.</p>
+        <p><strong>Open Source Impact:</strong> Contribute to our open-source projects, shaping the future of tech education and development tools.</p>
+      </div>
+
+    </section>
+
+    <footer>
+      © 2026 Daminī Codesphere • Mostly coding, mostly community.
+    </footer>
+  </div>
+
+  <script>
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200; // The lower the slower the animation
+
+    counters.forEach(counter => {
+        const targetValue = counter.getAttribute('data-target');
+        const target = +targetValue;
+        
+        const updateCount = () => {
+            const count = +counter.innerText.replace('+', '');
+            
+            // Determine increment step based on target size
+            let increment = Math.ceil(target / speed);
+            if (target > 500) increment = Math.ceil(target / (speed / 2)); // Faster for 1000+
+
+            if (count < target) {
+                // Add increment to count and update text
+                counter.innerText = count + increment;
+                setTimeout(updateCount, 1);
+            } else {
+                // Set the final value with '+'
+                counter.innerText = target + '+';
+            }
+        };
+
+        updateCount();
+    });
+  </script>
+</body>
+</html>
