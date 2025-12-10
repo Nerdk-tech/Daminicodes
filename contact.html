@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Daminī Codesphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
+    a { text-decoration:none; color: inherit; }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    nav a { margin-left:20px; font-weight:600; transition:0.3s; }
+    nav a:hover { color:#ec4899; }
+    section { padding:60px 0; text-align: center; }
+    section h2 { font-size:2.5rem; font-weight:800; margin-bottom: 10px; color: #ec4899; }
+    .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
+    
+    /* Form Styles (Inspired by TumiCodes forms) */
+    .form-container { max-width: 600px; margin: 0 auto; padding: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-align: left; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0e0e0; }
+    .form-group input, .form-group textarea, .form-group select { 
+      width: 100%; 
+      padding: 12px; 
+      background: rgba(0,0,0,0.3); 
+      border: 1px solid #7c3aed; 
+      border-radius: 8px; 
+      color: white; 
+      resize: vertical; 
+      /* Make select background match input */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%20197.35l-131.4-131.5-131.5%20131.5z%22%2F%3E%3C%2Fsvg%3E');
+      background-repeat: no-repeat;
+      background-position: right 10px top 50%;
+      background-size: 10px auto;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #ec4899; outline: none; }
+    
+    .info-response { color: #aaa; margin-top: 20px; font-size: 0.9rem; text-align: center;}
+    
+    .btn { padding:15px 30px; margin-top:20px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; font-size: 1.2rem; }
+    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; width: 100%; }
+    .btn-primary:hover { opacity:0.9; }
+
+    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
+    @media(max-width:768px){ header { flex-direction:column; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Daminī Codesphere</h1>
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#courses">Courses</a>
+        <a href="index.html#join">Join</a>
+        <a href="index.html#rules">Rules</a>
+        <a href="ai.html">AI Chat</a>
+        <a href="partners.html">Partners</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section id="contact-form">
+      <h2>CONTACT US</h2>
+      <p class="sub-heading">We'd love to hear from you or discuss a partnership opportunity!</p>
+
+      <div class="form-container">
+        <form action="https://formspree.io/f/xpwvyknv" method="POST">
+          <input type="hidden" name="_replyto" value="spideyaep4@gmail.com">
+          
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="_replyto" required placeholder="contact@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Reason for Contact *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="Partnership Inquiry">Partnership Inquiry</option>
+              <option value="Course/Tutorial Feedback">Course/Tutorial Feedback</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Report an Issue">Report an Issue</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <p class="info-response">Note: Response typically takes 2-3 business days.</p>
+    </section>
+
+    <footer>
+      © 2026 Daminī Codesphere • Mostly coding, mostly community.
+    </footer>
+  </div>
+</body>
+            </html>
+                
