@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daminī Codesphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
+    a { text-decoration:none; color: inherit; }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    nav a { margin-left:20px; font-weight:600; transition:0.3s; }
+    nav a:hover { color:#ec4899; }
+    .hero { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:80px 0; }
+    .hero h2 { font-size:3rem; font-weight:800; line-height:1.2; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero p { margin-top:20px; max-width:700px; color:#cfd8dc; }
+    .btn { padding:10px 20px; margin-top:20px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; }
+    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
+    .btn-primary:hover { opacity:0.9; }
+    .btn-secondary { border:2px solid #ec4899; color:#ec4899; background:none; }
+    .btn-secondary:hover { background:#ec4899; color:white; }
+    section { padding:60px 0; }
+    section h3 { font-size:2rem; font-weight:700; margin-bottom:20px; }
+    section p { max-width:700px; margin-bottom:20px; color:#cfd8dc; }
+    .grid { display:grid; gap:20px; }
+    .grid-3 { grid-template-columns:1fr; }
+    @media(min-width:768px){ .grid-3 { grid-template-columns:repeat(3,1fr); } }
+    .card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; }
+    .card:hover { background: rgba(124,58,237,0.2); transform: translateY(-5px); }
+    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
+    .coming-soon { font-size:0.9rem; font-weight:600; color:#f87171; margin-top:10px; }
+    @media(max-width:768px){ header { flex-direction:column; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } .hero { align-items:center; text-align:center; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <h1>Daminī Codesphere</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#courses">Courses</a>
+        <a href="#join">Join</a>
+        <a href="#rules">Rules</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>WELCOME TO DAMINĪ CODESPHERE</h2>
+      <p>
+        Welcome to the hub for coders and tech enthusiasts!  
+        Here we share <strong>free net updates</strong>, <strong>coding tips</strong>, tutorials, mini-projects, and courses.  
+        Learn, grow, and join a community that helps you level up your skills.
+      </p>
+      <div>
+        <a href="#features" class="btn btn-primary">Explore Features</a>
+        <a href="#join" class="btn btn-secondary">Join the Group</a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h3>Explore Features</h3>
+      <p>Our community focuses on practical coding and learning. Discover tutorials, free tools, scripts, and daily updates to level up your coding game.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>Free Net Updates</h4>
+          <p>Daily tricks to save data and browse fast. Stay connected without spending extra money.</p>
+        </div>
+        <div class="card">
+          <h4>Coding Tips</h4>
+          <p>Quick hacks for Python, JavaScript, HTML, CSS, and more. Build real projects fast.</p>
+        </div>
+        <div class="card">
+          <h4>Learn Programming</h4>
+          <p>Step-by-step guides, mini-projects, and tutorials for beginners and advanced learners.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses">
+      <h3>Courses</h3>
+      <p>Here, you can access all the coding courses we drop. Python courses are live, Web Dev & Advanced JS coming soon!</p>
+      <div class="grid grid-3">
+        <!-- Python course -->
+        <div class="card">
+          <h4>Python Basics</h4>
+          <p>Start with Python: variables, loops, functions, and mini projects.</p>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Python Intro</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Variables & Data Types</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Loops</a></li>
+            <li><a href="https://www.youtube.com/watch?v=8ext9G7xspg" target="_blank" class="btn btn-secondary">Lesson 4 - Functions</a></li>
+          </ul>
+        </div>
+
+        <!-- Web Dev course -->
+        <div class="card">
+          <h4>Web Development</h4>
+          <span class="coming-soon">Coming Soon!</span>
+        </div>
+
+        <!-- Advanced JS course -->
+        <div class="card">
+          <h4>Advanced JavaScript</h4>
+          <span class="coming-soon">Coming Soon!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h3>About Daminī Codesphere</h3>
+      <p>Daminī Codesphere is a community of learners and doers. We provide resources, tutorials, courses, and support for anyone passionate about coding. Beginners and advanced coders are welcome.</p>
+    </section>
+
+    <!-- JOIN GROUPS & CHANNEL -->
+    <section id="join">
+      <h3>Join the Community</h3>
+      <p>We have two WhatsApp groups and a channel where you can interact, learn, and get updates daily:</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>WhatsApp Channel</h4>
+          <a href="https://whatsapp.com/channel/0029VazHPYwBqbr9HjXrc50m" target="_blank" class="btn btn-primary">Join Channel</a>
+        </div>
+        <div class="card">
+          <h4>Group 1</h4>
+          <a href="https://chat.whatsapp.com/KVgy1I71vYnCT8r2aCNWb1?mode=hqrt1" target="_blank" class="btn btn-primary">Join Group 1</a>
+        </div>
+        <div class="card">
+          <h4>Group 2</h4>
+          <a href="https://chat.whatsapp.com/KpiwcCbP0eu5cqMKjAo29z?mode=hqrt1" target="_blank" class="btn btn-primary">Join Group 2</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules">
+      <h3>Rules</h3>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4>ADD</h4>
+          <p>Invite helpful members to grow the community.</p>
+        </div>
+        <div class="card">
+          <h4>No Spam</h4>
+          <p>Do not send fake updates, repeated messages, or scams.</p>
+        </div>
+        <div class="card">
+          <h4>Respect</h4>
+          <p>No abuse, harassment, or nonsense in the group.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      © 2025 Daminī Codesphere • Mostly coding, mostly community.
+    </footer>
+  </div>
+</body>
+  </html>
