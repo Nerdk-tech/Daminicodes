@@ -1,9 +1,0 @@
-{
-  "name": "daminicodes-vercel-ai",
-  "version": "1.0.0",
-  "description": "Vercel serverless function for Gemini AI Chat.",
-  "dependencies": {
-    "@google/genai": "^0.1.0",
-    "express": "^4.18.2"
-  }
-}
