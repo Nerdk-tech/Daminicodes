@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Hackathons - Daminī Codesphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Reuse global styles */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
+    a { text-decoration:none; color: inherit; }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    
+    section { padding:60px 0; text-align: center; }
+    section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; color: #ec4899; }
+    .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
+
+    /* Menu Icon (for consistent style) */
+    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
+
+    .event-card {
+        background: rgba(255,255,255,0.08); 
+        padding: 30px; 
+        border-radius: 12px; 
+        text-align: left;
+        margin: 30px auto;
+        max-width: 800px;
+        border-left: 5px solid #7c3aed;
+    }
+    .event-card h3 { color: #ec4899; margin-bottom: 10px; font-size: 2rem;}
+    .event-card p { color: #cfd8dc; margin-bottom: 15px;}
+    
+    .btn { padding:10px 20px; margin-top:10px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; }
+    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
+    .btn-primary:hover { opacity:0.9; }
+
+    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Daminī Codesphere</h1>
+      <span class="menu-icon"><i class="fas fa-bars"></i></span>
+    </header>
+
+    <section>
+      <h2>EVENTS & HAPPENINGS</h2>
+      <p class="sub-heading">Join our community events to collaborate, learn, and showcase your skills.</p>
+
+      <div class="event-card">
+        <h3><i class="fas fa-code-branch" style="margin-right: 10px;"></i>Hackathons</h3>
+        <p>Participate in our exciting hackathons where you can build innovative projects, network with developers, and win great prizes. Whether you're a beginner or an expert, hackathons are the perfect place to push your boundaries and apply what you've learned.</p>
+        <p style="font-style: italic;">Next event details coming soon to the WhatsApp channel!</p>
+      </div>
+
+      <div class="event-card" style="border-left: 5px solid #f87171;">
+        <h3><i class="fab fa-youtube" style="margin-right: 10px; color: #f87171;"></i>Our YouTube Channel</h3>
+        <p>Find all our tutorial videos, course lessons, project walkthroughs, and event recaps here.</p>
+        <a href="https://www.youtube.com/@Nerdktech" target="_blank" class="btn btn-primary"><i class="fab fa-youtube"></i> Subscribe Now</a>
+      </div>
+      
+      <p style="margin-top: 40px; color: #7c3aed; font-weight: 600;">Check the main navigation menu for more links!</p>
+    </section>
+
+    <footer>
+      © 2026 Daminī Codesphere • Mostly coding, mostly community.
+    </footer>
+  </div>
+</body>
+</html>
