@@ -10,10 +10,58 @@
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
     a { text-decoration:none; color: inherit; }
     .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
-    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    nav a { margin-left:20px; font-weight:600; transition:0.3s; }
-    nav a:hover { color:#ec4899; }
+    header { 
+        display:flex; 
+        justify-content:space-between; 
+        align-items:center; 
+        padding:20px 0; 
+        position: sticky; 
+        top:0; 
+        background: rgba(15,23,42,0.95); 
+        z-index: 20; /* Increased z-index */
+    }
+    header h1 { 
+        font-size:1.8rem; 
+        font-weight:800; 
+        background:linear-gradient(to right, #7c3aed,#ec4899); 
+        -webkit-background-clip:text; 
+        -webkit-text-fill-color:transparent; 
+    }
+
+    /* Hamburger Menu Styles */
+    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 25; 
+        top: 0;
+        right: 0;
+        background: #0f172a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #e0e0e0;
+        display: block;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+    .sidebar a:hover { color: #ec4899; }
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* End Hamburger Menu Styles */
+
     .hero { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:80px 0; }
     .hero h2 { font-size:3rem; font-weight:800; line-height:1.2; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .hero p { margin-top:20px; max-width:700px; color:#cfd8dc; }
@@ -32,25 +80,35 @@
     .card:hover { background: rgba(124,58,237,0.2); transform: translateY(-5px); }
     footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
     .coming-soon { font-size:0.9rem; font-weight:600; color:#f87171; margin-top:10px; }
-    @media(max-width:768px){ header { flex-direction:column; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } .hero { align-items:center; text-align:center; } }
+    @media(max-width:768px){ 
+        .hero { align-items:center; text-align:center; } 
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#courses">Courses</a>
-        <a href="#join">Join</a>
-        <a href="#rules">Rules</a>
-        <a href="ai.html">AI Chatbots</a>
-        <a href="partners.html">Partners</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </header>
 
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#about" onclick="closeNav()">About</a>
+      <a href="#features" onclick="closeNav()">Features</a>
+      <a href="#courses" onclick="closeNav()">Courses</a>
+      <a href="#join" onclick="closeNav()">Join</a>
+      <a href="#rules" onclick="closeNav()">Rules</a>
+      <a href="ai.html" onclick="closeNav()">AI Chat</a>
+      <a href="partners.html" onclick="closeNav()">Partners</a>
+      <a href="contact.html" onclick="closeNav()">Contact</a>
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+    </div>
     <section class="hero">
       <h2>WELCOME TO DAMINĪ CODESPHERE</h2>
       <p>
@@ -100,13 +158,32 @@
 
         <div class="card">
           <h4>Web Development</h4>
+          <p>Master HTML, CSS, and modern JavaScript frameworks like React/Vue.</p>
           <span class="coming-soon">Coming Soon!</span>
         </div>
 
         <div class="card">
           <h4>Advanced JavaScript</h4>
+          <p>Deep dive into asynchronous programming, Node.js, and complex algorithms.</p>
           <span class="coming-soon">Coming Soon!</span>
         </div>
+        
+        <div class="card">
+          <h4>Mobile Development (Flutter)</h4>
+          <p>Build beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.</p>
+          <span class="coming-soon">Coming Soon!</span>
+        </div>
+        <div class="card">
+          <h4>Cloud & DevOps (AWS)</h4>
+          <p>Learn deployment, scalability, and infrastructure management using key cloud providers.</p>
+          <span class="coming-soon">Coming Soon!</span>
+        </div>
+        <div class="card">
+          <h4>Data Science Basics (R/Pandas)</h4>
+          <p>Introduction to data analysis, manipulation, and visualization techniques.</p>
+          <span class="coming-soon">Coming Soon!</span>
+        </div>
+        
       </div>
     </section>
 
@@ -156,6 +233,16 @@
       © 2026 Daminī Codesphere • Mostly coding, mostly community.
     </footer>
   </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
 </body>
-  </html>
+        </html>
   
