@@ -6,22 +6,60 @@
   <title>Course Certifications - Daminī Codesphere</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Reuse global styles from index.html */
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
     a { text-decoration:none; color: inherit; }
     .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header { 
+        display:flex; 
+        justify-content:space-between; 
+        align-items:center; 
+        padding:20px 0; 
+        position: sticky; 
+        top:0; 
+        background: rgba(15,23,42,0.95); 
+        z-index: 20;
+    }
     header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     
     section { padding:60px 0; text-align: center; }
     section h2 { font-size:2.5rem; font-weight:800; margin-bottom: 10px; color: #ec4899; }
     .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
 
-    /* Menu Icon (for consistent style) */
+    /* Hamburger Menu Styles */
     .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 25; 
+        top: 0;
+        right: 0;
+        background: #0f172a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #e0e0e0;
+        display: block;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+    .sidebar a:hover { color: #ec4899; }
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* End Hamburger Menu Styles */
 
-    /* Certification Card Styles */
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px;}
     .cert-card { 
       background: rgba(255,255,255,0.05); 
@@ -37,7 +75,6 @@
     .cert-card p { color: #cfd8dc; font-size: 0.9rem;}
     .cert-icon { font-size: 3rem; color: #ec4899; margin-bottom: 15px;}
     
-    /* Enrollment Form Modal Styles */
     .modal {
       display: none; 
       position: fixed; 
@@ -71,7 +108,6 @@
       text-decoration: none;
       cursor: pointer;
     }
-    /* Form styles reuse from contact.html */
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0e0e0; }
     .form-group input { width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid #7c3aed; border-radius: 8px; color: white; }
@@ -98,11 +134,28 @@
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
-      <span class="menu-icon"><i class="fas fa-bars"></i></span>
+      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span> 
     </header>
 
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html#about" onclick="closeNav()">About</a>
+      <a href="index.html#features" onclick="closeNav()">Features</a>
+      <a href="index.html#courses" onclick="closeNav()">Courses</a>
+      <a href="index.html#join" onclick="closeNav()">Join</a>
+      <a href="index.html#rules" onclick="closeNav()">Rules</a>
+      <a href="ai.html" onclick="closeNav()">AI Chat</a>
+      <a href="partners.html" onclick="closeNav()">Partners</a>
+      <a href="contact.html" onclick="closeNav()">Contact</a>
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+      <a href="#" onclick="closeNav()">**Course Certifications**</a> 
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+    </div>
     <section>
-      <i class="cert-icon fas fa-hat-wizard"></i> <h2>COURSE CERTIFICATIONS</h2>
+      <i class="cert-icon fas fa-hat-wizard"></i>
+      <h2>COURSE CERTIFICATIONS</h2>
       <p class="sub-heading">Validate your skills and level up your career with official Daminī Codesphere certifications.</p>
 
       <div class="cert-grid">
@@ -163,6 +216,16 @@
   </div>
 
   <script>
+    // Menu Functions
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    // Modal Functions
     var modal = document.getElementById("enrollModal");
     var certTypeInput = document.getElementById("certTypeInput");
 
@@ -176,7 +239,6 @@
       modal.style.display = "none";
     }
 
-    // Close the modal when the user taps anywhere outside of the modal
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
@@ -185,4 +247,3 @@
   </script>
 </body>
 </html>
-

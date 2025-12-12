@@ -6,21 +6,60 @@
   <title>Privacy Policy - Daminī Codesphere</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Reuse global styles */
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.8; scroll-behavior: smooth; }
     a { text-decoration:none; color: inherit; }
     .container { max-width: 1000px; margin: auto; padding: 0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      padding:20px 0; 
+      position: sticky; 
+      top:0; 
+      background: rgba(15,23,42,0.95); 
+      z-index: 20; 
+    }
     header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     
+    /* Hamburger Menu Styles */
+    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 25; 
+        top: 0;
+        right: 0;
+        background: #0f172a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #e0e0e0;
+        display: block;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+    .sidebar a:hover { color: #ec4899; }
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* End Hamburger Menu Styles */
+
     section { padding:60px 0; text-align: left; }
     section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; color: #ec4899; text-align: center; }
     .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px; text-align: center;}
     
-    /* Menu Icon (for consistent style) */
-    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-
     .policy-content h3 { color: #7c3aed; margin-top: 25px; margin-bottom: 10px; font-size: 1.5rem;}
     .policy-content p { margin-bottom: 15px; color: #cfd8dc;}
     .policy-content ul { margin-left: 20px; margin-bottom: 20px;}
@@ -34,9 +73,25 @@
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
-      <span class="menu-icon"><i class="fas fa-bars"></i></span>
+      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </header>
 
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html#about" onclick="closeNav()">About</a>
+      <a href="index.html#features" onclick="closeNav()">Features</a>
+      <a href="index.html#courses" onclick="closeNav()">Courses</a>
+      <a href="index.html#join" onclick="closeNav()">Join</a>
+      <a href="index.html#rules" onclick="closeNav()">Rules</a>
+      <a href="ai.html" onclick="closeNav()">AI Chat</a>
+      <a href="partners.html" onclick="closeNav()">Partners</a>
+      <a href="contact.html" onclick="closeNav()">Contact</a>
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+      <a href="#" onclick="closeNav()">**Privacy Policy**</a>
+    </div>
     <section>
       <h2>PRIVACY POLICY</h2>
       <p class="sub-heading">Your trust is our priority. This policy outlines how we handle your data.</p>
@@ -53,13 +108,13 @@
         <p>Your data is used solely for the following purposes:</p>
         <ul>
           <li>To respond to your inquiries (via Formspree).</li>
-          <li>To process mock sign-ups and certifications.</li>
+          <li>To process certifications.</li>
           <li>To monitor and analyze site usage to improve content and features.</li>
           <li>To maintain the functionality of our services (e.g., the AI Chat).</li>
         </ul>
 
         <h3>3. Data Security</h3>
-        <p>We strive to use commercially acceptable means to protect your data. However, remember that no method of transmission over the Internet is 100% secure. We do not store sensitive information like passwords; the sign-up/login fields are for mock purposes only, with data sent via Formspree.</p>
+        <p>We strive to use commercially acceptable means to protect your data. However, remember that no method of transmission over the Internet is 100% secure. We do not store sensitive information; data is securely processed via Formspree.</p>
         
         <h3>4. Third-Party Services</h3>
         <p>We use third-party services like Vercel (hosting) and Formspree (form submission). Your data submission through our forms is governed by the privacy policies of Formspree.</p>
@@ -73,6 +128,16 @@
       © 2026 Daminī Codesphere • Mostly coding, mostly community.
     </footer>
   </div>
+
+  <script>
+    // Menu Functions
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
 </body>
-            </html>
-  
+</html>

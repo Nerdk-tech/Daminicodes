@@ -10,14 +10,55 @@
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
     a { text-decoration:none; color: inherit; }
     .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 10; }
+    header { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      padding:20px 0; 
+      position: sticky; 
+      top:0; 
+      background: rgba(15,23,42,0.95); 
+      z-index: 20; 
+    }
     header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    nav a { margin-left:20px; font-weight:600; transition:0.3s; }
-    nav a:hover { color:#ec4899; }
+    
+    /* Hamburger Menu Styles */
+    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 25; 
+        top: 0;
+        right: 0;
+        background: #0f172a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #e0e0e0;
+        display: block;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+    .sidebar a:hover { color: #ec4899; }
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    /* End Hamburger Menu Styles */
+
     section { padding:60px 0; text-align: center; }
     section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .grid { display:grid; gap:20px; }
-    /* Adjusted to handle 5 cards by using a 2-2-1 or 3-2 grid layout on desktop */
     .grid-stats { grid-template-columns:1fr; } 
     @media(min-width:768px){ .grid-stats { grid-template-columns:repeat(3,1fr); } }
     @media(min-width:1024px){ .grid-stats { grid-template-columns:repeat(5,1fr); } } 
@@ -29,25 +70,33 @@
     .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
     .btn-primary:hover { opacity:0.9; }
     footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    @media(max-width:768px){ header { flex-direction:column; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } }
+    @media(max-width:768px){ header { flex-direction:row; gap:10px; } }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
-      <nav>
-        <a href="index.html#about">About</a>
-        <a href="index.html#features">Features</a>
-        <a href="index.html#courses">Courses</a>
-        <a href="index.html#join">Join</a>
-        <a href="index.html#rules">Rules</a>
-        <a href="ai.html">AI Chat</a>
-        <a href="partners.html">Partners</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </header>
-
+    
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html#about" onclick="closeNav()">About</a>
+      <a href="index.html#features" onclick="closeNav()">Features</a>
+      <a href="index.html#courses" onclick="closeNav()">Courses</a>
+      <a href="index.html#join" onclick="closeNav()">Join</a>
+      <a href="index.html#rules" onclick="closeNav()">Rules</a>
+      <a href="ai.html" onclick="closeNav()">AI Chat</a>
+      <a href="#" onclick="closeNav()">**Partners**</a>
+      <a href="contact.html" onclick="closeNav()">Contact</a>
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+      <a href="events.html" onclick="closeNav()">Events</a>
+      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+    </div>
     <section>
       <h2>PARTNER WITH US</h2>
       <p style="max-width: 800px; margin: 0 auto 40px; color: #cfd8dc;">
@@ -81,6 +130,7 @@
 
       <div style="margin-top: 60px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
         <h3>Why Collaborate?</h3>
+        <p>We are more than just a coding community; we are a force for open-source innovation. Our partnerships are built on mutual growth, allowing you to tap directly into our motivated, global network of over **1000 active members** and **50+ ongoing GitHub projects**.</p>
         <p><strong>Visibility:</strong> Showcase your organization or technology directly to thousands of passionate developers and students.</p>
         <p><strong>Talent Access:</strong> Recruit skilled developers from a pool of active community members.</p>
         <p><strong>Open Source Impact:</strong> Contribute to our open-source projects, shaping the future of tech education and development tools.</p>
@@ -94,8 +144,18 @@
   </div>
 
   <script>
+    // Menu Functions
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+    
+    // Counting Script
     const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; // The lower the slower the animation
+    const speed = 200; 
 
     counters.forEach(counter => {
         const targetValue = counter.getAttribute('data-target');
@@ -104,16 +164,13 @@
         const updateCount = () => {
             const count = +counter.innerText.replace('+', '');
             
-            // Determine increment step based on target size
             let increment = Math.ceil(target / speed);
-            if (target > 500) increment = Math.ceil(target / (speed / 2)); // Faster for 1000+
+            if (target > 500) increment = Math.ceil(target / (speed / 2)); 
 
             if (count < target) {
-                // Add increment to count and update text
                 counter.innerText = count + increment;
                 setTimeout(updateCount, 1);
             } else {
-                // Set the final value with '+'
                 counter.innerText = target + '+';
             }
         };
