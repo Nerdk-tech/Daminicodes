@@ -18,7 +18,7 @@
         position: sticky; 
         top:0; 
         background: rgba(15,23,42,0.95); 
-        z-index: 20; /* Increased z-index */
+        z-index: 20; 
     }
     header h1 { 
         font-size:1.8rem; 
@@ -79,7 +79,9 @@
     .card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; }
     .card:hover { background: rgba(124,58,237,0.2); transform: translateY(-5px); }
     footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    .coming-soon { font-size:0.9rem; font-weight:600; color:#f87171; margin-top:10px; }
+    .course-links ul { list-style: none; padding: 0; margin-top: 15px;}
+    .course-links ul li { margin-bottom: 5px;}
+    .course-links ul li .btn-secondary { font-size: 0.8rem; padding: 5px 10px; margin: 5px 0; display: inline-block;}
     @media(max-width:768px){ 
         .hero { align-items:center; text-align:center; } 
     }
@@ -145,7 +147,7 @@
       <h3>Courses</h3>
       <p>Here, you can access all the coding courses we drop. Python courses are live, Web Dev & Advanced JS coming soon!</p>
       <div class="grid grid-3">
-        <div class="card">
+        <div class="card course-links">
           <h4>Python Basics</h4>
           <p>Start with Python: variables, loops, functions, and mini projects.</p>
           <ul>
@@ -156,32 +158,54 @@
           </ul>
         </div>
 
-        <div class="card">
+        <div class="card course-links">
           <h4>Web Development</h4>
           <p>Master HTML, CSS, and modern JavaScript frameworks like React/Vue.</p>
-          <span class="coming-soon">Coming Soon!</span>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - HTML Structure</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - CSS Styling</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - JS DOM</a></li>
+          </ul>
         </div>
 
-        <div class="card">
+        <div class="card course-links">
           <h4>Advanced JavaScript</h4>
           <p>Deep dive into asynchronous programming, Node.js, and complex algorithms.</p>
-          <span class="coming-soon">Coming Soon!</span>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Async/Await</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Node.js Intro</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Data Structures</a></li>
+          </ul>
         </div>
         
-        <div class="card">
+        <div class="card course-links">
           <h4>Mobile Development (Flutter)</h4>
           <p>Build beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.</p>
-          <span class="coming-soon">Coming Soon!</span>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Flutter Widgets</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - State Management</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - APIs in Dart</a></li>
+          </ul>
         </div>
-        <div class="card">
+        
+        <div class="card course-links">
           <h4>Cloud & DevOps (AWS)</h4>
           <p>Learn deployment, scalability, and infrastructure management using key cloud providers.</p>
-          <span class="coming-soon">Coming Soon!</span>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Cloud Computing Intro</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - AWS EC2 Basics</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - CI/CD Pipeline</a></li>
+          </ul>
         </div>
-        <div class="card">
+        
+        <div class="card course-links">
           <h4>Data Science Basics (R/Pandas)</h4>
           <p>Introduction to data analysis, manipulation, and visualization techniques.</p>
-          <span class="coming-soon">Coming Soon!</span>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Pandas DataFrames</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Data Cleaning</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Basic Visualization</a></li>
+          </ul>
         </div>
         
       </div>
@@ -244,5 +268,5 @@
     }
   </script>
 </body>
-        </html>
+                                                         </html>
   
