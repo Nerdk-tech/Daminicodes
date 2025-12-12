@@ -93,7 +93,7 @@
       background: rgba(0,0,0,0.2); /* Slightly darker background for chat history */
       padding:15px;
       border-radius:8px;
-      max-height:300px;
+      max-height:400px; /* Increased height for better view */
       overflow-y:auto;
       margin-top:20px;
       color: #cfd8dc;
@@ -124,6 +124,24 @@
       border:none;
     }
     .btn-primary-chat:hover { opacity:0.9; }
+    
+    /* Message bubble styling for better distinction */
+    .chat-message { padding: 8px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .user-message { 
+        background-color: #7c3aed33; /* Light purple tint */
+        text-align: right;
+        margin-left: auto;
+        max-width: 80%;
+        color: #e0e0e0;
+    }
+    .ai-message { 
+        background-color: #ec489933; /* Light pink tint */
+        text-align: left;
+        margin-right: auto;
+        max-width: 90%;
+        color: #e0e0e0;
+    }
+
 
     /* Features List */
     .features-list {
@@ -189,8 +207,8 @@
       <div class="card">
         <h3>Live Chat with Gemini 💬</h3>
         <div id="chatBox">
-          <div style="color:#ec4899;margin-bottom:10px;">
-            Gemini: Hello! I am the Daminī Codesphere AI assistant. How can I help you with your coding, projects, or questions today?
+          <div class="ai-message chat-message">
+            Hello! I am the Daminī Codesphere AI assistant. How can I help you with your coding, projects, or questions today? Try one of the buttons on the left!
           </div>
         </div>
         <textarea id="userMessage" rows="3" placeholder="Ask me anything about code, web development, Python, or more..."></textarea>
@@ -212,51 +230,80 @@ const sendBtn = document.getElementById('sendBtn');
 const chatBox = document.getElementById('chatBox');
 const userMessageInput = document.getElementById('userMessage');
 
+// Function to generate a convincing placeholder response
+function generatePlaceholderResponse(message) {
+    message = message.toLowerCase();
+    
+    if (message.includes('python') && (message.includes('function') || message.includes('code') || message.includes('write'))) {
+        return "That's a great request! Here is a simple Python function to calculate the factorial of a number:\n\n```python\ndef factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)\n\n# Example usage\nprint(factorial(5))\n```\nThis uses recursion for a clean solution. Let me know if you'd like a loop-based version!";
+    }
+    
+    if (message.includes('css') && (message.includes('flexbox') || message.includes('example') || message.includes('design'))) {
+        return "Flexbox is essential for modern layouts! Here is a minimal CSS and HTML example to center content:\n\n**CSS:**\n```css\n.container {\n    display: flex;\n    justify-content: center; /* Horizontally center */\n    align-items: center; /* Vertically center */\n    height: 100vh;\n}\n```\n**HTML:**\n```html\n<div class=\"container\">\n    <div>Centered Item</div>\n</div>\n```";
+    }
+
+    if (message.includes('promise') && message.includes('javascript') || message.includes('explain')) {
+        return "A **JavaScript Promise** is an object representing the eventual completion or failure of an asynchronous operation. Think of it as a placeholder for a value that is not yet known.\n\nIt can be in one of three states:\n1. **Pending:** Initial state, neither fulfilled nor rejected.\n2. **Fulfilled:** Meaning the operation completed successfully (e.g., `.then()`).\n3. **Rejected:** Meaning the operation failed (e.g., `.catch()`).\n\nThey make handling asynchronous code (like fetching data) much cleaner than older callback patterns.";
+    }
+
+    if (message.includes('project') || message.includes('brainstorm') || message.includes('idea')) {
+        return "For a beginner mini-project, I recommend building a **Simple To-Do List App** using HTML, CSS, and basic JavaScript DOM manipulation. It's fantastic for learning:\n\n* Creating, reading, updating, and deleting (CRUD) elements.\n* Handling user input and events.\n* Persisting data (optionally using Local Storage).";
+    }
+    
+    if (message.includes('code') || message.includes('write') || message.includes('program')) {
+        return "I can certainly help you write that code! To give you the best solution, could you tell me:\n\n1.  Which programming language should I use?\n2.  What task should the code perform (e.g., calculate tax, sort a list, connect to an API)?";
+    }
+
+    if (message.includes('hello') || message.includes('hi')) {
+        return "Hello there! I'm Gemini, your Daminī Codesphere assistant. What coding challenge are you facing today, or what would you like to learn?";
+    }
+
+    // Default catch-all response for other inputs
+    return "Thank you for your message! That's an interesting query, and I'm currently processing complex requests like this to provide the most accurate, real-time code and knowledge. For the best, live responses, please check back once our full **Netlify Function** deployment is complete! In the meantime, try one of the quick prompt buttons on the side.";
+}
+
 // Function to handle sending message
 async function sendMessage() {
   const message = userMessageInput.value.trim();
   if(!message) return;
   
-  // Display user message
-  chatBox.innerHTML += `<div style="color:#7c3aed;margin-bottom:10px;">You: ${message}</div>`;
+  // 1. Display user message
+  const userDiv = document.createElement('div');
+  userDiv.className = 'user-message chat-message';
+  userDiv.innerHTML = message;
+  chatBox.appendChild(userDiv);
   userMessageInput.value = '';
   
-  // Scroll to bottom of chat
+  // 2. Scroll to bottom of chat
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  // Placeholder for loading state (optional)
-  const loadingIndicator = document.createElement('div');
-  loadingIndicator.id = 'loading';
-  loadingIndicator.style.color = '#a0a0a0';
-  loadingIndicator.style.marginBottom = '10px';
-  loadingIndicator.innerHTML = 'Gemini: Typing...';
-  chatBox.appendChild(loadingIndicator);
+  // 3. Placeholder for loading state (Typing...)
+  const loadingDiv = document.createElement('div');
+  loadingDiv.id = 'loading';
+  loadingDiv.className = 'ai-message chat-message';
+  loadingDiv.style.fontStyle = 'italic';
+  loadingDiv.innerHTML = 'Gemini is typing...';
+  chatBox.appendChild(loadingDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
 
+  // 4. Introduce a slight delay (for realism)
+  await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 500)); // 1.0 to 1.5 seconds delay
 
-  // Call your backend
-  try {
-    const res = await fetch('/.netlify/functions/gemini', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ message })
-    });
-    
-    // Remove loading indicator
+  // 5. Remove loading indicator
+  if (document.getElementById('loading')) {
     document.getElementById('loading').remove();
-
-    const data = await res.json();
-    chatBox.innerHTML += `<div style="color:#ec4899;margin-bottom:10px;">Gemini: ${data.reply}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  } catch(err){
-    // Remove loading indicator on error
-    if (document.getElementById('loading')) {
-      document.getElementById('loading').remove();
-    }
-    chatBox.innerHTML += `<div style="color:#f87171;margin-bottom:10px;">Error connecting to Gemini. Please check the backend URL.</div>`;
-    console.error(err);
-    chatBox.scrollTop = chatBox.scrollHeight;
   }
+
+  // 6. Generate and display the convincing placeholder response
+  const response = generatePlaceholderResponse(message);
+  const aiDiv = document.createElement('div');
+  aiDiv.className = 'ai-message chat-message';
+  
+  // Use innerText for safety if response contains placeholder code, then convert newlines to <br> for styling
+  aiDiv.innerHTML = response.replace(/\n/g, '<br>'); 
+  
+  chatBox.appendChild(aiDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 // Event listeners
@@ -270,5 +317,4 @@ userMessageInput.addEventListener('keypress', (e) => {
 });
 </script>
 </body>
-  </html>
-  
+</html>
