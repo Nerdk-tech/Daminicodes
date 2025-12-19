@@ -54,74 +54,68 @@
         font-size: 36px;
         margin-left: 50px;
     }
-    /* End Hamburger Menu Styles */
 
-    section { padding:60px 0; text-align: center; }
-    section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; color: #ec4899; }
-    .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
+    section { padding:40px 0; text-align: center; }
+    section h2 { font-size:2.8rem; font-weight:800; margin-bottom: 10px; color: #ec4899; }
+    .sub-heading { font-size:1.2rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
 
-    .event-card {
-        background: rgba(255,255,255,0.08); 
+    /* Status Section */
+    .status-card {
+        background: rgba(255,255,255,0.05); 
         padding: 30px; 
         border-radius: 12px; 
-        text-align: left;
-        margin: 30px auto;
-        max-width: 800px;
-        border-left: 5px solid #7c3aed;
+        margin-bottom: 40px;
+        border: 1px solid rgba(124, 58, 237, 0.3);
     }
-    .event-card h3 { color: #ec4899; margin-bottom: 10px; font-size: 2rem;}
-    .event-card p { color: #cfd8dc; margin-bottom: 15px;}
-    
+    .status-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        background: rgba(239, 68, 68, 0.2);
+        color: #f87171;
+        border: 1px solid #f87171;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    /* Qualified List Styles */
+    .qualified-section { margin-top: 20px; }
+    .hacker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+    }
+    .hacker-card {
+        background: rgba(124, 58, 237, 0.1);
+        border: 1px solid rgba(124, 58, 237, 0.2);
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+    .hacker-card:hover {
+        background: rgba(124, 58, 237, 0.2);
+        transform: scale(1.05);
+    }
+    .hacker-card i {
+        color: #ec4899;
+        margin-right: 10px;
+        font-size: 0.9rem;
+    }
+    .hacker-name {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
     .btn { padding:10px 20px; margin-top:10px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; }
     .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
-    .btn-primary:hover { opacity:0.9; }
-    
-    /* Form Specific Styles */
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #ccc; }
-    input[type="text"], 
-    input[type="email"], 
-    select {
-        width: 100%;
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #7c3aed;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-size: 1rem;
-        appearance: none; 
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cccccc%22%20d%3D%22M287%20173.5c-4%204.1-8%204-12%200l-123.7-124c-4-4.1-4-10.7%200-14.8l123.7-124c4.1-4.1%2010.7-4%2014.8%200%204.1%204.1%204.1%2010.7%200%2014.8L154.2%20166c-4.1%204.1-4.1%2010.7%200%2014.8z%22%2F%3E%3C%2Fsvg%3E');
-        background-repeat: no-repeat;
-        background-position: right 12px top 50%;
-        background-size: 10px;
-    }
-    select {
-        cursor: pointer;
-    }
-    input:focus, select:focus {
-        outline: none;
-        border-color: #ec4899;
-    }
-    option {
-        background-color: #0f172a;
-        color: white;
-    }
-
-    /* Styling for the YouTube Card (adjusted border color) */
-    .youtube-card {
-        border-left: 5px solid #f87171;
-    }
-
-    /* Hackathon Card Specific Styling */
-    .hackathon-card {
-        border-left: 5px solid #7c3aed;
-    }
-    .hackathon-card h3 {
-        color: #7c3aed;
-        font-size: 2rem;
-    }
 
     footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
   </style>
@@ -150,72 +144,36 @@
       <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
       <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
     </div>
+
     <section>
-      <h2>EVENTS & HAPPENINGS</h2>
-      <p class="sub-heading">Join our community events to collaborate, learn, and showcase your skills.</p>
-
-      <div class="event-card hackathon-card">
-        <h3><i class="fas fa-code-branch" style="margin-right: 10px;"></i>Hackathon Registration</h3>
-        <p style="color: #ccc;">
-            **First Daminī Codesphere Techton** - Showcase your talent, apply your skills, and network! Beginners are highly welcome.
-        </p>
-        <p style="font-weight: 600; color: #ec4899; margin-top: 5px;">
-            Registration Deadline: December 20th | Event Date: December 22nd
-        </p>
-
-        <form action="mailto:univversehackers@gmail.com" method="POST" enctype="text/plain">
-            <input type="hidden" name="Subject" value="Hackathon Registration: New Participant">
-
-            <div class="form-group">
-                <label for="fullName">Full Name *</label>
-                <input type="text" id="fullName" name="Participant Name" required placeholder="Enter your full name">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="Email Address" required placeholder="Enter your best email (for confirmation)">
-            </div>
-            
-            <div class="form-group">
-                <label for="youtube">YouTube Username/Email *</label>
-                <input type="text" id="youtube" name="YouTube Verification" required placeholder="e.g. @Nerdktech or your registration email">
-                <p style="font-size: 0.8rem; color: #a0a0a0; margin-top: 5px;">
-                    This confirms you have followed the YouTube channel, which is required.
-                </p>
-            </div>
-            <div class="form-group">
-                <label for="stack">Select Primary Tech Stack *</label>
-                <select id="stack" name="Primary Tech Stack" required>
-                    <option value="" disabled selected>-- Choose your main focus --</option>
-                    <option value="HTML/CSS">HTML/CSS</option>
-                    <option value="JavaScript/TypeScript">JavaScript/TypeScript</option>
-                    <option value="React/NextJS">React/NextJS</option>
-                    <option value="Ethical Hacking">Ethical Hacking</option>
-                    <option value="Modding">Modding</option>
-                    <option value="Other">Other (Specify in Message)</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message (Optional)</label>
-                <textarea id="message" name="Message" rows="3" placeholder="Tell us a little about your experience or what you plan to build."></textarea>
-            </div>
-            
-            <p style="font-size: 0.9rem; color: #a0a0a0; margin-bottom: 20px;">
-                *Note: Registration ends 20th of December. The official hackathon will be done on the 22nd of December.*
-            </p>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 12px 20px;">
-                <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Register Now
-            </button>
-        </form>
+      <div class="status-card">
+        <div class="status-badge">Registration Closed</div>
+        <h2>DAMINĪ TECHTON 1.0</h2>
+        <p style="color: #ec4899; font-weight: 800; font-size: 1.5rem; margin-top: 10px;">🚀 EVENT DATE: DECEMBER 22nd</p>
       </div>
-      <div class="event-card youtube-card">
-        <h3><i class="fab fa-youtube" style="margin-right: 10px; color: #f87171;"></i>Our YouTube Channel</h3>
-        <p>Find all our tutorial videos, course lessons, project walkthroughs, and event recaps here. Following is required for hackathon participation.</p>
-        <a href="https://www.youtube.com/@Nerdktech" target="_blank" class="btn btn-primary" style="background: #f87171;"><i class="fab fa-youtube"></i> Subscribe Now</a>
+
+      <div class="qualified-section">
+        <h3><i class="fas fa-award" style="color: #7c3aed; margin-right: 10px;"></i>QUALIFIED PARTICIPANTS</h3>
+        <p style="color: #aaa;">The following developers have been selected for the main event:</p>
+        
+        <div class="hacker-grid">
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DAVE</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">ELLIE</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">THE DARK GUY</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DR DEV</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">OJO DANIEL</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">NBA PROMZY</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">AJX VILLA</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DANGI BOY</span></div>
+          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">CBA DEV</span></div>
+        </div>
       </div>
-      <p style="margin-top: 40px; color: #7c3aed; font-weight: 600;">Check the main navigation menu for more links!</p>
+
+      <div style="margin-top: 60px; padding: 30px; background: rgba(248, 113, 113, 0.05); border-radius: 12px; text-align: left; border-left: 5px solid #f87171;">
+        <h4 style="color: #f87171;"><i class="fab fa-youtube"></i> IMPORTANT: Preparation</h4>
+        <p style="font-size: 0.9rem; margin-top: 10px;">All qualified participants must stay active on the YouTube channel and WhatsApp group. </p>
+        <a href="https://www.youtube.com/@Nerdktech" target="_blank" class="btn btn-primary" style="background: #f87171; margin-top: 15px;">Visit Channel</a>
+      </div>
     </section>
 
     <footer>
@@ -224,11 +182,9 @@
   </div>
 
   <script>
-    // Menu Functions
     function openNav() {
       document.getElementById("mySidebar").style.width = "250px";
     }
-
     function closeNav() {
       document.getElementById("mySidebar").style.width = "0";
     }
