@@ -3,125 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events & Hackathons - Daminī Codesphere</title>
+  <title>LIVE: Daminī Techton 1.0</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
-    a { text-decoration:none; color: inherit; }
     .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    
     header { 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      padding:20px 0; 
-      position: sticky; 
-      top:0; 
-      background: rgba(15,23,42,0.95); 
-      z-index: 20; 
+      display:flex; justify-content:space-between; align-items:center; padding:20px 0; 
+      position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 20; 
     }
     header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* Sidebar Styles */
+    .menu-icon { font-size: 2rem; cursor: pointer; }
+    .sidebar { height: 100%; width: 0; position: fixed; z-index: 25; top: 0; right: 0; background: #0f172a; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); }
+    .sidebar a { padding: 8px 8px 8px 32px; text-decoration: none; font-size: 1.5rem; color: #e0e0e0; display: block; transition: 0.3s; font-weight: 600; }
+    .sidebar .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
+
+    /* Competition UI */
+    section { padding: 40px 0; text-align: center; }
+    .live-badge { background: #ef4444; color: white; padding: 5px 15px; border-radius: 50px; font-weight: 800; animation: blink 1.5s infinite; margin-bottom: 10px; display: inline-block; }
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+    .card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; border: 1px solid rgba(124, 58, 237, 0.3); max-width: 700px; margin: 20px auto; text-align: left; }
     
-    /* Hamburger Menu Styles */
-    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 25; 
-        top: 0;
-        right: 0;
-        background: #0f172a;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    }
-    .sidebar a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: #e0e0e0;
-        display: block;
-        transition: 0.3s;
-        font-weight: 600;
-    }
-    .sidebar a:hover { color: #ec4899; }
-    .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
+    .hidden { display: none; }
+    
+    label { display: block; margin-bottom: 10px; font-weight: 600; color: #7c3aed; }
+    input, select { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #7c3aed; background: rgba(255,255,255,0.1); color: white; font-size: 1rem; }
+    
+    .btn { padding: 12px 25px; border-radius: 8px; font-weight: 800; cursor: pointer; border: none; background: linear-gradient(to right, #7c3aed, #ec4899); color: white; transition: 0.3s; width: 100%; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4); }
+    .btn-whatsapp { background: #25d366; }
 
-    section { padding:40px 0; text-align: center; }
-    section h2 { font-size:2.8rem; font-weight:800; margin-bottom: 10px; color: #ec4899; }
-    .sub-heading { font-size:1.2rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
+    .task-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #ec4899; }
+    .task-box h4 { color: #ec4899; margin-bottom: 10px; }
+    .task-box ul { margin-left: 20px; margin-bottom: 15px; }
 
-    /* Status Section */
-    .status-card {
-        background: rgba(255,255,255,0.05); 
-        padding: 30px; 
-        border-radius: 12px; 
-        margin-bottom: 40px;
-        border: 1px solid rgba(124, 58, 237, 0.3);
-    }
-    .status-badge {
-        display: inline-block;
-        padding: 5px 15px;
-        background: rgba(239, 68, 68, 0.2);
-        color: #f87171;
-        border: 1px solid #f87171;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-    }
-
-    /* Qualified List Styles */
-    .qualified-section { margin-top: 20px; }
-    .hacker-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-        margin-top: 30px;
-    }
-    .hacker-card {
-        background: rgba(124, 58, 237, 0.1);
-        border: 1px solid rgba(124, 58, 237, 0.2);
-        padding: 15px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-    }
-    .hacker-card:hover {
-        background: rgba(124, 58, 237, 0.2);
-        transform: scale(1.05);
-    }
-    .hacker-card i {
-        color: #ec4899;
-        margin-right: 10px;
-        font-size: 0.9rem;
-    }
-    .hacker-name {
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-
-    .btn { padding:10px 20px; margin-top:10px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; }
-    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
-
-    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
+    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; font-size: 0.9rem; }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
@@ -130,64 +56,121 @@
 
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="index.html#about" onclick="closeNav()">About</a>
-      <a href="index.html#features" onclick="closeNav()">Features</a>
-      <a href="index.html#courses" onclick="closeNav()">Courses</a>
-      <a href="index.html#join" onclick="closeNav()">Join</a>
-      <a href="index.html#rules" onclick="closeNav()">Rules</a>
-      <a href="ai.html" onclick="closeNav()">AI Chat</a>
-      <a href="partners.html" onclick="closeNav()">Partners</a>
-      <a href="support.html" onclick="closeNav()">Support</a>
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
-      <a href="#" onclick="closeNav()">**Events**</a>
-      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
-      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+      <a href="index.html">Home</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="support.html">Support</a>
+      <a href="developers.html">Developers</a>
     </div>
 
     <section>
-      <div class="status-card">
-        <div class="status-badge">Registration Closed</div>
-        <h2>DAMINĪ TECHTON 1.0</h2>
-        <p style="color: #ec4899; font-weight: 800; font-size: 1.5rem; margin-top: 10px;">🚀 EVENT DATE: DECEMBER 22nd</p>
-      </div>
+      <div class="live-badge"><i class="fas fa-satellite-dish"></i> LIVE NOW</div>
+      <h2>TECHTON 1.0: CHALLENGE PORTAL</h2>
+      <p style="color: #aaa;">December 20th - The Battle Begins</p>
 
-      <div class="qualified-section">
-        <h3><i class="fas fa-award" style="color: #7c3aed; margin-right: 10px;"></i>QUALIFIED PARTICIPANTS</h3>
-        <p style="color: #aaa;">The following developers have been selected for the main event:</p>
+      <div id="verificationStep" class="card">
+        <h3>Step 1: Identity Check</h3>
+        <p style="margin-bottom: 20px; font-size: 0.9rem;">Only the qualified hackers can proceed. Enter your name as registered in CAPS.</p>
         
-        <div class="hacker-grid">
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DAVE</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">ELLIE</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">THE DARK GUY</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DR DEV</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">OJO DANIEL</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">NBA PROMZY</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">AJX VILLA</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">DANGI BOY</span></div>
-          <div class="hacker-card"><i class="fas fa-user-check"></i><span class="hacker-name">CBA DEV</span></div>
-        </div>
+        <label for="hackerName">Enter Your Full Name</label>
+        <input type="text" id="hackerName" placeholder="E.g. DAVE" oninput="this.value = this.value.toUpperCase()">
+        
+        <button class="btn" onclick="verifyHacker()">Verify & Proceed</button>
+        <p id="errorMsg" style="color: #f87171; margin-top: 15px; font-weight: 600;" class="hidden">Access Denied: Name not on qualified list.</p>
       </div>
 
-      <div style="margin-top: 60px; padding: 30px; background: rgba(248, 113, 113, 0.05); border-radius: 12px; text-align: left; border-left: 5px solid #f87171;">
-        <h4 style="color: #f87171;"><i class="fab fa-youtube"></i> IMPORTANT: Preparation</h4>
-        <p style="font-size: 0.9rem; margin-top: 10px;">All qualified participants must stay active on the YouTube channel and WhatsApp group. </p>
-        <a href="https://www.youtube.com/@Nerdktech" target="_blank" class="btn btn-primary" style="background: #f87171; margin-top: 15px;">Visit Channel</a>
+      <div id="challengeStep" class="card hidden">
+        <h3 id="welcomeHacker">Welcome, Hacker!</h3>
+        <p style="margin-bottom: 20px;">You have been verified. Select your stack to reveal your challenge.</p>
+
+        <label for="techStack">Choose Your Registered Tech Stack</label>
+        <select id="techStack" onchange="showTask()">
+          <option value="" disabled selected>-- Select Stack --</option>
+          <option value="htmlcss">HTML & CSS</option>
+          <option value="js">JavaScript / TypeScript</option>
+          <option value="react">React / NextJS</option>
+          <option value="hacking">Ethical Hacking</option>
+          <option value="modding">Modding</option>
+        </select>
+
+        <div id="taskContent" class="hidden">
+            <div class="task-box">
+                <h4 id="taskTitle">Challenge Details</h4>
+                <div id="taskDescription"></div>
+            </div>
+
+            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <h4 style="color: #25d366;"><i class="fab fa-whatsapp"></i> Submission Instructions</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                    1. Upload your code to <strong>GitHub</strong> or <strong>Google Drive</strong>.<br>
+                    2. Send the link directly to our official WhatsApp.<br>
+                    3. Mention your **Full Name** and **Tech Stack** in the message.
+                </p>
+                <a href="https://wa.me/2348054671458" class="btn btn-whatsapp" target="_blank" style="text-decoration: none; display: block; text-align: center;">
+                    <i class="fab fa-whatsapp"></i> Submit via WhatsApp
+                </a>
+            </div>
+        </div>
       </div>
     </section>
 
     <footer>
-      © 2026 Daminī Codesphere • Mostly coding, mostly community.
+      © 2026 Daminī Codesphere • Strictly Code, Strictly Community.
     </footer>
   </div>
 
   <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
+    const qualified = ["DAVE", "ELLIE", "THE DARK GUY", "DR DEV", "OJO DANIEL", "NBA PROMZY", "AJX VILLA", "DANGI BOY", "CBA DEV"];
+
+    function verifyHacker() {
+      const name = document.getElementById('hackerName').value.trim();
+      const error = document.getElementById('errorMsg');
+      
+      if (qualified.includes(name)) {
+        document.getElementById('verificationStep').classList.add('hidden');
+        document.getElementById('challengeStep').classList.remove('hidden');
+        document.getElementById('welcomeHacker').innerText = `Welcome, ${name}!`;
+      } else {
+        error.classList.remove('hidden');
+      }
     }
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
+
+    function showTask() {
+      const stack = document.getElementById('techStack').value;
+      const content = document.getElementById('taskContent');
+      const desc = document.getElementById('taskDescription');
+      const title = document.getElementById('taskTitle');
+      
+      content.classList.remove('hidden');
+
+      const tasks = {
+        htmlcss: {
+          title: "Responsive Portfolio Mockup",
+          html: "<ul><li>Create a clean, responsive 'Personal Branding' landing page.</li><li>Must include a Hero Section, Projects Grid, and Contact Footer.</li><li>Pure CSS/SASS only (No Bootstrap).</li></ul>"
+        },
+        js: {
+          title: "The Logic Master",
+          html: "<ul><li>Build a functional Expense Tracker.</li><li>Feature: Add/Delete items and store them in <strong>localStorage</strong>.</li><li>Bonus: Display a total balance that updates automatically.</li></ul>"
+        },
+        react: {
+          title: "API Dashboard",
+          html: "<ul><li>Build a Movie Search app using a public API (like OMDB).</li><li>Must feature a search bar and dynamic result cards.</li><li>Use functional components and Hooks (useState/useEffect).</li></ul>"
+        },
+        hacking: {
+          title: "Cyber Investigation",
+          html: "<ul><li>Explain the step-by-step mitigation for a SQL Injection vulnerability.</li><li>Scenario: Write the payload to alert('Hacked') for a reflected XSS.</li><li>Identify 3 security headers every secure site must have.</li></ul>"
+        },
+        modding: {
+          title: "Scripting & Assets",
+          html: "<ul><li>Explain how to swap a 3D model in a game engine.</li><li>Write a simple script logic to change a character's speed on collision.</li><li>Describe the process of modifying a .json/.ini file to unlock premium features.</li></ul>"
+        }
+      };
+
+      title.innerText = tasks[stack].title;
+      desc.innerHTML = tasks[stack].html;
     }
+
+    function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
   </script>
 </body>
 </html>
