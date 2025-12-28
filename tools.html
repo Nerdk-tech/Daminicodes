@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevTools - Daminī Codesphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #070b14; color:#e0e0e0; line-height:1.6; }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom: 1px solid rgba(124, 58, 237, 0.2); position: sticky; top:0; background: #070b14; z-index:100; }
+    header h1 { font-size:1.5rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    
+    /* Sidebar Styles */
+    .menu-icon { font-size: 2rem; cursor: pointer; color: #ec4899; }
+    .sidebar { height: 100%; width: 0; position: fixed; z-index: 1000; top: 0; right: 0; background: #0f172a; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); }
+    .sidebar a { padding: 8px 32px; text-decoration: none; font-size: 1.2rem; color: #e0e0e0; display: block; transition: 0.3s; font-weight: 600; }
+    .sidebar .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
+
+    section { padding: 40px 0; }
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    @media (max-width: 800px) { .tool-grid { grid-template-columns: 1fr; } }
+
+    .card { background: #0f172a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); padding: 25px; }
+    .card h3 { margin-bottom: 15px; color: #ec4899; display: flex; align-items: center; gap: 10px; }
+
+    textarea { width: 100%; background: #000; color: #00ff00; border: 1px solid #333; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 0.9rem; resize: vertical; }
+    #terminal-output { background: #050505; color: #00ff00; padding: 15px; border-radius: 5px; min-height: 80px; margin-top: 10px; font-family: 'Fira Code', monospace; white-space: pre-wrap; border: 1px solid #222; }
+    
+    .btn { padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; transition: 0.3s; margin-top: 10px; }
+    .btn-run { background: #7c3aed; color: white; }
+    .btn-copy { background: #334155; color: white; font-size: 0.8rem; }
+    
+    .script-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #7c3aed; }
+    .success { color: #4ade80; margin-top: 10px; font-weight: bold; }
+    .error { color: #f87171; margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Daminī DevTools</h1>
+    <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+  </header>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="events.html">Leaderboard</a>
+    <div style="padding: 10px 32px; font-size: 0.7rem; color: #ec4899; font-weight: 800; text-transform: uppercase;">Tools</div>
+    <a href="#terminal" onclick="closeNav()">Code Terminal</a>
+    <a href="#checker" onclick="closeNav()">Error Checker</a>
+    <a href="#scripts" onclick="closeNav()">Free Scripts</a>
+  </div>
+
+  <section id="terminal">
+    <div class="tool-grid">
+      <div class="card">
+        <h3><i class="fas fa-terminal"></i> JS Terminal</h3>
+        <textarea id="terminal-input" rows="6" placeholder="console.log('Daminī Codesphere Terminal Ready...');"></textarea>
+        <button class="btn btn-run" onclick="runTerminal()">Run Script</button>
+        <div id="terminal-output">>> system ready...</div>
+      </div>
+
+      <div class="card" id="checker">
+        <h3><i class="fas fa-bug-slash"></i> Syntax Checker</h3>
+        <textarea id="checker-input" rows="6" placeholder="Paste code to check for syntax errors..."></textarea>
+        <button class="btn btn-run" style="background: #ec4899;" onclick="checkCode()">Check Logic</button>
+        <div id="checker-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scripts">
+    <div class="card">
+      <h3><i class="fas fa-file-code"></i> Free Programming Scripts</h3>
+      
+      <div class="script-item">
+        <div><strong>Responsive Navigation</strong><p style="font-size:0.8rem; color:#888;">Complete mobile-first menu script.</p></div>
+        <button class="btn btn-copy" onclick="copyCode('nav')">Copy Code</button>
+      </div>
+
+      <div class="script-item">
+        <div><strong>Glassmorphism UI</strong><p style="font-size:0.8rem; color:#888;">Modern blurred background CSS.</p></div>
+        <button class="btn btn-copy" onclick="copyCode('glass')">Copy Code</button>
+      </div>
+
+      <div class="script-item">
+        <div><strong>Form Validator</strong><p style="font-size:0.8rem; color:#888;">Simple JS email/password check.</p></div>
+        <button class="btn btn-copy" onclick="copyCode('form')">Copy Code</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+  function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
+  function runTerminal() {
+    const input = document.getElementById('terminal-input').value;
+    const output = document.getElementById('terminal-output');
+    output.innerText = "";
+    const oldLog = console.log;
+    console.log = (m) => output.innerText += m + "\n";
+    try { eval(input); } catch (e) { output.innerText = "ERROR: " + e.message; }
+    console.log = oldLog;
+  }
+
+  function checkCode() {
+    const code = document.getElementById('checker-input').value;
+    const res = document.getElementById('checker-result');
+    try { new Function(code); res.innerText = "✓ No syntax errors!"; res.className = "success"; } 
+    catch (e) { res.innerText = "✗ Error: " + e.message; res.className = "error"; }
+  }
+
+  function copyCode(type) {
+    const lib = {
+      nav: "/* Responsive Nav */\nfunction toggle() { var x = document.getElementById('nav'); x.style.width = '250px'; }",
+      glass: "/* Glass CSS */\n.card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }",
+      form: "/* Form Check */\nconst validate = (email) => email.includes('@') && email.includes('.');"
+    };
+    navigator.clipboard.writeText(lib[type]);
+    alert("Script copied to clipboard!");
+  }
+</script>
+</body>
+</html>
