@@ -1,8 +1,6 @@
 {
   "name": "damini-codesphere",
   "version": "4.0.0",
-  "description": "API Hub and Codespace for Daminī",
-  "main": "index.html",
   "engines": {
     "node": "20.x"
   },
