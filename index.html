@@ -3,92 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daminī Codesphere</title>
+  <title>Daminī Codesphere | v4.0</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    /* CORE STYLES */
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
     a { text-decoration:none; color: inherit; }
     .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { 
-        display:flex; 
-        justify-content:space-between; 
-        align-items:center; 
-        padding:20px 0; 
-        position: sticky; 
-        top:0; 
-        background: rgba(15,23,42,0.95); 
-        z-index: 20; 
-    }
-    header h1 { 
-        font-size:1.8rem; 
-        font-weight:800; 
-        background:linear-gradient(to right, #7c3aed,#ec4899); 
-        -webkit-background-clip:text; 
-        -webkit-text-fill-color:transparent; 
-    }
-
-    /* Hamburger Menu Styles */
+    
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 20; }
+    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    
+    /* SIDEBAR & MENU */
     .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 25; 
-        top: 0;
-        right: 0;
-        background: #0f172a;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    }
-    .sidebar a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: #e0e0e0;
-        display: block;
-        transition: 0.3s;
-        font-weight: 600;
-    }
-    .sidebar a:hover { color: #ec4899; }
-    .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    /* End Hamburger Menu Styles */
+    .sidebar { height: 100%; width: 0; position: fixed; z-index: 25; top: 0; right: 0; background: #0f172a; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); }
+    .sidebar a { padding: 10px 32px; text-decoration: none; font-size: 1.1rem; color: #e0e0e0; display: block; transition: 0.3s; font-weight: 600; }
+    .sidebar a:hover { color: #ec4899; padding-left: 40px; }
+    .sidebar .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
+    .badge-new { background: #ec4899; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
+    /* HERO & BUTTONS */
     .hero { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:80px 0; }
-    .hero h2 { font-size:3rem; font-weight:800; line-height:1.2; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero p { margin-top:20px; max-width:700px; color:#cfd8dc; }
-    .btn { padding:10px 20px; margin-top:20px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; }
-    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
-    .btn-primary:hover { opacity:0.9; }
+    .hero h2 { font-size:3.5rem; font-weight:800; line-height:1.1; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero p { margin-top:20px; max-width:700px; color:#cfd8dc; font-size: 1.1rem; }
+    .btn { padding:12px 25px; margin-top:10px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; margin-right: 10px; }
+    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4); }
     .btn-secondary { border:2px solid #ec4899; color:#ec4899; background:none; }
-    .btn-secondary:hover { background:#ec4899; color:white; }
+    .btn-secondary:hover { background: #ec4899; color: white; }
+
+    /* GRID & CARDS */
     section { padding:60px 0; }
-    section h3 { font-size:2rem; font-weight:700; margin-bottom:20px; }
-    section p { max-width:700px; margin-bottom:20px; color:#cfd8dc; }
-    .grid { display:grid; gap:20px; }
-    .grid-3 { grid-template-columns:1fr; }
+    .grid { display:grid; gap:20px; grid-template-columns:1fr; }
     @media(min-width:768px){ .grid-3 { grid-template-columns:repeat(3,1fr); } }
-    .card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; }
-    .card:hover { background: rgba(124,58,237,0.2); transform: translateY(-5px); }
+    .card { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:25px; border-radius:15px; transition:0.3s; }
+    .card:hover { border-color: #7c3aed; background: rgba(124,58,237,0.1); transform: translateY(-5px); }
+    .card h4 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
+    .course-links ul { list-style: none; padding-top: 15px; }
+    .course-links li { margin-bottom: 8px; }
+
+    /* MODAL */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 100; }
+    .modal { background: #1e293b; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; border: 1px solid #7c3aed; }
+
     footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    .course-links ul { list-style: none; padding: 0; margin-top: 15px;}
-    .course-links ul li { margin-bottom: 5px;}
-    .course-links ul li .btn-secondary { font-size: 0.8rem; padding: 5px 10px; margin: 5px 0; display: inline-block;}
-    @media(max-width:768px){ 
-        .hero { align-items:center; text-align:center; } 
-    }
+    @media(max-width:768px){ .hero h2 { font-size: 2.5rem; } .hero { align-items: center; text-align: center; } }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+  <div id="updateModal" class="modal-overlay">
+    <div class="modal">
+      <i class="fas fa-rocket" style="font-size: 3rem; color: #7c3aed; margin-bottom: 20px;"></i>
+      <h3>Daminī v4.0 is LIVE</h3>
+      <p>The API Hub, Codespace Pro, and new Advanced Courses are now active. Mostly coding, entirely community.</p>
+      <button class="btn btn-primary" onclick="closeModal()">Enter Workspace</button>
+    </div>
+  </div>
+
   <div class="container">
     <header>
       <h1>Daminī Codesphere</h1>
@@ -102,126 +76,89 @@
       <a href="#courses" onclick="closeNav()">Courses</a>
       <a href="#join" onclick="closeNav()">Join</a>
       <a href="#rules" onclick="closeNav()">Rules</a>
-      <a href="ai.html" onclick="closeNav()">AI Chat</a>
-      <a href="partners.html" onclick="closeNav()">Partners</a>
-      <a href="support.html" onclick="closeNav()">Support</a> <a href="contact.html" onclick="closeNav()">Contact</a>
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
-      <a href="events.html" onclick="closeNav()">Events</a>
-      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
-            <a href="contact.html" onclick="closeNav()">Contact us (trusted)</a>
-      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
-         <a href="tools.html">Dev tools</a>
-          <a href="codespace.html">Codespace</a>
+      
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
+      <a href="api.html" style="color:#ec4899;"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
+      <a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
+      <a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
+      <a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
+      
+      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
+      <a href="ai.html">AI Chat (Primis)</a>
+      <a href="partners.html">Partners</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="events.html">Events</a>
+      <a href="developers.html">Developers (Dami Codes)</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact Us</a>
     </div>
+
     <section class="hero">
-      <h2>WELCOME TO DAMINĪ CODESPHERE</h2>
+      <h2>WELCOME TO <br> DAMINĪ CODESPHERE</h2>
       <p>
-        Welcome to the hub for coders and tech enthusiasts!  
-        Here we share <strong>free net updates</strong>, <strong>coding tips</strong>, tutorials, mini-projects, and courses.  
-        Learn, grow, and join a community that helps you level up your skills.
+        Building the future of African tech. Access <strong>15+ Professional APIs</strong>, 
+        manage complex projects in <strong>Codespace Pro</strong>, and access <strong>free coding updates</strong>.
       </p>
       <div>
-        <a href="#features" class="btn btn-primary">Explore Features</a>
-        <a href="#join" class="btn btn-secondary">Join the Group</a>
+        <a href="api.html" class="btn btn-primary">Get API Keys</a>
+        <a href="codespace.html" class="btn btn-secondary">Open Codespace</a>
       </div>
     </section>
 
     <section id="features">
-      <h3>Explore Features</h3>
-      <p>Our community focuses on practical coding and learning. Discover tutorials, free tools, scripts, and daily updates to level up your coding game.</p>
+      <h3>Ecosystem Services</h3>
       <div class="grid grid-3">
         <div class="card">
+          <i class="fas fa-server" style="color:#7c3aed; font-size:1.5rem;"></i>
+          <h4>API Ecosystem</h4>
+          <p>15+ active professional endpoints for developers (Scrapers, AI, Encoders).</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-folder-tree" style="color:#ec4899; font-size:1.5rem;"></i>
+          <h4>Codespace Pro</h4>
+          <p>Manage folders and files with live browser previews in our built-in IDE.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-wifi" style="color:#10b981; font-size:1.5rem;"></i>
           <h4>Free Net Updates</h4>
-          <p>Daily tricks to save data and browse fast. Stay connected without spending extra money.</p>
-        </div>
-        <div class="card">
-          <h4>Coding Tips</h4>
-          <p>Quick hacks for Python, JavaScript, HTML, CSS, and more. Build real projects fast.</p>
-        </div>
-        <div class="card">
-          <h4>Learn Programming</h4>
-          <p>Step-by-step guides, mini-projects, and tutorials for beginners and advanced learners.</p>
+          <p>Daily tricks to save data and browse fast. Stay connected for free.</p>
         </div>
       </div>
     </section>
 
     <section id="courses">
       <h3>Courses</h3>
-      <p>Here, you can access all the coding courses we drop. Python courses are live, Web Dev & Advanced JS coming soon!</p>
+      <p>Access all our community-dropped courses. Master the stack from Python to DevOps.</p>
       <div class="grid grid-3">
         <div class="card course-links">
           <h4>Python Basics</h4>
-          <p>Start with Python: variables, loops, functions, and mini projects.</p>
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Python Intro</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Variables & Data Types</a></li>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Intro</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Variables</a></li>
             <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Loops</a></li>
-            <li><a href="https://www.youtube.com/watch?v=8ext9G7xspg" target="_blank" class="btn btn-secondary">Lesson 4 - Functions</a></li>
           </ul>
         </div>
-
         <div class="card course-links">
           <h4>Web Development</h4>
-          <p>Master HTML, CSS, and modern JavaScript frameworks like React/Vue.</p>
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - HTML Structure</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - CSS Styling</a></li>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - HTML</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - CSS</a></li>
             <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - JS DOM</a></li>
           </ul>
         </div>
-
         <div class="card course-links">
-          <h4>Advanced JavaScript</h4>
-          <p>Deep dive into asynchronous programming, Node.js, and complex algorithms.</p>
+          <h4>Cloud & DevOps</h4>
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Async/Await</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Node.js Intro</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Data Structures</a></li>
+            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - AWS Intro</a></li>
+            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - EC2 Basics</a></li>
           </ul>
         </div>
-        
-        <div class="card course-links">
-          <h4>Mobile Development (Flutter)</h4>
-          <p>Build beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.</p>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Flutter Widgets</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - State Management</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - APIs in Dart</a></li>
-          </ul>
-        </div>
-        
-        <div class="card course-links">
-          <h4>Cloud & DevOps (AWS)</h4>
-          <p>Learn deployment, scalability, and infrastructure management using key cloud providers.</p>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Cloud Computing Intro</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - AWS EC2 Basics</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - CI/CD Pipeline</a></li>
-          </ul>
-        </div>
-        
-        <div class="card course-links">
-          <h4>Data Science Basics (R/Pandas)</h4>
-          <p>Introduction to data analysis, manipulation, and visualization techniques.</p>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Pandas DataFrames</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Data Cleaning</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Basic Visualization</a></li>
-          </ul>
-        </div>
-        
       </div>
-    </section>
-
-    <section id="about">
-      <h3>About Daminī Codesphere</h3>
-      <p>Daminī Codesphere is a community of learners and doers. We provide resources, tutorials, courses, and support for anyone passionate about coding. Beginners and advanced coders are welcome.</p>
     </section>
 
     <section id="join">
       <h3>Join the Community</h3>
-      <p>We have two WhatsApp groups and a channel where you can interact, learn, and get updates daily:</p>
       <div class="grid grid-3">
         <div class="card">
           <h4>WhatsApp Channel</h4>
@@ -229,30 +166,21 @@
         </div>
         <div class="card">
           <h4>Group 1</h4>
-          <a href="https://chat.whatsapp.com/KVgy1I71vYnCT8r2aCNWb1?mode=hqrt1" target="_blank" class="btn btn-primary">Join Group 1</a>
+          <a href="https://chat.whatsapp.com/KVgy1I71vYnCT8r2aCNWb1" target="_blank" class="btn btn-primary">Join Group 1</a>
         </div>
         <div class="card">
           <h4>Group 2</h4>
-          <a href="https://chat.whatsapp.com/KpiwcCbP0eu5cqMKjAo29z?mode=hqrt1" target="_blank" class="btn btn-primary">Join Group 2</a>
+          <a href="https://chat.whatsapp.com/KpiwcCbP0eu5cqMKjAo29z" target="_blank" class="btn btn-primary">Join Group 2</a>
         </div>
       </div>
     </section>
 
     <section id="rules">
-      <h3>Rules</h3>
+      <h3>Community Rules</h3>
       <div class="grid grid-3">
-        <div class="card">
-          <h4>ADD</h4>
-          <p>Invite helpful members to grow the community.</p>
-        </div>
-        <div class="card">
-          <h4>No Spam</h4>
-          <p>Do not send fake updates, repeated messages, or scams.</p>
-        </div>
-        <div class="card">
-          <h4>Respect</h4>
-          <p>No abuse, harassment, or nonsense in the group.</p>
-        </div>
+        <div class="card"><h4>Invite</h4><p>Grow the community by adding helpful members.</p></div>
+        <div class="card"><h4>No Spam</h4><p>No fake links, scams, or repeated messages.</p></div>
+        <div class="card"><h4>Respect</h4><p>No harassment or toxic behavior allowed.</p></div>
       </div>
     </section>
 
@@ -262,12 +190,18 @@
   </div>
 
   <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
+    function openNav() { document.getElementById("mySidebar").style.width = "280px"; }
+    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
 
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
+    // Version Control Popup
+    window.onload = function() {
+        if (!localStorage.getItem('v4_seen')) {
+            document.getElementById('updateModal').style.display = 'flex';
+        }
+    };
+    function closeModal() {
+        document.getElementById('updateModal').style.display = 'none';
+        localStorage.setItem('v4_seen', 'true');
     }
   </script>
 </body>

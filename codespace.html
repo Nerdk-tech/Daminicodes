@@ -8,200 +8,172 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
     <style>
-        :root { --bg: #1e1e1e; --side: #252526; --border: #333; --accent: #7c3aed; --header: #2d2d2d; }
+        :root { --bg: #0d1117; --side: #161b22; --border: #30363d; --accent: #7c3aed; --header: #161b22; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body, html { height: 100%; background: var(--bg); color: #d4d4d4; font-family: 'Poppins', sans-serif; overflow: hidden; }
+        body, html { height: 100%; background: var(--bg); color: #c9d1d9; font-family: 'Poppins', sans-serif; overflow: hidden; }
 
-        /* UI UX: Header */
-        header { height: 50px; background: var(--header); display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #000; }
-        .logo-section { display: flex; align-items: center; gap: 12px; font-weight: 800; }
-        .logo-tag { background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; font-family: 'Fira Code'; font-size: 0.9rem; }
+        header { height: 55px; background: var(--header); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; color: #fff; }
+        .logo i { color: var(--accent); font-size: 1.4rem; }
 
-        /* Main Workspace */
-        .workspace { display: flex; height: calc(100vh - 50px); position: relative; }
-
-        /* Sidebar UX (Collapsible) */
-        .sidebar { width: 260px; background: var(--side); border-right: 1px solid var(--border); display: flex; flex-direction: column; transition: 0.3s; }
+        .workspace { display: flex; height: calc(100vh - 55px); }
+        
+        .sidebar { width: 280px; background: var(--side); border-right: 1px solid var(--border); display: flex; flex-direction: column; transition: 0.2s; }
         .sidebar.collapsed { width: 0; overflow: hidden; }
         
-        .sidebar-toolbar { padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); font-size: 0.7rem; font-weight: 800; color: #858585; }
-        .fs-tools i { cursor: pointer; margin-left: 10px; transition: 0.2s; }
-        .fs-tools i:hover { color: #fff; }
+        .toolbar { padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); font-size: 0.75rem; font-weight: 600; color: #8b949e; }
+        .toolbar i { cursor: pointer; transition: 0.2s; margin-left: 10px; }
+        .toolbar i:hover { color: var(--accent); }
 
-        .file-tree { flex: 1; overflow-y: auto; padding: 10px 0; }
-        .tree-item { padding: 6px 15px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; border-left: 3px solid transparent; }
-        .tree-item:hover { background: #2a2d2e; }
-        .tree-item.active { background: #37373d; border-left-color: var(--accent); color: #fff; }
-        .indent { margin-left: 15px; border-left: 1px solid #444; }
+        .file-tree { flex: 1; overflow-y: auto; padding: 10px 0; font-family: 'Fira Code', monospace; }
+        .tree-item { padding: 6px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; transition: 0.2s; }
+        .tree-item:hover { background: #21262d; }
+        .tree-item.active { background: #23863622; color: #fff; border-left: 3px solid var(--accent); }
+        .indent { margin-left: 15px; border-left: 1px solid #30363d; }
 
-        /* Icons */
-        .fa-html5 { color: #e34c26; } .fa-css3-alt { color: #264de4; } .fa-js { color: #f7df1e; } .fa-folder { color: #dcb67a; }
-
-        /* Editor Area */
-        .editor-container { flex: 1; position: relative; min-width: 0; }
+        .editor-container { flex: 1; min-width: 0; background: #000; }
         #monaco-root { height: 100%; width: 100%; }
 
-        /* Controls */
-        .btn-group { display: flex; gap: 8px; }
-        .btn { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; color: white; transition: 0.2s; }
-        .btn-primary { background: var(--accent); }
-        .btn-run { background: #0e639c; }
-        .btn-dark { background: #444; }
-        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-group { display: flex; gap: 10px; }
+        .btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.75rem; display: flex; align-items: center; gap: 8px; color: #fff; transition: 0.2s; }
+        .btn-run { background: #238636; }
+        .btn-run:hover { background: #2ea043; }
+        .btn-preview { background: var(--accent); }
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .sidebar { position: absolute; z-index: 100; height: 100%; }
-            .sidebar.collapsed { width: 0; }
-        }
+        .fa-html5 { color: #e34c26; } .fa-css3 { color: #264de4; } .fa-js { color: #f7df1e; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-section">
-            <i class="fas fa-bars" style="cursor:pointer" onclick="toggleSidebar()"></i>
-            <span class="logo-tag">&lt;/&gt;</span>
-            <span style="letter-spacing: 1px;">DAMINĪ CODESPACE</span>
+        <div class="logo">
+            <i class="fas fa-terminal" onclick="toggleSidebar()"></i>
+            <span>DAMINĪ <span style="color:var(--accent)">PRO</span></span>
         </div>
         <div class="btn-group">
-            <button class="btn btn-run" onclick="openInBrowser()"><i class="fas fa-external-link-alt"></i> OPEN IN BROWSER</button>
-            <button class="btn btn-primary" onclick="runInTerminal()"><i class="fas fa-play"></i> RUN JS</button>
+            <button class="btn btn-preview" onclick="previewProject()"><i class="fas fa-eye"></i> PREVIEW</button>
+            <button class="btn btn-run" onclick="runJS()"><i class="fas fa-play"></i> RUN JS</button>
         </div>
     </header>
 
     <div class="workspace">
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-toolbar">
+            <div class="toolbar">
                 <span>EXPLORER</span>
-                <div class="fs-tools">
-                    <i class="fas fa-file-plus" title="New File" onclick="createItem('file')"></i>
-                    <i class="fas fa-folder-plus" title="New Folder" onclick="createItem('folder')"></i>
+                <div>
+                    <i class="fas fa-file-medical" title="New File" onclick="addItem('file')"></i>
+                    <i class="fas fa-folder-plus" title="New Folder" onclick="addItem('folder')"></i>
                 </div>
             </div>
-            <div class="file-tree" id="file-tree"></div>
+            <div class="file-tree" id="tree"></div>
         </aside>
-
         <main class="editor-container">
             <div id="monaco-root"></div>
         </main>
     </div>
 
-    <script>
-        let editor;
-        let fileSystem = JSON.parse(localStorage.getItem('damini_v4_fs')) || [
-            { id: '1', name: 'index.html', type: 'file', content: '<html>\n<head>\n <link rel="stylesheet" href="style.css">\n</head>\n<body>\n <h1>Daminī system Ready</h1>\n <script src="script.js"><\/script>\n</body>\n</html>' },
-            { id: '2', name: 'style.css', type: 'file', content: 'body { background: #121212; color: #7c3aed; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }' },
-            { id: '3', name: 'script.js', type: 'file', content: 'console.log("Hello from the Virtual Server!");' },
-            { id: '4', name: 'Components', type: 'folder', children: [] }
-        ];
-        let activeFile = fileSystem[0];
+<script>
+    let editor;
+    let fs = JSON.parse(localStorage.getItem('dm_fs_v5')) || [
+        { id: '1', name: 'index.html', type: 'file', content: '<h1>Hello Daminī</h1>' },
+        { id: '2', name: 'style.css', type: 'file', content: 'body { background: #000; color: purple; }' },
+        { id: '3', name: 'src', type: 'folder', children: [] }
+    ];
+    let activeFile = fs[0];
 
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
-        require(['vs/editor/editor.main'], function() {
-            editor = monaco.editor.create(document.getElementById('monaco-root'), {
-                value: activeFile.content,
-                language: 'html',
-                theme: 'vs-dark',
-                automaticLayout: true,
-                fontSize: 15,
-                fontFamily: 'Fira Code',
-                padding: { top: 20 }
-            });
-
-            editor.onDidChangeModelContent(() => {
-                activeFile.content = editor.getValue();
-                saveFS();
-            });
-
-            renderTree();
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+        editor = monaco.editor.create(document.getElementById('monaco-root'), {
+            value: activeFile.content,
+            language: 'html',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            fontSize: 14,
+            padding: { top: 20 }
         });
 
-        function renderTree() {
-            const container = document.getElementById('file-tree');
-            container.innerHTML = "";
-            
-            const buildTree = (items, parentElement) => {
-                items.forEach(item => {
-                    const el = document.createElement('div');
-                    el.className = `tree-item ${item.id === activeFile.id ? 'active' : ''}`;
-                    
-                    let icon = '<i class="fas fa-file"></i>';
-                    if (item.type === 'folder') icon = '<i class="fas fa-folder"></i>';
-                    else if (item.name.endsWith('.html')) icon = '<i class="fab fa-html5"></i>';
-                    else if (item.name.endsWith('.css')) icon = '<i class="fab fa-css3-alt"></i>';
-                    else if (item.name.endsWith('.js')) icon = '<i class="fab fa-js"></i>';
+        editor.onDidChangeModelContent(() => {
+            activeFile.content = editor.getValue();
+            localStorage.setItem('dm_fs_v5', JSON.stringify(fs));
+        });
+        renderTree();
+    });
 
-                    el.innerHTML = `${icon} <span>${item.name}</span>`;
-                    el.onclick = () => { if(item.type === 'file') openFile(item); };
-                    parentElement.appendChild(el);
-
-                    if (item.children) {
-                        const childBox = document.createElement('div');
-                        childBox.className = "indent";
-                        buildTree(item.children, childBox);
-                        parentElement.appendChild(childBox);
-                    }
-                });
+    function addItem(type) {
+        const name = prompt(`Enter ${type} name:`);
+        if (!name) return;
+        const item = { id: Date.now().toString(), name, type, content: type==='file'?'':null, children: type==='folder'?[]:null };
+        
+        const parentName = prompt("Parent folder (leave blank for root):");
+        if (parentName) {
+            const find = (list) => {
+                for(let i of list) {
+                    if(i.name === parentName && i.type === 'folder') return i;
+                    if(i.children) { let res = find(i.children); if(res) return res; }
+                }
             };
-            buildTree(fileSystem, container);
-        }
+            const p = find(fs);
+            if(p) p.children.push(item); else fs.push(item);
+        } else fs.push(item);
+        
+        renderTree();
+    }
 
-        function openFile(file) {
-            activeFile = file;
-            const ext = file.name.split('.').pop();
-            const langMap = { js: 'javascript', html: 'html', css: 'css' };
-            monaco.editor.setModelLanguage(editor.getModel(), langMap[ext] || 'plaintext');
-            editor.setValue(file.content);
-            renderTree();
-        }
+    function renderTree() {
+        const root = document.getElementById('tree');
+        root.innerHTML = "";
+        const build = (items, target) => {
+            items.forEach(i => {
+                const el = document.createElement('div');
+                el.className = `tree-item ${i.id === activeFile.id ? 'active' : ''}`;
+                let icon = i.type === 'folder' ? 'fa-folder' : 'fa-file-code';
+                if(i.name.endsWith('.html')) icon = 'fab fa-html5';
+                if(i.name.endsWith('.css')) icon = 'fab fa-css3';
+                if(i.name.endsWith('.js')) icon = 'fab fa-js';
 
-        function createItem(type) {
-            const name = prompt(`Enter ${type} name:`);
-            if (!name) return;
-            const newItem = { id: Date.now().toString(), name, type, content: type === 'file' ? '' : null };
-            if (type === 'folder') newItem.children = [];
-            fileSystem.push(newItem);
-            saveFS();
-            renderTree();
-        }
+                el.innerHTML = `<i class="${icon}"></i> <span>${i.name}</span> <i class="fas fa-trash" style="margin-left:auto; font-size:10px" onclick="deleteItem('${i.id}')"></i>`;
+                el.onclick = (e) => { if(!e.target.classList.contains('fa-trash')) openFile(i); };
+                target.appendChild(el);
+                if(i.children) {
+                    const sub = document.createElement('div');
+                    sub.className = "indent";
+                    build(i.children, sub);
+                    target.appendChild(sub);
+                }
+            });
+        };
+        build(fs, root);
+    }
 
-        function saveFS() { localStorage.setItem('damini_v4_fs', JSON.stringify(fileSystem)); }
-        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
+    function openFile(file) {
+        if(file.type === 'folder') return;
+        activeFile = file;
+        const ext = file.name.split('.').pop();
+        monaco.editor.setModelLanguage(editor.getModel(), ext === 'js' ? 'javascript' : ext);
+        editor.setValue(file.content);
+        renderTree();
+    }
 
-        // THE BROWSER REDIRECT (VIRTUAL LOCALHOST)
-        function openInBrowser() {
-            const findFile = (name) => {
-                let found = null;
-                const search = (list) => list.forEach(i => { 
-                    if(i.name === name) found = i; 
-                    if(i.children) search(i.children);
-                });
-                search(fileSystem);
-                return found;
-            };
+    function deleteItem(id) {
+        const remove = (list) => {
+            const idx = list.findIndex(i => i.id === id);
+            if(idx > -1) list.splice(idx,1);
+            else list.forEach(i => i.children && remove(i.children));
+        };
+        remove(fs); renderTree();
+    }
 
-            const htmlFile = findFile('index.html');
-            const cssFile = findFile('style.css');
-            const jsFile = findFile('script.js');
+    function previewProject() {
+        const html = fs.find(f => f.name === 'index.html')?.content || "No index.html found";
+        const blob = new Blob([html], { type: 'text/html' });
+        window.open(URL.createObjectURL(blob), '_blank');
+    }
 
-            if (!htmlFile) return alert("Please create an index.html first!");
+    function runJS() {
+        try { eval(editor.getValue()); } catch(e) { alert(e.message); }
+    }
 
-            let fullContent = htmlFile.content;
-            // Inject CSS and JS manually into the blob to simulate linking
-            if(cssFile) fullContent = fullContent.replace('</head>', `<style>${cssFile.content}</style></head>`);
-            if(jsFile) fullContent = fullContent.replace('</body>', `<script>${jsFile.content}<\/script></body>`);
-
-            const blob = new Blob([fullContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            window.open(url, '_blank');
-        }
-
-        function runInTerminal() {
-            const code = editor.getValue();
-            try { eval(code); alert("JS Executed Successfully!"); } 
-            catch(e) { alert("Execution Error: " + e.message); }
-        }
-    </script>
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
+</script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daminī Earth Viewer</title>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; }
+        .overlay { position: absolute; top: 20px; left: 20px; color: white; font-family: sans-serif; pointer-events: none; z-index: 10; }
+        .overlay h1 { background: linear-gradient(to right, #7c3aed, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+        .back { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); color: white; padding: 10px; border-radius: 8px; text-decoration: none; z-index: 10; border: 1px solid rgba(255,255,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>DAMINĪ EARTH</h1>
+        <p>Real-time Global Satellite Data</p>
+    </div>
+    <a href="index.html" class="back">Back to Home</a>
+    <div id="globe"></div>
+    <script>
+        Globe()
+            (document.getElementById('globe'))
+            .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+            .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+            .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+            .atmosphereColor('#7c3aed')
+            .showAtmosphere(true)
+            .controls().autoRotate = true;
+    </script>
+</body>
+</html>

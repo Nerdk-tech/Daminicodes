@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Granted | Daminī Cloud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .success-card { background: #1e293b; padding: 40px; border-radius: 20px; text-align: center; max-width: 450px; border: 1px solid #334155; }
+        .icon-box { width: 80px; height: 80px; background: #10b98122; color: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2.5rem; }
+        h1 { margin: 0 0 10px; font-size: 1.8rem; }
+        p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 30px; }
+        .key-box { background: #0f172a; border: 1px dashed #7c3aed; padding: 15px; border-radius: 10px; font-family: 'Fira Code'; color: #7c3aed; font-weight: bold; position: relative; cursor: pointer; }
+        .key-box::after { content: 'Click to copy key'; position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; color: #64748b; font-family: 'Poppins'; }
+        .btn-home { display: inline-block; margin-top: 30px; color: #94a3b8; text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid #334155; }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="icon-box"><i class="fas fa-shield-check"></i></div>
+        <h1>API Key Generated</h1>
+        <p>Use the key below in your header as <code>x-api-key</code> to authenticate your requests.</p>
+        
+        <div class="key-box" id="key" onclick="copyKey()">
+            DM-XXXX-XXXX-XXXX
+        </div>
+
+        <a href="index.html" class="btn-home">Back to Workspace</a>
+    </div>
+
+    <script>
+        // Generate a fake unique key for the UI
+        const randomKey = "DM-" + Math.random().toString(36).substring(2, 6).toUpperCase() + "-" + 
+                          Math.random().toString(36).substring(2, 6).toUpperCase() + "-" + 
+                          Math.random().toString(36).substring(2, 6).toUpperCase();
+        
+        document.getElementById('key').innerText = randomKey;
+
+        function copyKey() {
+            navigator.clipboard.writeText(randomKey);
+            alert("API Key copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
