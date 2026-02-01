@@ -1,11 +1,6 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "vercel-nodejs@20"
-    }
-  },
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/api/(.*)", "dest": "/api/$1.js" }
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1.js" }
   ]
 }
