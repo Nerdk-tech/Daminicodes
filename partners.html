@@ -1,184 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partnership - Daminī Codesphere</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
-    a { text-decoration:none; color: inherit; }
-    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      padding:20px 0; 
-      position: sticky; 
-      top:0; 
-      background: rgba(15,23,42,0.95); 
-      z-index: 20; 
-    }
-    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    
-    /* Hamburger Menu Styles */
-    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 25; 
-        top: 0;
-        right: 0;
-        background: #0f172a;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    }
-    .sidebar a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: #e0e0e0;
-        display: block;
-        transition: 0.3s;
-        font-weight: 600;
-    }
-    .sidebar a:hover { color: #ec4899; }
-    .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    /* End Hamburger Menu Styles */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnership - Daminī Codesphere</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    section { padding:60px 0; text-align: center; }
-    section h2 { font-size:3rem; font-weight:800; margin-bottom: 20px; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .grid { display:grid; gap:20px; }
-    .grid-stats { grid-template-columns:1fr; } 
-    @media(min-width:768px){ .grid-stats { grid-template-columns:repeat(3,1fr); } }
-    @media(min-width:1024px){ .grid-stats { grid-template-columns:repeat(5,1fr); } } 
-    
-    .card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; height: 100%; display: flex; flex-direction: column; justify-content: center;}
-    .stat-number { font-size: 2.2rem; font-weight: 800; color: #ec4899; }
-    .stat-label { font-size: 0.9rem; color: #cfd8dc; }
-    .btn { padding:15px 30px; margin-top:40px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; font-size: 1.2rem; }
-    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; }
-    .btn-primary:hover { opacity:0.9; }
-    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    @media(max-width:768px){ header { flex-direction:row; gap:10px; } }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(135deg,#0f172a,#0b1220,#071124);color:#e0e0e0;line-height:1.6;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1200px;margin:auto;padding:0 20px;}
+h1,h2,h3,h4{font-weight:800;}
+p{color:#cfd8dc;}
+
+/* ===== HEADER ===== */
+header{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 0; position:sticky; top:0; background:rgba(15,23,42,0.95); z-index:20;
+}
+header h1{
+  font-size:1.8rem; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.menu-icon{font-size:2rem;cursor:pointer; z-index:30;}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  height:100%; width:0; position:fixed; z-index:25; top:0; right:0;
+  background:#0f172a; overflow-x:hidden; transition:0.5s; padding-top:60px;
+  box-shadow:-5px 0 15px rgba(0,0,0,0.5);
+}
+.sidebar a{
+  padding:12px 32px; display:block; font-size:1.2rem; font-weight:600; color:#e0e0e0; transition:0.3s;
+}
+.sidebar a:hover{color:#ec4899; padding-left:40px;}
+.sidebar .closebtn{position:absolute; top:0; right:25px; font-size:36px;}
+
+/* ===== HERO ===== */
+section{
+  padding:80px 20px; text-align:center; position:relative;
+}
+section h2{
+  font-size:3rem; margin-bottom:20px;
+  background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+section p{max-width:800px;margin:0 auto 40px; font-size:1.05rem; line-height:1.6;}
+
+/* ===== GRID & CARDS ===== */
+.grid{display:grid; gap:25px;}
+.grid-stats{grid-template-columns:1fr;}
+@media(min-width:768px){.grid-stats{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1024px){.grid-stats{grid-template-columns:repeat(5,1fr);}}
+.card{
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px;
+  padding:25px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  transition:0.3s; backdrop-filter: blur(6px); cursor:default;
+}
+.card:hover{
+  background:rgba(124,58,237,0.1); border-color:#7c3aed; transform:translateY(-5px);
+}
+.stat-number{font-size:2.2rem;color:#ec4899;margin-bottom:5px; transition:0.3s;}
+.stat-label{font-size:0.9rem; color:#cfd8dc; letter-spacing:0.5px;}
+
+/* ===== BUTTONS ===== */
+.btn{padding:15px 30px;margin-top:40px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.3s;display:inline-block;text-align:center;font-size:1.2rem;}
+.btn-primary{background:linear-gradient(to right,#7c3aed,#ec4899);color:white;border:none;box-shadow:0 4px 15px rgba(124,58,237,0.5);}
+.btn-primary:hover{opacity:0.95; transform:translateY(-2px);}
+
+/* ===== SECTIONS ===== */
+h3{margin-bottom:15px; font-size:1.8rem; color:white;}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:40px 0;border-top:1px solid rgba(255,255,255,0.1); color:#94a3b8;}
+
+/* ===== ANIMATIONS ===== */
+.fade-in{opacity:0; transform:translateY(20px); animation:fadeInUp 1s forwards;}
+@keyframes fadeInUp{to{opacity:1; transform:translateY(0);}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Daminī Codesphere</h1>
-      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
-    </header>
-    
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="index.html#about" onclick="closeNav()">About</a>
-      <a href="index.html#features" onclick="closeNav()">Features</a>
-      <a href="index.html#courses" onclick="closeNav()">Courses</a>
-      <a href="index.html#join" onclick="closeNav()">Join</a>
-      <a href="index.html#rules" onclick="closeNav()">Rules</a>
-      <a href="ai.html" onclick="closeNav()">AI Chat</a>
-      <a href="#" onclick="closeNav()">**Partners**</a>
-      <a href="contact.html" onclick="closeNav()">Contact</a>
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
-      <a href="events.html" onclick="closeNav()">Events</a>
-      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
-      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
-         <a href="tools.html">Dev tools</a>
-           <a href="codespace.html">Codespace</a>
-    </div>
-    <section>
-      <h2>PARTNER WITH US</h2>
-      <p style="max-width: 800px; margin: 0 auto 40px; color: #cfd8dc;">
-        Join our growing ecosystem! By partnering with Daminī Codesphere, you reach a community dedicated to open-source development, coding education, and cutting-edge technology.
-      </p>
 
-      <div class="grid grid-stats">
-        <div class="card">
-          <div class="stat-number" data-target="1000">0</div>
-          <div class="stat-label">ACTIVE MEMBERS</div>
-        </div>
-        <div class="card">
-          <div class="stat-number" data-target="10">0</div>
-          <div class="stat-label">CONTRIBUTORS</div>
-        </div>
-        <div class="card">
-          <div class="stat-number" data-target="100">0</div>
-          <div class="stat-label">MERGED PULL REQUESTS</div>
-        </div>
-        <div class="card">
-          <div class="stat-number" data-target="50">0</div>
-          <div class="stat-label">GITHUB PROJECTS</div>
-        </div>
-        <div class="card">
-          <div class="stat-number" data-target="30">0</div>
-          <div class="stat-label">COUNTRIES REPRESENTED</div>
-        </div>
-      </div>
+<div class="container">
 
-      <a href="contact.html" class="btn btn-primary">PARTNER WITH US</a>
+<header>
+  <h1>Daminī Codesphere</h1>
+  <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+</header>
 
-      <div style="margin-top: 60px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
-        <h3>Why Collaborate?</h3>
-        <p>We are more than just a coding community; we are a force for open-source innovation. Our partnerships are built on mutual growth, allowing you to tap directly into our motivated, global network of over **1000 active members** and **50+ ongoing GitHub projects**.</p>
-        <p><strong>Visibility:</strong> Showcase your organization or technology directly to thousands of passionate developers and students.</p>
-        <p><strong>Talent Access:</strong> Recruit skilled developers from a pool of active community members.</p>
-        <p><strong>Open Source Impact:</strong> Contribute to our open-source projects, shaping the future of tech education and development tools.</p>
-      </div>
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html#about" onclick="closeNav()">About</a>
+  <a href="index.html#features" onclick="closeNav()">Features</a>
+  <a href="index.html#courses" onclick="closeNav()">Courses</a>
+  <a href="index.html#join" onclick="closeNav()">Join</a>
+  <a href="index.html#rules" onclick="closeNav()">Rules</a>
+  <a href="ai.html" onclick="closeNav()">AI Chat</a>
+  <a href="#" onclick="closeNav()">Partners</a>
+  <a href="contact.html" onclick="closeNav()">Contact</a>
+  <hr style="border-top:1px solid rgba(255,255,255,0.1);margin:20px 0;">
+  <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+  <a href="events.html" onclick="closeNav()">Events</a>
+  <a href="developers.html" onclick="closeNav()">Developers</a>
+  <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+  <a href="tools.html">Dev Tools</a>
+  <a href="codespace.html">Codespace</a>
+</div>
 
-    </section>
+<section>
+  <h2>PARTNER WITH US</h2>
+  <p>Join our growing ecosystem! Partner with Daminī Codesphere to reach a community dedicated to open-source development, coding education, and cutting-edge technology.</p>
 
-    <footer>
-      © 2026 Daminī Codesphere • Mostly coding, mostly community.
-    </footer>
+  <div class="grid grid-stats">
+    <div class="card fade-in"><div class="stat-number" data-target="1000">0</div><div class="stat-label">ACTIVE MEMBERS</div></div>
+    <div class="card fade-in"><div class="stat-number" data-target="10">0</div><div class="stat-label">CONTRIBUTORS</div></div>
+    <div class="card fade-in"><div class="stat-number" data-target="100">0</div><div class="stat-label">MERGED PULL REQUESTS</div></div>
+    <div class="card fade-in"><div class="stat-number" data-target="50">0</div><div class="stat-label">GITHUB PROJECTS</div></div>
+    <div class="card fade-in"><div class="stat-number" data-target="30">0</div><div class="stat-label">COUNTRIES REPRESENTED</div></div>
   </div>
 
-  <script>
-    // Menu Functions
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
+  <a href="contact.html" class="btn btn-primary">PARTNER WITH US</a>
 
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-    
-    // Counting Script
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; 
+  <div style="margin-top:60px; text-align:left; max-width:900px; margin-left:auto; margin-right:auto;">
+    <h3>Why Collaborate?</h3>
+    <p>We are more than a coding community; we are a force for open-source innovation. Our partnerships are built on mutual growth, giving you direct access to over <strong>1000 active members</strong> and <strong>50+ GitHub projects</strong>.</p>
+    <p><strong>Visibility:</strong> Showcase your organization or technology to thousands of passionate developers and students.</p>
+    <p><strong>Talent Access:</strong> Recruit skilled developers from an active community pool.</p>
+    <p><strong>Open Source Impact:</strong> Contribute to open-source projects, shaping the future of tech education and tools.</p>
+  </div>
 
-    counters.forEach(counter => {
-        const targetValue = counter.getAttribute('data-target');
-        const target = +targetValue;
-        
-        const updateCount = () => {
-            const count = +counter.innerText.replace('+', '');
-            
-            let increment = Math.ceil(target / speed);
-            if (target > 500) increment = Math.ceil(target / (speed / 2)); 
+</section>
 
-            if (count < target) {
-                counter.innerText = count + increment;
-                setTimeout(updateCount, 1);
-            } else {
-                counter.innerText = target + '+';
-            }
-        };
+<footer>
+  © 2026 Daminī Codesphere • Mostly coding, mostly community.
+</footer>
 
-        updateCount();
-    });
-  </script>
+</div>
+
+<script>
+// Sidebar
+function openNav(){document.getElementById("mySidebar").style.width="250px";}
+function closeNav(){document.getElementById("mySidebar").style.width="0";}
+
+// Animated counters
+const counters=document.querySelectorAll('.stat-number');
+const speed=200;
+
+counters.forEach(counter=>{
+  const target=+counter.getAttribute('data-target');
+  const updateCount=()=>{
+    const count=+counter.innerText.replace('+','');
+    const increment=Math.ceil(target/speed);
+    if(count<target){
+      counter.innerText=count+increment;
+      setTimeout(updateCount,10);
+    } else { counter.innerText=target+'+'; }
+  };
+  updateCount();
+});
+</script>
+
 </body>
 </html>

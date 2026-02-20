@@ -1,209 +1,316 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daminī Codesphere | v4.0</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    /* CORE STYLES */
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
-    a { text-decoration:none; color: inherit; }
-    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 20; }
-    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    
-    /* SIDEBAR & MENU */
-    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-    .sidebar { height: 100%; width: 0; position: fixed; z-index: 25; top: 0; right: 0; background: #0f172a; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); }
-    .sidebar a { padding: 10px 32px; text-decoration: none; font-size: 1.1rem; color: #e0e0e0; display: block; transition: 0.3s; font-weight: 600; }
-    .sidebar a:hover { color: #ec4899; padding-left: 40px; }
-    .sidebar .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
-    .badge-new { background: #ec4899; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daminī Codesphere | Our Organization</title>
 
-    /* HERO & BUTTONS */
-    .hero { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:80px 0; }
-    .hero h2 { font-size:3.5rem; font-weight:800; line-height:1.1; background:linear-gradient(to right,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero p { margin-top:20px; max-width:700px; color:#cfd8dc; font-size: 1.1rem; }
-    .btn { padding:12px 25px; margin-top:10px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; margin-right: 10px; }
-    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4); }
-    .btn-secondary { border:2px solid #ec4899; color:#ec4899; background:none; }
-    .btn-secondary:hover { background: #ec4899; color: white; }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    /* GRID & CARDS */
-    section { padding:60px 0; }
-    .grid { display:grid; gap:20px; grid-template-columns:1fr; }
-    @media(min-width:768px){ .grid-3 { grid-template-columns:repeat(3,1fr); } }
-    .card { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:25px; border-radius:15px; transition:0.3s; }
-    .card:hover { border-color: #7c3aed; background: rgba(124,58,237,0.1); transform: translateY(-5px); }
-    .card h4 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
-    .course-links ul { list-style: none; padding-top: 15px; }
-    .course-links li { margin-bottom: 8px; }
+<style>
 
-    /* MODAL */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 100; }
-    .modal { background: #1e293b; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; border: 1px solid #7c3aed; }
+/* ===== GLOBAL ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    @media(max-width:768px){ .hero h2 { font-size: 2.5rem; } .hero { align-items: center; text-align: center; } }
-  </style>
+body{
+background:#050816;
+color:#fff;
+overflow-x:hidden;
+scroll-behavior:smooth;
+}
+
+/* ===== GALAXY BACKGROUND ===== */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle at 20% 30%, rgba(124,58,237,.35), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(236,72,153,.25), transparent 40%),
+radial-gradient(circle at 50% 50%, rgba(59,130,246,.2), transparent 60%);
+animation: galaxyMove 25s linear infinite;
+z-index:-1;
+}
+
+@keyframes galaxyMove{
+0%{transform:translate(0,0);}
+50%{transform:translate(-8%,-6%);}
+100%{transform:translate(0,0);}
+}
+
+/* ===== HEADER ===== */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+position:sticky;
+top:0;
+backdrop-filter:blur(20px);
+background:rgba(15,20,40,.6);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:100;
+}
+
+header h1{
+font-family:'Orbitron',sans-serif;
+font-size:1.8rem;
+background:linear-gradient(90deg,#7c3aed,#ec4899,#38bdf8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.menu-icon{
+font-size:1.8rem;
+cursor:pointer;
+transition:.3s;
+}
+
+.menu-icon:hover{
+color:#ec4899;
+transform:rotate(90deg);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+height:100%;
+width:0;
+position:fixed;
+top:0;
+right:0;
+background:rgba(10,15,35,.95);
+backdrop-filter:blur(25px);
+overflow-x:hidden;
+transition:.5s;
+padding-top:80px;
+box-shadow:-10px 0 50px rgba(124,58,237,.4);
+z-index:200;
+}
+
+.sidebar a{
+padding:12px 32px;
+display:block;
+font-size:1rem;
+font-weight:600;
+transition:.3s;
+color:#e0e0e0;
+}
+
+.sidebar a:hover{
+background:rgba(124,58,237,.2);
+color:#ec4899;
+padding-left:45px;
+}
+
+.sidebar .closebtn{
+position:absolute;
+top:15px;
+right:25px;
+font-size:35px;
+cursor:pointer;
+}
+
+.badge-new{
+background:#ec4899;
+color:white;
+font-size:.6rem;
+padding:3px 6px;
+border-radius:4px;
+margin-left:5px;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:.4;}
+100%{opacity:1;}
+}
+
+/* ===== HERO ===== */
+.hero{
+min-height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 20px;
+animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.hero h2{
+font-size:3.2rem;
+font-family:'Orbitron',sans-serif;
+background:linear-gradient(90deg,#7c3aed,#ec4899,#38bdf8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin-top:20px;
+max-width:650px;
+color:#cbd5e1;
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+display:inline-block;
+margin:20px 10px 0;
+padding:14px 32px;
+border-radius:40px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn-primary{
+background:linear-gradient(90deg,#7c3aed,#ec4899);
+box-shadow:0 0 25px rgba(124,58,237,.6);
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+box-shadow:0 0 45px rgba(236,72,153,.9);
+}
+
+.btn-outline{
+border:2px solid #7c3aed;
+color:#7c3aed;
+}
+
+.btn-outline:hover{
+background:#7c3aed;
+color:#fff;
+}
+
+/* ===== SECTIONS ===== */
+section{
+padding:100px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:2rem;
+margin-bottom:50px;
+font-family:'Orbitron',sans-serif;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+padding:35px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,0.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 0 40px rgba(124,58,237,.4);
+}
+
+.card h4{
+margin-bottom:10px;
+}
+
+.card p{
+color:#94a3b8;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#64748b;
+border-top:1px solid rgba(255,255,255,.1);
+}
+
+</style>
 </head>
 <body>
 
-  <div id="updateModal" class="modal-overlay">
-    <div class="modal">
-      <i class="fas fa-rocket" style="font-size: 3rem; color: #7c3aed; margin-bottom: 20px;"></i>
-      <h3>Daminī v4.0 is LIVE</h3>
-      <p>The API Hub, Codespace Pro, and new Advanced Courses are now active. Mostly coding, entirely community.</p>
-      <button class="btn btn-primary" onclick="closeModal()">Enter Workspace</button>
-    </div>
-  </div>
+<header>
+<h1>Daminī Codesphere</h1>
+<span class="menu-icon" onclick="openNav()">
+<i class="fas fa-bars"></i>
+</span>
+</header>
 
-  <div class="container">
-    <header>
-      <h1>Daminī Codesphere</h1>
-      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
-    </header>
+<!-- ===== YOUR ORIGINAL SIDEBAR STRUCTURE ===== -->
+<div id="mySidebar" class="sidebar">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#about" onclick="closeNav()">About</a>
-      <a href="#features" onclick="closeNav()">Features</a>
-      <a href="#courses" onclick="closeNav()">Courses</a>
-      <a href="#join" onclick="closeNav()">Join</a>
-      <a href="#rules" onclick="closeNav()">Rules</a>
-      
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-      <a href="api.html" style="color:#ec4899;"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
-      <a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
-      <a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
-      <a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
-      
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-      <a href="ai.html">AI Chat (Primis)</a>
-      <a href="partners.html">Partners</a>
-      <a href="certifications.html">Certifications</a>
-      <a href="events.html">Events</a>
-      <a href="developers.html">Developers (Dami Codes)</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="earth.html">Daminī Earth</a>
-    </div>
+<a href="#about" onclick="closeNav()">About</a>
+<a href="#features" onclick="closeNav()">Features</a>
+<a href="#courses" onclick="closeNav()">Courses</a>
+<a href="#join" onclick="closeNav()">Join</a>
+<a href="#rules" onclick="closeNav()">Rules</a>
 
-    <section class="hero">
-      <h2>WELCOME TO <br> DAMINĪ CODESPHERE</h2>
-      <p>
-        Building the future of African tech. Access <strong>15+ Professional APIs</strong>, 
-        manage complex projects in <strong>Codespace Pro</strong>, and access <strong>free coding updates</strong>.
-      </p>
-      <div>
-        <a href="api.html" class="btn btn-primary">Get API Keys</a>
-        <a href="codespace.html" class="btn btn-secondary">Open Codespace</a>
-      </div>
-    </section>
+<hr style="border-top:1px solid rgba(255,255,255,0.1); margin:10px 0;">
 
-    <section id="features">
-      <h3>Ecosystem Services</h3>
-      <div class="grid grid-3">
-        <div class="card">
-          <i class="fas fa-server" style="color:#7c3aed; font-size:1.5rem;"></i>
-          <h4>API Ecosystem</h4>
-          <p>15+ active professional endpoints for developers (Scrapers, AI, Encoders).</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-folder-tree" style="color:#ec4899; font-size:1.5rem;"></i>
-          <h4>Codespace Pro</h4>
-          <p>Manage folders and files with live browser previews in our built-in IDE.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-wifi" style="color:#10b981; font-size:1.5rem;"></i>
-          <h4>Free Net Updates</h4>
-          <p>Daily tricks to save data and browse fast. Stay connected for free.</p>
-        </div>
-      </div>
-    </section>
+<a href="api.html" style="color:#ec4899;">
+<i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span>
+</a>
 
-    <section id="courses">
-      <h3>Courses</h3>
-      <p>Access all our community-dropped courses. Master the stack from Python to DevOps.</p>
-      <div class="grid grid-3">
-        <div class="card course-links">
-          <h4>Python Basics</h4>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - Intro</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - Variables</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - Loops</a></li>
-          </ul>
-        </div>
-        <div class="card course-links">
-          <h4>Web Development</h4>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - HTML</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - CSS</a></li>
-            <li><a href="https://www.youtube.com/watch?v=HGOBQPFzWKo" target="_blank" class="btn btn-secondary">Lesson 3 - JS DOM</a></li>
-          </ul>
-        </div>
-        <div class="card course-links">
-          <h4>Cloud & DevOps</h4>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="btn btn-secondary">Lesson 1 - AWS Intro</a></li>
-            <li><a href="https://www.youtube.com/watch?v=H1elmMBnykA" target="_blank" class="btn btn-secondary">Lesson 2 - EC2 Basics</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
+<a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
+<a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
 
-    <section id="join">
-      <h3>Join the Community</h3>
-      <div class="grid grid-3">
-        <div class="card">
-          <h4>WhatsApp Channel</h4>
-          <a href="https://whatsapp.com/channel/0029VazHPYwBqbr9HjXrc50m" target="_blank" class="btn btn-primary">Join Channel</a>
-        </div>
-        <div class="card">
-          <h4>Group 1</h4>
-          <a href="https://chat.whatsapp.com/KVgy1I71vYnCT8r2aCNWb1" target="_blank" class="btn btn-primary">Join Group 1</a>
-        </div>
-        <div class="card">
-          <h4>Group 2</h4>
-          <a href="https://chat.whatsapp.com/KpiwcCbP0eu5cqMKjAo29z" target="_blank" class="btn btn-primary">Join Group 2</a>
-        </div>
-      </div>
-    </section>
+<hr style="border-top:1px solid rgba(255,255,255,0.1); margin:10px 0;">
 
-    <section id="rules">
-      <h3>Community Rules</h3>
-      <div class="grid grid-3">
-        <div class="card"><h4>Invite</h4><p>Grow the community by adding helpful members.</p></div>
-        <div class="card"><h4>No Spam</h4><p>No fake links, scams, or repeated messages.</p></div>
-        <div class="card"><h4>Respect</h4><p>No harassment or toxic behavior allowed.</p></div>
-      </div>
-    </section>
+<a href="ai.html">AI Chat (Primis)</a>
+<a href="partners.html">Partners</a>
+<a href="certifications.html">Certifications</a>
+<a href="events.html">Events</a>
+<a href="developers.html">Developers (Dami Codes)</a>
+<a href="support.html">Support</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="contact.html">Contact Us</a>
+<a href="earth.html">Daminī Earth</a>
+</div>
 
-    <footer>
-      © 2026 Daminī Codesphere • Mostly coding, mostly community.
-    </footer>
-  </div>
+<div class="hero">
+<h2>BUILDING THE FUTURE OF AFRICAN TECH</h2>
+<p>
+Access powerful APIs, manage projects in Codespace Pro, and grow inside a cosmic ecosystem designed for creators.
+</p>
 
-  <script>
-    function openNav() { document.getElementById("mySidebar").style.width = "280px"; }
-    function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+<div>
+<a href="api.html" class="btn btn-primary">Get API Access</a>
+<a href="codespace.html" class="btn btn-outline">Open Codespace</a>
+</div>
+</div>
 
-    // Version Control Popup
-    window.onload = function() {
-        if (!localStorage.getItem('v4_seen')) {
-            document.getElementById('updateModal').style.display = 'flex';
-        }
-    };
-    function closeModal() {
-        document.getElementById('updateModal').style.display = 'none';
-        localStorage.setItem('v4_seen', 'true');
-    }
-  </script>
+<footer>
+© 2026 Daminī Codesphere  
+Mostly Coding. Mostly Community.
+</footer>
+
+<script>
+function openNav(){
+document.getElementById("mySidebar").style.width="300px";
+}
+function closeNav(){
+document.getElementById("mySidebar").style.width="0";
+}
+</script>
+
 </body>
 </html>
