@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daminī Codesphere</title>
+<title>Daminī Codesphere | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -110,87 +110,28 @@ header h1{
 
 /* HERO */
 .hero{
-  min-height:90vh;
+  min-height:40vh;
   display:grid;
   place-items:center;
   text-align:center;
-  padding:0 20px;
+  padding:60px 20px;
 }
 
 .hero h2{
   font-family:'Orbitron';
-  font-size:3.2rem;
+  font-size:3rem;
 }
 
 .hero p{
-  max-width:750px;
-  margin-top:25px;
+  max-width:800px;
+  margin-top:20px;
   color:#aaa;
-  line-height:1.7;
-}
-
-/* BUTTONS */
-.btn{
-  display:inline-block;
-  margin:35px 12px 0;
-  padding:14px 38px;
-  border-radius:50px;
-  background:var(--accent);
-  color:#fff;
-  font-weight:600;
-  transition:0.3s ease;
-  text-decoration:none;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 25px var(--accent-glow);
-}
-
-.btn-secondary{
-  background:rgba(255,255,255,0.08);
-}
-
-.btn-secondary:hover{
-  background:rgba(255,255,255,0.15);
-}
-
-/* ORBIT */
-.orbit-container{
-  display:flex;
-  justify-content:center;
-  margin:120px 0 80px;
-}
-
-.orbit{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:0.5px solid rgba(139,92,246,0.6);
-  position:relative;
-  animation:spin 20s linear infinite;
-}
-
-.orbit::before{
-  content:"";
-  width:10px;
-  height:10px;
-  background:var(--accent);
-  border-radius:50%;
-  position:absolute;
-  top:-5px;
-  left:50%;
-  transform:translateX(-50%);
-  box-shadow:0 0 15px var(--accent);
-}
-
-@keyframes spin{
-  100%{transform:rotate(360deg);}
+  line-height:1.6;
 }
 
 /* SECTIONS */
 section{
-  padding:110px 8%;
+  padding:80px 8%;
 }
 
 .section-title{
@@ -200,6 +141,7 @@ section{
   font-size:2rem;
 }
 
+/* GRID & CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -209,7 +151,7 @@ section{
 .card{
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.06);
-  padding:40px;
+  padding:30px 25px;
   border-radius:20px;
   transition:.4s;
 }
@@ -220,31 +162,33 @@ section{
   box-shadow:0 0 25px var(--accent-glow);
 }
 
-/* COMMUNITY */
-.community-text{
-  max-width:700px;
-  margin:0 auto 40px;
-  text-align:center;
+.card h4{
+  font-family:'Orbitron';
+  margin-bottom:15px;
+}
+
+.card p{
   color:#aaa;
-  line-height:1.7;
+  line-height:1.5;
 }
 
-.community-actions{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
+.card .btn{
+  margin-top:15px;
+  display:inline-block;
+  padding:10px 25px;
+  border-radius:50px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
 }
 
-.whatsapp-btn{
-  background:#25D366;
-  color:#000;
+.card .btn:hover{
+  box-shadow:0 0 20px var(--accent-glow);
+  transform:translateY(-3px);
 }
 
-.whatsapp-btn:hover{
-  box-shadow:0 0 20px rgba(37,211,102,0.6);
-}
-
+/* FOOTER */
 footer{
   text-align:center;
   padding:60px;
@@ -260,22 +204,15 @@ footer{
 <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
 </header>
 
+<!-- SIDEBAR -->
 <div id="mySidebar" class="sidebar">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-<a href="#about">About</a>
-<a href="#features">Features</a>
-<a href="portfolio.html">Portfolio</a>
-
-<hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
-
+<a href="index.html">Home</a>
+<a href="#portfolio">Portfolio</a>
 <a href="api.html"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
 <a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
 <a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
 <a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
-
-<hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
-
 <a href="ai.html">AI Chat (Primis)</a>
 <a href="partners.html">Partners</a>
 <a href="certifications.html">Certifications</a>
@@ -288,56 +225,33 @@ footer{
 </div>
 
 <div class="hero">
-<div>
-<h2>BUILDING THE FUTURE OF AFRICAN TECH</h2>
-<p>
-Daminī Codesphere is a digital ecosystem for developers, innovators, and creators.
-We combine structured learning, powerful tools, APIs, and AI-driven systems to transform ideas into real-world impact.
-</p>
-<a href="api.html" class="btn">Get API Access</a>
-<a href="codespace.html" class="btn btn-secondary">Open Codespace Pro</a>
-</div>
+<h2>Our Portfolio</h2>
+<p>Explore the major projects built by Daminī Codesphere. From AI to productivity apps, each creation showcases innovation, design, and real-world application.</p>
 </div>
 
-<div class="orbit-container">
-<div class="orbit"></div>
-</div>
-
-<section id="about">
-<h3 class="section-title">About Daminī Codesphere</h3>
+<section id="portfolio">
+<h3 class="section-title">Highlighted Projects</h3>
 <div class="grid">
 <div class="card">
-<p>Daminī Codesphere bridges the gap between learning and execution through practical development systems.</p>
+<h4>PRIMIS AI</h4>
+<p>Chat, generate images & videos, automated vision, TTS/STT, personas and more — an all-in-one AI platform.</p>
+<a href="#" class="btn">Explore</a>
 </div>
 <div class="card">
-<p>From web technologies to AI and scalable backend systems, we empower builders with real infrastructure.</p>
+<h4>LUNA DIARY</h4>
+<p>A smart period tracker app with insights, reminders, and diary features for personal health management.</p>
+<a href="#" class="btn">Explore</a>
 </div>
 <div class="card">
-<p>Our mission is to cultivate innovation, collaboration, and future-ready engineering talent.</p>
+<h4>DaniSearch</h4>
+<p>An advanced AI-powered search engine for web, images, videos, and more — next-level searching.</p>
+<a href="#" class="btn">Explore</a>
 </div>
+<div class="card">
+<h4>Queen Dani e-Model</h4>
+<p>An advanced dictionary & language model for accurate definitions, context, and smart suggestions.</p>
+<a href="#" class="btn">Explore</a>
 </div>
-</section>
-
-<section id="features">
-<h3 class="section-title">Core Features</h3>
-<div class="grid">
-<div class="card"><h4>API Infrastructure</h4><p>Secure and scalable integration systems.</p></div>
-<div class="card"><h4>Codespace Pro</h4><p>Advanced workspace for serious developers.</p></div>
-<div class="card"><h4>AI Integration</h4><p>Primis AI tooling for smarter workflows.</p></div>
-<div class="card"><h4>Developer Tools</h4><p>Productivity-enhancing utilities.</p></div>
-</div>
-</section>
-
-<section id="community">
-<h3 class="section-title">Join Our Community</h3>
-<p class="community-text">
-Collaborate, grow, and build inside the Daminī Codesphere ecosystem.
-</p>
-<div class="community-actions">
-<a href="https://wa.me/234XXXXXXXXXX" target="_blank" class="btn whatsapp-btn">
-<i class="fab fa-whatsapp"></i> Join WhatsApp Community
-</a>
-<a href="portfolio.html" class="btn btn-secondary">View Our Portfolio</a>
 </div>
 </section>
 
@@ -349,6 +263,7 @@ Collaborate, grow, and build inside the Daminī Codesphere ecosystem.
 function openNav(){document.getElementById("mySidebar").style.width="300px";}
 function closeNav(){document.getElementById("mySidebar").style.width="0";}
 
+/* STARFIELD */
 const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
 const renderer=new THREE.WebGLRenderer({alpha:true});

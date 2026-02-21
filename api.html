@@ -1,148 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daminī API Hub | Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #0f172a; color:#e0e0e0; padding: 20px; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: auto; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 10px 0; }
-        header h1 { font-weight: 800; background: linear-gradient(to right, #7c3aed, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2rem; }
-        
-        .api-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-        
-        /* Card Styling */
-        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; position: relative; transition: 0.3s ease; display: flex; flex-direction: column; }
-        .card:hover { border-color: #7c3aed; background: rgba(124,58,237,0.05); transform: translateY(-5px); }
-        
-        .status-tag { font-size: 0.6rem; padding: 3px 10px; border-radius: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .active-tag { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
-        .soon-tag { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
-        
-        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        h4 { font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
-        h4 i { color: #7c3aed; width: 20px; }
-        
-        p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin-bottom: 20px; height: 40px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daminī API Hub | Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+/* ===== GLOBAL ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
+body { background: #000; color:#e5e5e5; padding: 20px; overflow-x: hidden; }
+.container { max-width: 1200px; margin: auto; }
 
-        /* Rate Limit UI */
-        .rate-limit { margin-bottom: 15px; }
-        .rate-bar-bg { width: 100%; height: 4px; background: #334155; border-radius: 2px; margin-top: 5px; }
-        .rate-bar-fill { height: 100%; background: #7c3aed; border-radius: 2px; width: 85%; }
-        .rate-text { font-size: 0.65rem; color: #64748b; font-weight: 600; display: flex; justify-content: space-between; }
+/* ===== HEADER ===== */
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 10px 0; }
+header h1 { font-weight: 800; font-size: 2rem; color: #fff; }
+header a { color: #aaa; font-size: 0.9rem; text-decoration: none; }
+header a:hover { color: #fff; }
 
-        /* Copy Box */
-        .copy-box { background: #020617; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
-        .copy-box:hover { border-color: #ec4899; background: #000; }
-        .copy-box code { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #4ade80; }
-        .copy-box i { color: #64748b; font-size: 0.9rem; }
-        .copy-box:hover i { color: #fff; }
+/* ===== GRID ===== */
+.api-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
-        /* Toast Notification */
-        .toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: white; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); transform: translateX(200%); transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1000; }
-        .toast.show { transform: translateX(0); }
-        .toast i { font-size: 1.4rem; }
-        
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.5rem; }
-            .toast { left: 20px; right: 20px; bottom: 20px; }
-        }
-    </style>
+/* ===== CARD ===== */
+.card { background: #111; border: 1px solid #222; padding: 25px; border-radius: 15px; display: flex; flex-direction: column; transition: 0.3s; }
+.card:hover { border-color: #fff; transform: translateY(-5px); }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+h4 { font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
+h4 i { color: #fff; width: 20px; }
+p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 20px; height: 40px; }
+
+/* ===== STATUS TAG ===== */
+.status-tag { font-size: 0.6rem; padding: 3px 10px; border-radius: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.active-tag { background: #111; color: #0f0; border: 1px solid #0f0; }
+.soon-tag { background: #111; color: #aaa; border: 1px solid #555; }
+
+/* ===== RATE LIMIT ===== */
+.rate-limit { margin-bottom: 15px; }
+.rate-bar-bg { width: 100%; height: 4px; background: #222; border-radius: 2px; margin-top: 5px; }
+.rate-bar-fill { height: 100%; background: #fff; border-radius: 2px; width: 85%; }
+.rate-text { font-size: 0.65rem; color: #555; font-weight: 600; display: flex; justify-content: space-between; }
+
+/* ===== COPY BOX ===== */
+.copy-box { background: #111; border: 1px solid #222; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+.copy-box:hover { border-color: #fff; background: #111; }
+.copy-box code { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #4ade80; }
+.copy-box i { color: #555; font-size: 0.9rem; }
+.copy-box:hover i { color: #fff; }
+
+/* ===== TOAST ===== */
+.toast { position: fixed; bottom: 30px; right: 30px; background: #0f0; color: #000; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); transform: translateX(200%); transition: 0.5s cubic-bezier(0.68,-0.55,0.265,1.55); z-index: 1000; }
+.toast.show { transform: translateX(0); }
+.toast i { font-size: 1.4rem; }
+
+@media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .toast { left: 20px; right: 20px; bottom: 20px; }
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Daminī API Hub</h1>
-            <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;"><i class="fas fa-chevron-left"></i> Workspace</a>
-        </header>
+<div class="container">
+    <header>
+        <h1>Daminī API Hub</h1>
+        <a href="./index.html"><i class="fas fa-chevron-left"></i> Workspace</a>
+    </header>
 
-        <div class="api-grid" id="api-list"></div>
+    <div class="api-grid" id="api-list"></div>
+</div>
+
+<div id="toast" class="toast">
+    <i class="fas fa-check-circle"></i>
+    <div>
+        <strong style="display:block; font-size: 0.9rem;">Copied Successfully</strong>
+        <small id="toast-path" style="opacity: 0.9; font-size: 0.7rem; font-family: 'Fira Code';"></small>
     </div>
+</div>
 
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i>
-        <div>
-            <strong style="display:block; font-size: 0.9rem;">Copied Successfully</strong>
-            <small id="toast-path" style="opacity: 0.9; font-size: 0.7rem; font-family: 'Fira Code';"></small>
+<script>
+const apis = [
+    { name: "Queen Dani AI", desc: "Text synthesis and summarization architect.", url: "/api/queendani", status: "active", icon: "fa-crown", limit: "85%" },
+    { name: "Earth 3D", desc: "Satellite tiles and elevation data stream.", url: "/api/earth", status: "active", icon: "fa-globe", limit: "40%" },
+    { name: "WebScraper", desc: "Real-time URL to JSON data extraction.", url: "/api/scrape", status: "active", icon: "fa-spider", limit: "60%" },
+    { name: "IP-Locator", desc: "Global IP geolocation and ISP detection.", url: "/api/ip", status: "active", icon: "fa-map-marker-alt", limit: "90%" },
+    { name: "SecureHash", desc: "SHA-256 and AES-256 encryption engine.", url: "/api/hash", status: "active", icon: "fa-lock", limit: "100%" },
+    { name: "Primis AI", desc: "Advanced LLM conversational model.", url: "/api/primis", status: "soon", icon: "fa-robot", limit: "0%" },
+    { name: "VoiceSynth", desc: "Natural Text-to-Speech synthesis.", url: "/api/voice", status: "soon", icon: "fa-microphone", limit: "0%" },
+];
+
+const list = document.getElementById('api-list');
+
+apis.forEach(api => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <div class="card-top">
+            <h4><i class="fas ${api.icon}"></i> ${api.name}</h4>
+            <span class="status-tag ${api.status === 'active' ? 'active-tag' : 'soon-tag'}">${api.status}</span>
         </div>
-    </div>
+        <p>${api.desc}</p>
+        <div class="rate-limit">
+            <div class="rate-text">
+                <span>Rate Limit</span>
+                <span>${api.limit} available</span>
+            </div>
+            <div class="rate-bar-bg">
+                <div class="rate-bar-fill" style="width: ${api.limit}"></div>
+            </div>
+        </div>
+        <div class="copy-box" onclick="copyUrl('${api.url}')">
+            <code>${api.url}</code>
+            <i class="far fa-copy"></i>
+        </div>
+    `;
+    list.appendChild(card);
+});
 
-    <script>
-        const apis = [
-            { name: "Queen Dani AI", desc: "Text synthesis and summarization architect.", url: "/api/queendani", status: "active", icon: "fa-crown", limit: "85%" },
-            { name: "Earth 3D", desc: "Satellite tiles and elevation data stream.", url: "/api/earth", status: "active", icon: "fa-globe", limit: "40%" },
-            { name: "WebScraper", desc: "Real-time URL to JSON data extraction.", url: "/api/scrape", status: "active", icon: "fa-spider", limit: "60%" },
-            { name: "IP-Locator", desc: "Global IP geolocation and ISP detection.", url: "/api/ip", status: "active", icon: "fa-map-marker-alt", limit: "90%" },
-            { name: "SecureHash", desc: "SHA-256 and AES-256 encryption engine.", url: "/api/hash", status: "active", icon: "fa-lock", limit: "100%" },
-            { name: "QuickQR", desc: "Instant vector QR code generation.", url: "/api/qr", status: "active", icon: "fa-qrcode", limit: "75%" },
-            { name: "CurrencyLive", desc: "Real-time FX rates for 160+ countries.", url: "/api/fx", status: "active", icon: "fa-coins", limit: "50%" },
-            { name: "MetaFetcher", desc: "Extract SEO meta tags and OG data.", url: "/api/meta", status: "active", icon: "fa-search", limit: "30%" },
-            { name: "MailValidator", desc: "Verify email syntax and MX records.", url: "/api/verify", status: "active", icon: "fa-envelope", limit: "95%" },
-            { name: "CodePrettier", desc: "Format JS, HTML, and CSS instantly.", url: "/api/format", status: "active", icon: "fa-code", limit: "100%" },
-            { name: "ImgCompress", desc: "API-based lossless image reduction.", url: "/api/shrink", status: "active", icon: "fa-file-image", limit: "20%" },
-            { name: "PassGen Pro", desc: "Generate secure cryptographic passwords.", url: "/api/pass", status: "active", icon: "fa-key", limit: "100%" },
-            { name: "PDF-Craft", desc: "Server-side HTML to PDF conversion.", url: "/api/pdf", status: "active", icon: "fa-file-pdf", limit: "15%" },
-            { name: "CloudStore", desc: "Serverless Key-Value storage (Beta).", url: "/api/db", status: "active", icon: "fa-database", limit: "55%" },
-            { name: "Daminī Maps", desc: "Dark-mode vector layer map tiles.", url: "/api/maps", status: "active", icon: "fa-map", limit: "80%" },
-            // Coming Soon
-            { name: "Primis AI", desc: "Advanced LLM conversational model.", url: "/api/primis", status: "soon", icon: "fa-robot", limit: "0%" },
-            { name: "VoiceSynth", desc: "Natural Text-to-Speech synthesis.", url: "/api/voice", status: "soon", icon: "fa-microphone", limit: "0%" },
-            { name: "FaceID API", desc: "Biometric facial recognition.", url: "/api/face", status: "soon", icon: "fa-user-check", limit: "0%" },
-            { name: "WA Bridge", desc: "WhatsApp automated messaging API.", url: "/api/wa", status: "soon", icon: "fa-comment", limit: "0%" },
-            { name: "PayFlow", desc: "Merchant payment processing API.", url: "/api/pay", status: "soon", icon: "fa-credit-card", limit: "0%" }
-        ];
+function copyUrl(url) {
+    const fullUrl = window.location.origin + url;
+    navigator.clipboard.writeText(fullUrl).then(() => showToast(url));
+}
 
-        const list = document.getElementById('api-list');
-        
-        apis.forEach(api => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="card-top">
-                    <h4><i class="fas ${api.icon}"></i> ${api.name}</h4>
-                    <span class="status-tag ${api.status === 'active' ? 'active-tag' : 'soon-tag'}">${api.status}</span>
-                </div>
-                <p>${api.desc}</p>
-                <div class="rate-limit">
-                    <div class="rate-text">
-                        <span>Rate Limit</span>
-                        <span>${api.limit} available</span>
-                    </div>
-                    <div class="rate-bar-bg">
-                        <div class="rate-bar-fill" style="width: ${api.limit}"></div>
-                    </div>
-                </div>
-                <div class="copy-box" onclick="copyUrl('${api.url}')">
-                    <code>${api.url}</code>
-                    <i class="far fa-copy"></i>
-                </div>
-            `;
-            list.appendChild(card);
-        });
+function showToast(path) {
+    const toast = document.getElementById('toast');
+    const pathDisplay = document.getElementById('toast-path');
+    pathDisplay.innerText = path;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
+</script>
 
-        function copyUrl(url) {
-            const fullUrl = window.location.origin + url;
-            navigator.clipboard.writeText(fullUrl).then(() => {
-                showToast(url);
-            });
-        }
-
-        function showToast(path) {
-            const toast = document.getElementById('toast');
-            const pathDisplay = document.getElementById('toast-path');
-            pathDisplay.innerText = path;
-            
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-    </script>
 </body>
 </html>

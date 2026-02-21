@@ -10,119 +10,75 @@
 <style>
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; overflow-x:hidden;}
+body{background:#000;color:#e5e5e5;line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 .container{max-width:1200px;margin:auto;padding:0 20px;}
 
 /* ===== HEADER ===== */
 header{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;position:sticky;top:0;background:rgba(0,0,0,0.95);z-index:100;
 }
-header h1{
-  font-size:1.8rem; font-weight:800;
-  background:linear-gradient(to right,#7c3aed,#ec4899);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-nav a{
-  margin-left:25px; font-weight:600; transition:0.3s;
-}
-nav a:hover{color:#ec4899;}
-
-/* ===== SIDEBAR/HAMBURGER MENU ===== */
+header h1{font-size:1.8rem;font-weight:800;color:#e5e5e5;}
 .menu-icon{font-size:2rem;cursor:pointer;}
+
+/* ===== SIDEBAR ===== */
 .sidebar{
-  height:100%; width:0; position:fixed; z-index:200; top:0; right:0;
-  background:#0f172a; overflow-x:hidden; transition:0.5s; padding-top:60px;
-  box-shadow:-5px 0 15px rgba(0,0,0,0.5);
+  height:100%; width:0; position:fixed; top:0; right:0; background:#0a0a0a;
+  overflow-x:hidden; transition:0.5s; padding-top:60px; box-shadow:-5px 0 15px rgba(0,0,0,0.5);
 }
 .sidebar a{
   padding:12px 32px; display:block; font-size:1.1rem; font-weight:600;
-  color:#e0e0e0; transition:0.3s;
+  color:#ccc; transition:0.3s;
 }
-.sidebar a:hover{color:#ec4899; padding-left:40px;}
-.sidebar .closebtn{position:absolute; top:0; right:25px; font-size:36px;}
-.badge-new{
-  background:#ec4899;color:white;font-size:0.6rem;padding:2px 6px;border-radius:4px;margin-left:5px;
-  animation:pulse 1.5s infinite;
-}
-@keyframes pulse{0%{opacity:1;}50%{opacity:0.5;}100%{opacity:1;}}
+.sidebar a:hover{color:#fff;padding-left:40px;}
+.sidebar .closebtn{position:absolute;top:0;right:25px;font-size:36px;}
 
 /* ===== HERO ===== */
 .hero{
-  min-height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  min-height:60vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
   padding:0 20px;
 }
-.hero h2{
-  font-size:3rem; font-weight:800;
-  background:linear-gradient(to right,#7c3aed,#ec4899,#38bdf8);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-.hero p{
-  max-width:700px; margin-top:20px; color:#cfd8dc; font-size:1.1rem;
-}
-.btn{
-  display:inline-block; margin:15px 10px 0; padding:12px 28px; border-radius:30px; font-weight:600; transition:.3s; cursor:pointer;
-}
-.btn-primary{
-  background:linear-gradient(to right,#7c3aed,#ec4899); color:white; box-shadow:0 0 25px rgba(124,58,237,0.6);
-}
-.btn-primary:hover{
-  transform:translateY(-3px); box-shadow:0 0 40px rgba(236,72,153,0.8);
-}
-.btn-outline{
-  border:2px solid #7c3aed; color:#7c3aed; background:none;
-}
-.btn-outline:hover{background:#7c3aed; color:white;}
+.hero h2{font-size:3rem;font-weight:800;color:#fff;margin-bottom:10px;}
+.hero p{max-width:700px;margin-top:20px;color:#aaa;font-size:1.1rem;}
+.btn{display:inline-block;margin:15px 10px 0;padding:12px 28px;border-radius:30px;font-weight:600;transition:.3s;cursor:pointer;}
+.btn-primary{background:#fff;color:#000;border:none;}
+.btn-primary:hover{opacity:0.85;}
+.btn-outline{border:2px solid #fff;color:#fff;background:none;}
+.btn-outline:hover{background:#fff;color:#000;}
 
 /* ===== GRID & CARDS ===== */
 .grid{display:grid; gap:25px; grid-template-columns:1fr;}
-@media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr;}}
 .card{
-  padding:25px; border-radius:15px; background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08); transition:.3s;
+  padding:25px;border-radius:15px;background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);transition:.3s;
 }
-.card:hover{
-  border-color:#7c3aed; background:rgba(124,58,237,0.1); transform:translateY(-5px);
-}
-.card h4{margin-bottom:10px; color:white;}
-.card p{color:#94a3b8; font-size:.95rem;}
-
-/* ===== CHAT ===== */
-.chat-interface{
-  display:flex; flex-direction:column;
-}
+.card:hover{border-color:#fff;background:rgba(255,255,255,0.06); transform:translateY(-5px);}
+.card h4{margin-bottom:10px;color:#fff;}
+.card p{color:#aaa;font-size:.95rem;}
+.chat-interface{display:flex;flex-direction:column;}
 #chatBox{
   background: rgba(255,255,255,0.05); padding:15px; border-radius:12px;
-  max-height:400px; overflow-y:auto; margin-bottom:10px; color:#cfd8dc;
+  max-height:400px; overflow-y:auto; margin-bottom:10px; color:#e5e5e5;
 }
 #userMessage{
-  width:100%; padding:12px; border-radius:8px; border:1px solid #7c3aed; background:rgba(255,255,255,0.1); color:white;
-  resize:none;
+  width:100%; padding:12px; border-radius:8px; border:1px solid #fff; background:rgba(255,255,255,0.1); color:#fff; resize:none;
 }
-.btn-chat{
-  padding:10px 20px; border-radius:8px; font-weight:600; cursor:pointer; margin-top:10px;
-}
-.btn-primary-chat{
-  background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none;
-}
-.btn-primary-chat:hover{opacity:0.9;}
-.chat-message{padding:10px 15px; border-radius:8px; margin-bottom:10px; line-height:1.4;}
-.user-message{background:#7c3aed33; text-align:right; margin-left:auto; max-width:80%;}
-.ai-message{background:#ec489933; text-align:left; margin-right:auto; max-width:90%;}
+.btn-chat{padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;margin-top:10px;}
+.btn-primary-chat{background:#fff;color:#000;border:none;}
+.btn-primary-chat:hover{opacity:0.85;}
+.chat-message{padding:10px 15px;border-radius:8px;margin-bottom:10px;line-height:1.4;}
+.user-message{background:#fff1; text-align:right; margin-left:auto; max-width:80%;}
+.ai-message{background:#fff2; text-align:left; margin-right:auto; max-width:90%;}
 
 /* ===== FEATURES LIST ===== */
 .features-list{list-style:none;padding:0;margin-top:15px;}
-.features-list li{display:flex; align-items:center;margin-bottom:10px; font-weight:500;}
-.features-list li i{margin-right:12px; color:#ec4899;}
+.features-list li{display:flex;align-items:center;margin-bottom:10px;font-weight:500;}
+.features-list li i{margin-right:12px;color:#fff;}
 
 /* ===== FOOTER ===== */
-footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.1); color:#64748b;}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .hero h2{font-size:2.2rem;}
-}
+footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.05);color:#aaa;}
 </style>
 </head>
 <body>
@@ -133,7 +89,7 @@ footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.1)
   <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
 </header>
 
-<!-- SIDEBAR / HAMBURGER MENU -->
+<!-- SIDEBAR -->
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#about" onclick="closeNav()">About</a>
@@ -142,10 +98,10 @@ footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.1)
   <a href="#join" onclick="closeNav()">Join</a>
   <a href="#rules" onclick="closeNav()">Rules</a>
   <hr style="border-top:1px solid rgba(255,255,255,0.1);margin:10px 0;">
-  <a href="api.html" style="color:#ec4899;"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
-  <a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
-  <a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
-  <a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
+  <a href="api.html">API HUB</a>
+  <a href="codespace.html">CODESPACE PRO</a>
+  <a href="changelog.html">Changelog</a>
+  <a href="tools.html">Dev Tools</a>
   <hr style="border-top:1px solid rgba(255,255,255,0.1);margin:10px 0;">
   <a href="ai.html">AI Chat (Primis)</a>
   <a href="partners.html">Partners</a>
@@ -161,36 +117,12 @@ footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.1)
 <section class="hero">
   <h2>GEMINI AI CHAT</h2>
   <p>Your intelligent assistant for coding, design, and project guidance.</p>
-  <div>
-    <a href="api.html" class="btn btn-primary">Get API Access</a>
-    <a href="codespace.html" class="btn btn-outline">Open Codespace</a>
-  </div>
 </section>
 
 <section class="grid-2">
-  <div class="chat-sidebar">
-    <div class="card">
-      <h4>Quick Prompts</h4>
-      <a href="#" class="btn btn-outline" onclick="document.getElementById('userMessage').value='Help me write a Python function'; document.getElementById('userMessage').focus(); return false;">💻 Write Code</a>
-      <a href="#" class="btn btn-outline" onclick="document.getElementById('userMessage').value='Give me a CSS example'; document.getElementById('userMessage').focus(); return false;">🎨 Styling</a>
-      <a href="#" class="btn btn-outline" onclick="document.getElementById('userMessage').value='Explain a JS concept'; document.getElementById('userMessage').focus(); return false;">💡 Learn Concept</a>
-      <a href="#" class="btn btn-outline" onclick="document.getElementById('userMessage').value='Suggest a mini-project'; document.getElementById('userMessage').focus(); return false;">🧩 Brainstorm</a>
-    </div>
-
-    <div class="card">
-      <h4>Features</h4>
-      <ul class="features-list">
-        <li><i class="fas fa-comment-dots"></i> AI Chat for instant answers</li>
-        <li><i class="fas fa-code"></i> Code snippet generation & explanation</li>
-        <li><i class="fas fa-lightbulb"></i> Concept tutorials</li>
-        <li><i class="fas fa-search"></i> Knowledge & search queries</li>
-      </ul>
-    </div>
-  </div>
-
   <div class="chat-interface">
     <div class="card">
-      <h3>Live Chat 💬</h3>
+      <h4>Live Chat 💬</h4>
       <div id="chatBox">
         <div class="ai-message chat-message">
           Hello! I am Gemini AI, your Daminī Codesphere assistant. How can I help you today?
@@ -200,10 +132,20 @@ footer{text-align:center;padding:40px;border-top:1px solid rgba(255,255,255,0.1)
       <button id="sendBtn" class="btn-chat btn-primary-chat">Send Message</button>
     </div>
 
+    <!-- Chat with PRIMIS AI -->
     <a href="https://primisai.vercel.app" target="_blank" class="card" style="text-align:center;">
       <img src="primis.jpg" alt="PRIMIS AI Logo" style="width:60px;margin-bottom:10px;">
       <h4>Chat with PRIMIS AI</h4>
+      <p>Access the full AI platform for coding, image & video generation, and more.</p>
     </a>
+  </div>
+
+  <div class="card">
+    <h4>Quick Prompts</h4>
+    <button class="btn btn-outline" onclick="document.getElementById('userMessage').value='Help me write a Python function';document.getElementById('userMessage').focus();">💻 Write Code</button>
+    <button class="btn btn-outline" onclick="document.getElementById('userMessage').value='Give me a CSS example';document.getElementById('userMessage').focus();">🎨 Styling</button>
+    <button class="btn btn-outline" onclick="document.getElementById('userMessage').value='Explain a JS concept';document.getElementById('userMessage').focus();">💡 Learn Concept</button>
+    <button class="btn btn-outline" onclick="document.getElementById('userMessage').value='Suggest a mini-project';document.getElementById('userMessage').focus();">🧩 Brainstorm</button>
   </div>
 </section>
 
@@ -223,7 +165,7 @@ const userMessageInput=document.getElementById('userMessage');
 
 function generatePlaceholderResponse(message){
   message=message.toLowerCase();
-  if(message.includes('python')) return "Here's a simple Python function example:\n```python\ndef hello():\n    print('Hello World')\n```";
+  if(message.includes('python')) return "Here's a simple Python function:\n```python\ndef hello():\n    print('Hello World')\n```";
   if(message.includes('css')) return "Flexbox example:\n```css\n.container{display:flex;justify-content:center;align-items:center;}```";
   if(message.includes('js')||message.includes('javascript')) return "JavaScript Promise example explained...";
   if(message.includes('project')||message.includes('idea')) return "Mini-project idea: To-do list app using HTML/CSS/JS";

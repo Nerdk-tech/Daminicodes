@@ -1,145 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - Daminī Codesphere</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Base Styles */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-        body{background:linear-gradient(135deg,#0f172a,#0b1220,#071124);color:#e0e0e0;line-height:1.6; scroll-behavior: smooth;}
-        a{text-decoration:none;color:inherit;}
-        .container{max-width:1200px;margin:auto;padding:0 20px;}
-        
-        /* Header & Navigation */
-        header { 
-            display:flex; justify-content:space-between; align-items:center; 
-            padding:20px 0; position: sticky; top:0; background: rgba(15,23,42,0.95); z-index: 20;
-        }
-        header h1 { 
-            font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); 
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent; 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support - Daminī Codesphere</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+  body { background:#000; color:#fff; line-height:1.6; scroll-behavior:smooth; }
+  a { text-decoration:none; color:inherit; }
+  .container { max-width:1200px; margin:auto; padding:0 20px; }
 
-        /* Fixed Hamburger Menu */
-        .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; color: #ec4899; }
-        .sidebar {
-            height: 100%; width: 0; position: fixed; z-index: 1000; top: 0; right: 0; 
-            background: #0f172a; overflow-x: hidden; transition: 0.5s; padding-top: 60px; 
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        }
-        .sidebar a {
-            padding: 10px 8px 10px 32px; text-decoration: none; font-size: 1.2rem; 
-            color: #e0e0e0; display: block; transition: 0.3s; font-weight: 600;
-        }
-        .sidebar a:hover { color: #ec4899; padding-left: 40px; }
-        .sidebar .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
+  /* HEADER */
+  header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; position: sticky; top:0; background:#000; z-index:20; }
+  header h1 { font-size:1.8rem; font-weight:800; color:#fff; }
 
-        /* Support Section */
-        .support-section { padding: 40px 0; max-width: 500px; margin: 40px auto; }
-        .support-card {
-            background: rgba(255,255,255,0.05); border:1px solid rgba(124, 58, 237, 0.2);
-            padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+  /* SIDEBAR */
+  .menu-icon { font-size:2rem; cursor:pointer; color:#fff; }
+  .sidebar {
+    height:100%; width:0; position:fixed; top:0; right:0; background:#000; overflow-x:hidden;
+    transition:0.5s; padding-top:60px; z-index:1000;
+  }
+  .sidebar a {
+    padding:10px 8px 10px 32px; display:block; font-size:1.2rem; font-weight:600; color:#fff; transition:0.3s;
+  }
+  .sidebar a:hover { color:#aaa; padding-left:40px; }
+  .sidebar .closebtn { position:absolute; top:0; right:25px; font-size:36px; }
 
-        .logo-header { text-align: center; margin-bottom: 25px; }
-        .app-title {
-            font-size: 2rem; font-weight: 800; background: linear-gradient(to right, #7c3aed, #ec4899); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .app-subtitle { font-size: 1rem; color: #aaa; margin-bottom: 20px; }
+  /* SUPPORT SECTION */
+  .support-section { padding:60px 20px; max-width:500px; margin:40px auto; }
+  .support-card {
+    background:#111; border:1px solid #fff; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(255,255,255,0.1);
+  }
+  .logo-header { text-align:center; margin-bottom:25px; }
+  .app-title { font-size:2rem; font-weight:800; color:#fff; }
+  .app-subtitle { font-size:1rem; color:#aaa; margin-bottom:20px; }
 
-        /* Form Controls */
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; color: #7c3aed; font-size: 0.9rem; }
-        input, textarea {
-            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(124, 58, 237, 0.3);
-            background: rgba(255, 255, 255, 0.05); color: white; font-size: 1rem;
-        }
-        input:focus, textarea:focus { outline: none; border-color: #ec4899; background: rgba(255, 255, 255, 0.1); }
-        .input-helper { font-size: 0.75rem; color: #64748b; margin-top: 5px; }
+  /* FORM */
+  .form-group { margin-bottom:20px; }
+  label { display:block; margin-bottom:5px; font-weight:600; font-size:0.9rem; }
+  input, textarea {
+    width:100%; padding:12px; border-radius:8px; border:1px solid #fff; background:#000; color:#fff; font-size:1rem;
+  }
+  input:focus, textarea:focus { outline:none; border-color:#aaa; background:#111; }
+  .btn-submit {
+    width:100%; padding:14px; border-radius:8px; font-weight:800; cursor:pointer; border:1px solid #fff;
+    background:#000; color:#fff; font-size:1rem; text-transform:uppercase; letter-spacing:1px; transition:0.3s;
+  }
+  .btn-submit:hover { background:#111; box-shadow:0 4px 15px rgba(255,255,255,0.1); }
 
-        .btn-submit {
-            width: 100%; padding: 14px; border-radius: 8px; font-weight: 800; cursor: pointer;
-            background: linear-gradient(to right, #7c3aed, #ec4899); color: white; border: none;
-            font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
-        }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4); }
-
-        .verified-badge { color: #38bdf8; margin-left: 5px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
-        footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; font-size: 0.9rem; }
-
-    </style>
+  footer { text-align:center; padding:40px 0; border-top:1px solid #fff; color:#aaa; font-size:0.9rem; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Daminī Codesphere</h1>
-            <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span> 
-        </header>
+<div class="container">
+  <header>
+    <h1>Daminī Codesphere</h1>
+    <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+  </header>
 
-        <div id="mySidebar" class="sidebar">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="index.html">Home</a>
-          <a href="events.html">Events & Leaderboard</a>
-          <a href="certifications.html">Certifications</a>
-          
-          <div style="padding: 15px 32px 5px 32px; font-size: 0.7rem; color: #ec4899; font-weight: 800; letter-spacing: 1px;">DEV TOOLS</div>
-          <a href="tools.html#terminal"><i class="fas fa-terminal" style="font-size: 1rem;"></i> Terminal</a>
-          <a href="tools.html#checker"><i class="fas fa-bug-slash" style="font-size: 1rem;"></i> Error Checker</a>
-          <a href="tools.html#scripts"><i class="fas fa-file-code" style="font-size: 1rem;"></i> Free Scripts</a>
-          
-          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-          <a href="support.html" style="color: #ec4899;">Support</a>
-          <a href="developers.html">Developers</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="codespace.html">Codespace</a>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="events.html">Events & Leaderboard</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="tools.html">Dev Tools</a>
+    <a href="support.html" style="color:#aaa;">Support</a>
+    <a href="developers.html">Developers</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="codespace.html">Codespace</a>
+  </div>
+
+  <section class="support-section">
+    <div class="support-card">
+      <div class="logo-header">
+        <h2 class="app-title">SUPPORT</h2>
+        <p class="app-subtitle">Direct line to Daminī Administration</p>
+      </div>
+
+      <form action="mailto:damibotzinc@gmail.com" method="GET" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="Name" required placeholder="Your Name">
         </div>
-
-        <section class="support-section">
-            <div class="support-card">
-                <div class="logo-header">
-                    <h2 class="app-title">SUPPORT <i class="fas fa-check-circle verified-badge"></i></h2>
-                    <p class="app-subtitle">Direct line to Daminī Administration</p>
-                </div>
-
-                <form action="https://formspree.io/f/xkgdyyyb" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your Name">
-                        <p class="input-helper">Real names help us provide faster support.</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp Number</label>
-                        <input type="tel" id="whatsapp" name="WhatsApp Number" required placeholder="+234...">
-                        <p class="input-helper">Include your country code.</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Your Inquiry</label>
-                        <textarea id="message" name="message" required placeholder="How can we help you today?"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Submit Request</button>
-                </form>
-            </div>
-        </section>
-        
-        <footer>
-          © 2026 Daminī Codesphere • Mostly coding, mostly community.
-        </footer>
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp Number</label>
+          <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="+234...">
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="Message" required placeholder="How can we help you today?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Support Request</button>
+      </form>
     </div>
+  </section>
 
-    <script>
-        function openNav() { document.getElementById("mySidebar").style.width = "280px"; }
-        function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-        
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) closeNav();
-        });
-    </script>
+  <footer>
+    © 2026 Daminī Codesphere • Mostly coding, mostly community.
+  </footer>
+</div>
+
+<script>
+  function openNav() { document.getElementById("mySidebar").style.width="280px"; }
+  function closeNav() { document.getElementById("mySidebar").style.width="0"; }
+</script>
 </body>
 </html>

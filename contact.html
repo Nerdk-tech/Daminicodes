@@ -1,177 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Daminī Codesphere</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(135deg,#0f172a,#0b1220,#071124); color:#e0e0e0; line-height:1.6; scroll-behavior: smooth; }
-    a { text-decoration:none; color: inherit; }
-    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-    header { 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      padding:20px 0; 
-      position: sticky; 
-      top:0; 
-      background: rgba(15,23,42,0.95); 
-      z-index: 20; 
-    }
-    header h1 { font-size:1.8rem; font-weight:800; background:linear-gradient(to right, #7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    
-    /* Hamburger Menu Styles */
-    .menu-icon { font-size: 2rem; cursor: pointer; z-index: 30; }
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 25; 
-        top: 0;
-        right: 0;
-        background: #0f172a;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    }
-    .sidebar a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: #e0e0e0;
-        display: block;
-        transition: 0.3s;
-        font-weight: 600;
-    }
-    .sidebar a:hover { color: #ec4899; }
-    .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    /* End Hamburger Menu Styles */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Daminī Codesphere</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --text:#e5e5e5;
+  --bg:#000;
+  --card-bg:rgba(255,255,255,0.05);
+  --card-border:rgba(255,255,255,0.1);
+  --glow:rgba(255,255,255,0.2);
+}
 
-    section { padding:60px 0; text-align: center; }
-    section h2 { font-size:2.5rem; font-weight:800; margin-bottom: 10px; color: #ec4899; }
-    .sub-heading { font-size:1.5rem; font-weight: 600; color: #7c3aed; margin-bottom: 40px;}
-    
-    /* Form Styles */
-    .form-container { max-width: 600px; margin: 0 auto; padding: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-align: left; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0e0e0; }
-    .form-group input, .form-group textarea, .form-group select { 
-      width: 100%; 
-      padding: 12px; 
-      background: rgba(0,0,0,0.3); 
-      border: 1px solid #7c3aed; 
-      border-radius: 8px; 
-      color: white; 
-      resize: vertical; 
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%20197.35l-131.4-131.5-131.5%20131.5z%22%2F%3E%3C%2Fsvg%3E');
-      background-repeat: no-repeat;
-      background-position: right 10px top 50%;
-      background-size: 10px auto;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #ec4899; outline: none; }
-    
-    .info-response { color: #aaa; margin-top: 20px; font-size: 0.9rem; text-align: center;}
-    
-    .btn { padding:15px 30px; margin-top:20px; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; display:inline-block; text-align:center; font-size: 1.2rem; }
-    .btn-primary { background:linear-gradient(to right,#7c3aed,#ec4899); color:white; border:none; width: 100%; }
-    .btn-primary:hover { opacity:0.9; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
 
-    footer { text-align:center; padding:40px 0; border-top:1px solid rgba(255,255,255,0.1); color:#aaa; }
-    @media(max-width:768px){ header { flex-direction:row; gap:10px; } nav { display:flex; flex-wrap:wrap; justify-content:center; } }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+/* HEADER */
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 8%;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+header h1{
+  font-family:'Orbitron';letter-spacing:2px;
+  color:#fff;
+}
+.menu-icon{font-size:1.8rem;cursor:pointer;transition:.3s;}
+.menu-icon:hover{color:#aaa;}
+
+/* SIDEBAR */
+.sidebar{
+  height:100%;
+  width:0;
+  position:fixed;
+  right:0;
+  top:0;
+  background:rgba(0,0,0,0.95);
+  backdrop-filter:blur(20px);
+  overflow-x:hidden;
+  transition:0.4s;
+  padding-top:80px;
+  z-index:200;
+  border-left:1px solid rgba(255,255,255,0.05);
+}
+.sidebar a{
+  display:block;
+  padding:14px 30px;
+  font-weight:500;
+  color:#bbb;
+  transition:.3s;
+}
+.sidebar a:hover{
+  color:#fff;
+  padding-left:36px;
+}
+.sidebar .closebtn{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+/* SECTION */
+section{
+  padding:80px 8%;
+  text-align:center;
+}
+section h2{
+  font-family:'Orbitron';
+  font-size:3rem;
+  margin-bottom:10px;
+  color:#fff;
+}
+.sub-heading{
+  font-size:1.5rem;
+  font-weight:500;
+  color:#aaa;
+  margin-bottom:50px;
+}
+
+/* FORM */
+.form-container{
+  max-width:650px;
+  margin:0 auto;
+  padding:40px;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:20px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.5);
+  text-align:left;
+  transition:.3s;
+}
+.form-container:hover{
+  box-shadow:0 12px 40px var(--glow);
+  border-color:var(--glow);
+}
+.form-group{margin-bottom:20px;}
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--text);
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:14px;
+  background:rgba(0,0,0,0.3);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  color:#fff;
+  font-size:1rem;
+  resize:vertical;
+  transition:.3s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#fff;
+  outline:none;
+  box-shadow:0 0 15px var(--glow);
+}
+
+/* BUTTON */
+.btn{
+  padding:15px 0;
+  width:100%;
+  border-radius:50px;
+  font-weight:700;
+  font-size:1.2rem;
+  cursor:pointer;
+  border:none;
+  background:#fff;
+  color:#000;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 25px var(--glow);
+}
+
+/* INFO */
+.info-response{
+  color:#aaa;
+  margin-top:20px;
+  font-size:.9rem;
+  text-align:center;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px 0;
+  color:#555;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Daminī Codesphere</h1>
-      <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
-    </header>
 
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="index.html#about" onclick="closeNav()">About</a>
-      <a href="index.html#features" onclick="closeNav()">Features</a>
-      <a href="index.html#courses" onclick="closeNav()">Courses</a>
-      <a href="index.html#join" onclick="closeNav()">Join</a>
-      <a href="index.html#rules" onclick="closeNav()">Rules</a>
-      <a href="ai.html" onclick="closeNav()">AI Chat</a>
-      <a href="partners.html" onclick="closeNav()">Partners</a>
-      <a href="#" onclick="closeNav()">**Contact**</a>
-      <hr style="border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-      <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
-      <a href="events.html" onclick="closeNav()">Events</a>
-      <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
-      <a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
-         <a href="tools.html">Dev tools</a>
-         <a href="codespace.html">Codespace</a> 
-    </div>
-    <section id="contact-form">
-      <h2>CONTACT US</h2>
-      <p class="sub-heading">We'd love to hear from you or discuss a partnership opportunity!</p>
+<header>
+<h1>Daminī Codesphere</h1>
+<span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+</header>
 
-      <div class="form-container">
-        <form action="https://formspree.io/f/xkgdyyyb" method="POST">
-          
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="_replyto" required placeholder="contact@example.com">
-          </div>
+<div id="mySidebar" class="sidebar">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="index.html#about" onclick="closeNav()">About</a>
+<a href="index.html#features" onclick="closeNav()">Features</a>
+<a href="index.html#courses" onclick="closeNav()">Courses</a>
+<a href="index.html#join" onclick="closeNav()">Join</a>
+<a href="index.html#rules" onclick="closeNav()">Rules</a>
+<a href="ai.html" onclick="closeNav()">AI Chat</a>
+<a href="partners.html" onclick="closeNav()">Partners</a>
+<a href="#" onclick="closeNav()"><strong>Contact</strong></a>
+<hr style="border-top:1px solid rgba(255,255,255,0.05); margin:20px 0;">
+<a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+<a href="events.html" onclick="closeNav()">Events</a>
+<a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+<a href="privacy.html" onclick="closeNav()">Privacy Policy</a>
+<a href="tools.html">Dev tools</a>
+<a href="codespace.html">Codespace</a>
+</div>
 
-          <div class="form-group">
-            <label for="subject">Reason for Contact *</label>
-            <select id="subject" name="subject" required>
-              <option value="" disabled selected>Select a subject</option>
-              <option value="Partnership Inquiry">Partnership Inquiry</option>
-              <option value="Course/Tutorial Feedback">Course/Tutorial Feedback</option>
-              <option value="General Inquiry">General Inquiry</option>
-              <option value="Report an Issue">Report an Issue</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+<section id="contact-form">
+<h2>CONTACT US</h2>
+<p class="sub-heading">Reach out or discuss a partnership opportunity!</p>
 
-          <div class="form-group">
-            <label for="message">Your Message *</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help..."></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-      <p class="info-response">Note: Response typically takes 2-3 business days.</p>
-    </section>
-
-    <footer>
-      © 2026 Daminī Codesphere • Mostly coding, mostly community.
-    </footer>
+<div class="form-container">
+<form action="mailto:damibotzinc@gmail.com" method="POST" enctype="text/plain">
+  <div class="form-group">
+    <label for="name">Your Name *</label>
+    <input type="text" id="name" name="Name" required placeholder="Enter your full name">
   </div>
-  
-  <script>
-    // Menu Functions
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
 
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-  </script>
+  <div class="form-group">
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="Email" required placeholder="contact@example.com">
+  </div>
+
+  <div class="form-group">
+    <label for="subject">Reason for Contact *</label>
+    <select id="subject" name="Subject" required>
+      <option value="" disabled selected>Select a subject</option>
+      <option value="Partnership Inquiry">Partnership Inquiry</option>
+      <option value="Course/Tutorial Feedback">Course/Tutorial Feedback</option>
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="Report an Issue">Report an Issue</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Your Message *</label>
+    <textarea id="message" name="Message" rows="5" required placeholder="Tell us how we can help..."></textarea>
+  </div>
+
+  <button type="submit" class="btn">Send Message</button>
+</form>
+</div>
+
+<p class="info-response">Clicking Send will open your email client to send directly to <strong>damibotzinc@gmail.com</strong>.</p>
+</section>
+
+<footer>
+© 2026 Daminī Codesphere • Mostly coding, mostly community.
+</footer>
+
+<script>
+function openNav(){document.getElementById("mySidebar").style.width="300px";}
+function closeNav(){document.getElementById("mySidebar").style.width="0";}
+</script>
 </body>
 </html>
