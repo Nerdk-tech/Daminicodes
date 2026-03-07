@@ -29,14 +29,6 @@ body{
   overflow-x:hidden;
 }
 
-/* STARFIELD */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
 /* HEADER */
 header{
   display:flex;
@@ -159,9 +151,11 @@ header h1{
 .orbit-container{
   display:flex;
   justify-content:center;
+  align-items:center;
+  width:100%;
+  height:400px;
   margin:120px 0 80px;
   position:relative;
-  height:250px;
 }
 
 /* SECTIONS */
@@ -328,12 +322,13 @@ footer{
 function openNav(){document.getElementById("mySidebar").style.width="300px";}
 function closeNav(){document.getElementById("mySidebar").style.width="0";}
 
-// STARFIELD
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({alpha:true, antialias:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-document.getElementById('aiOrbContainer').appendChild(renderer.domElement);
+// THREE.JS STARFIELD & AI ORB
+const container = document.getElementById('aiOrbContainer');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 2000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
 
 // Stars
 const starGeometry = new THREE.BufferGeometry();
@@ -346,11 +341,11 @@ for(let i=0;i<7000;i++){
   );
 }
 starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-const starMaterial = new THREE.PointsMaterial({color:0xffffff, size:1});
+const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 });
 const stars = new THREE.Points(starGeometry, starMaterial);
 scene.add(stars);
 
-// AI Orb (Siri-like)
+// AI Orb
 const orbGeometry = new THREE.SphereGeometry(50, 64, 64);
 const orbMaterial = new THREE.MeshStandardMaterial({
   color: 0xffffff,
@@ -369,7 +364,8 @@ const pointLight = new THREE.PointLight(0x8b5cf6, 2, 500);
 pointLight.position.set(50,50,50);
 scene.add(pointLight);
 
-camera.position.z = 150;
+// Camera
+camera.position.z = 200;
 
 // Animate
 function animate(){
@@ -377,15 +373,19 @@ function animate(){
   stars.rotation.x += 0.0004;
   stars.rotation.y += 0.0004;
 
-  // Orb rotation + pulsating scale
   aiOrb.rotation.y += 0.004;
-  aiOrb.scale.x = 1 + Math.sin(Date.now()*0.002)*0.08;
-  aiOrb.scale.y = 1 + Math.sin(Date.now()*0.002)*0.08;
-  aiOrb.scale.z = 1 + Math.sin(Date.now()*0.002)*0.08;
+  aiOrb.scale.setScalar(1 + Math.sin(Date.now()*0.002)*0.08);
 
   renderer.render(scene, camera);
 }
 animate();
+
+// Handle resize
+window.addEventListener('resize', () => {
+  camera.aspect = container.clientWidth / container.clientHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(container.clientWidth, container.clientHeight);
+});
 </script>
 
 </body>
