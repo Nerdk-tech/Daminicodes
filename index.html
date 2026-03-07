@@ -132,7 +132,7 @@ header h1{
 /* BUTTONS */
 .btn{
   display:inline-block;
-  margin:35px 12px 0;
+  margin:20px 12px 0;
   padding:14px 38px;
   border-radius:50px;
   background:var(--accent);
@@ -155,37 +155,13 @@ header h1{
   background:rgba(255,255,255,0.15);
 }
 
-/* ORBIT */
+/* AI ORB CONTAINER */
 .orbit-container{
   display:flex;
   justify-content:center;
   margin:120px 0 80px;
-}
-
-.orbit{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:0.5px solid rgba(139,92,246,0.6);
   position:relative;
-  animation:spin 20s linear infinite;
-}
-
-.orbit::before{
-  content:"";
-  width:10px;
-  height:10px;
-  background:var(--accent);
-  border-radius:50%;
-  position:absolute;
-  top:-5px;
-  left:50%;
-  transform:translateX(-50%);
-  box-shadow:0 0 15px var(--accent);
-}
-
-@keyframes spin{
-  100%{transform:rotate(360deg);}
+  height:250px;
 }
 
 /* SECTIONS */
@@ -256,125 +232,158 @@ footer{
 <body>
 
 <header>
-<h1>Daminī Codesphere</h1>
-<span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+  <h1>Daminī Codesphere</h1>
+  <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
 </header>
 
 <div id="mySidebar" class="sidebar">
-<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-<a href="#about">About</a>
-<a href="#features">Features</a>
-<a href="portfolio.html">Portfolio</a>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="portfolio.html">Portfolio</a>
 
-<hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
+  <hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
 
-<a href="api.html"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
-<a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
-<a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
-<a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
+  <a href="api.html"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
+  <a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
+  <a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
+  <a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
 
-<hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
+  <hr style="border-top:1px solid rgba(255,255,255,0.08); margin:10px 0;">
 
-<a href="ai.html">AI Chat (Primis)</a>
-<a href="partners.html">Partners</a>
-<a href="certifications.html">Certifications</a>
-<a href="events.html">Events</a>
-<a href="developers.html">Developers (Dami Codes)</a>
-<a href="support.html">Support</a>
-<a href="privacy.html">Privacy Policy</a>
-<a href="contact.html">Contact Us</a>
-<a href="earth.html">Daminī Earth</a>
+  <a href="ai.html">AI Chat (Primis)</a>
+  <a href="partners.html">Partners</a>
+  <a href="certifications.html">Certifications</a>
+  <a href="events.html">Events</a>
+  <a href="developers.html">Developers (Dami Codes)</a>
+  <a href="support.html">Support</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="earth.html">Daminī Earth</a>
 </div>
 
 <div class="hero">
-<div>
-<h2>BUILDING THE FUTURE OF AFRICAN TECH</h2>
-<p>
-Daminī Codesphere is a digital ecosystem for developers, innovators, and creators.
-We combine structured learning, powerful tools, APIs, and AI-driven systems to transform ideas into real-world impact.
-</p>
-<a href="api.html" class="btn">Get API Access</a>
-<a href="codespace.html" class="btn btn-secondary">Open Codespace Pro</a>
-</div>
+  <div>
+    <h2>BUILDING THE FUTURE OF AFRICAN TECH</h2>
+    <p>
+      Daminī Codesphere is a digital ecosystem for developers, innovators, and creators.
+      We combine structured learning, powerful tools, APIs, and AI-driven systems to transform ideas into real-world impact.
+    </p>
+    <a href="api.html" class="btn">Get API Access</a>
+    <a href="codespace.html" class="btn btn-secondary">Open Codespace Pro</a>
+    <div style="margin-top:20px;">
+      <a href="https://primisai.vercel.app" target="_blank" class="btn">Chat with PRIMIS AI</a>
+      <a href="https://daniai.vercel.app/" target="_blank" class="btn btn-secondary">Chat with Dani</a>
+      <a href="https://dani-search.vercel.app" target="_blank" class="btn">Dani Search</a>
+    </div>
+  </div>
 </div>
 
-<div class="orbit-container">
-<div class="orbit"></div>
-</div>
+<div class="orbit-container" id="aiOrbContainer"></div>
 
 <section id="about">
-<h3 class="section-title">About Daminī Codesphere</h3>
-<div class="grid">
-<div class="card">
-<p>Daminī Codesphere bridges the gap between learning and execution through practical development systems.</p>
-</div>
-<div class="card">
-<p>From web technologies to AI and scalable backend systems, we empower builders with real infrastructure.</p>
-</div>
-<div class="card">
-<p>Our mission is to cultivate innovation, collaboration, and future-ready engineering talent.</p>
-</div>
-</div>
+  <h3 class="section-title">About Daminī Codesphere</h3>
+  <div class="grid">
+    <div class="card">
+      <p>Daminī Codesphere bridges the gap between learning and execution through practical development systems.</p>
+    </div>
+    <div class="card">
+      <p>From web technologies to AI and scalable backend systems, we empower builders with real infrastructure.</p>
+    </div>
+    <div class="card">
+      <p>Our mission is to cultivate innovation, collaboration, and future-ready engineering talent.</p>
+    </div>
+  </div>
 </section>
 
 <section id="features">
-<h3 class="section-title">Core Features</h3>
-<div class="grid">
-<div class="card"><h4>API Infrastructure</h4><p>Secure and scalable integration systems.</p></div>
-<div class="card"><h4>Codespace Pro</h4><p>Advanced workspace for serious developers.</p></div>
-<div class="card"><h4>AI Integration</h4><p>Primis AI tooling for smarter workflows.</p></div>
-<div class="card"><h4>Developer Tools</h4><p>Productivity-enhancing utilities.</p></div>
-</div>
+  <h3 class="section-title">Core Features</h3>
+  <div class="grid">
+    <div class="card"><h4>API Infrastructure</h4><p>Secure and scalable integration systems.</p></div>
+    <div class="card"><h4>Codespace Pro</h4><p>Advanced workspace for serious developers.</p></div>
+    <div class="card"><h4>AI Integration</h4><p>Primis AI tooling for smarter workflows.</p></div>
+    <div class="card"><h4>Developer Tools</h4><p>Productivity-enhancing utilities.</p></div>
+  </div>
 </section>
 
 <section id="community">
-<h3 class="section-title">Join Our Community</h3>
-<p class="community-text">
-Collaborate, grow, and build inside the Daminī Codesphere ecosystem.
-</p>
-<div class="community-actions">
-<a href="https://whatsapp.com/channel/0029VazHPYwBqbr9HjXrc50m" target="_blank" class="btn whatsapp-btn">
-<i class="fab fa-whatsapp"></i> Join WhatsApp Community
-</a>
-<a href="portfolio.html" class="btn btn-secondary">View Our Portfolio</a>
-</div>
+  <h3 class="section-title">Join Our Community</h3>
+  <p class="community-text">
+    Collaborate, grow, and build inside the Daminī Codesphere ecosystem.
+  </p>
+  <div class="community-actions">
+    <a href="https://whatsapp.com/channel/0029VazHPYwBqbr9HjXrc50m" target="_blank" class="btn whatsapp-btn">
+      <i class="fab fa-whatsapp"></i> Join WhatsApp Community
+    </a>
+    <a href="portfolio.html" class="btn btn-secondary">View Our Portfolio</a>
+  </div>
 </section>
 
 <footer>
-© 2026 Daminī Codesphere. Mostly coding, mostly community.
+  © 2026 Daminī Codesphere. Mostly coding, mostly community.
 </footer>
 
 <script>
 function openNav(){document.getElementById("mySidebar").style.width="300px";}
 function closeNav(){document.getElementById("mySidebar").style.width="0";}
 
+// STARFIELD
 const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({alpha:true});
+const renderer=new THREE.WebGLRenderer({alpha:true, antialias:true});
 renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer.domElement);
+document.getElementById('aiOrbContainer').appendChild(renderer.domElement);
 
-const geometry=new THREE.BufferGeometry();
-const vertices=[];
-for(let i=0;i<9000;i++){
-vertices.push(
-THREE.MathUtils.randFloatSpread(2000),
-THREE.MathUtils.randFloatSpread(2000),
-THREE.MathUtils.randFloatSpread(2000)
-);
+// Stars
+const starGeometry = new THREE.BufferGeometry();
+const starVertices = [];
+for(let i=0;i<7000;i++){
+  starVertices.push(
+    THREE.MathUtils.randFloatSpread(2000),
+    THREE.MathUtils.randFloatSpread(2000),
+    THREE.MathUtils.randFloatSpread(2000)
+  );
 }
-geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-const material=new THREE.PointsMaterial({color:0xffffff,size:1});
-const stars=new THREE.Points(geometry,material);
+starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+const starMaterial = new THREE.PointsMaterial({color:0xffffff, size:1});
+const stars = new THREE.Points(starGeometry, starMaterial);
 scene.add(stars);
-camera.position.z=1;
 
+// AI Orb (Siri-like)
+const orbGeometry = new THREE.SphereGeometry(50, 64, 64);
+const orbMaterial = new THREE.MeshStandardMaterial({
+  color: 0xffffff,
+  emissive: 0x8b5cf6,
+  emissiveIntensity: 1.5,
+  roughness:0.2,
+  metalness:0.8,
+  transparent:true,
+  opacity:0.9
+});
+const aiOrb = new THREE.Mesh(orbGeometry, orbMaterial);
+scene.add(aiOrb);
+
+// Lighting
+const pointLight = new THREE.PointLight(0x8b5cf6, 2, 500);
+pointLight.position.set(50,50,50);
+scene.add(pointLight);
+
+camera.position.z = 150;
+
+// Animate
 function animate(){
-requestAnimationFrame(animate);
-stars.rotation.x+=0.0004;
-stars.rotation.y+=0.0004;
-renderer.render(scene,camera);
+  requestAnimationFrame(animate);
+  stars.rotation.x += 0.0004;
+  stars.rotation.y += 0.0004;
+
+  // Orb rotation + pulsating scale
+  aiOrb.rotation.y += 0.004;
+  aiOrb.scale.x = 1 + Math.sin(Date.now()*0.002)*0.08;
+  aiOrb.scale.y = 1 + Math.sin(Date.now()*0.002)*0.08;
+  aiOrb.scale.z = 1 + Math.sin(Date.now()*0.002)*0.08;
+
+  renderer.render(scene, camera);
 }
 animate();
 </script>
