@@ -13,48 +13,51 @@ body { background: #000; color:#e5e5e5; padding: 20px; overflow-x: hidden; }
 .container { max-width: 1200px; margin: auto; }
 
 /* ===== HEADER ===== */
-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 10px 0; }
-header h1 { font-weight: 800; font-size: 2rem; color: #fff; }
-header a { color: #aaa; font-size: 0.9rem; text-decoration: none; }
-header a:hover { color: #fff; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 10px 0; border-bottom: 1px solid #111; }
+header h1 { font-weight: 800; font-size: 2.2rem; color: #fff; letter-spacing: -1px; }
+header h1 span { color: #4ade80; }
+header a { color: #aaa; font-size: 0.9rem; text-decoration: none; transition: 0.3s; }
+header a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
 /* ===== GRID ===== */
 .api-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
 /* ===== CARD ===== */
-.card { background: #111; border: 1px solid #222; padding: 25px; border-radius: 15px; display: flex; flex-direction: column; transition: 0.3s; }
-.card:hover { border-color: #fff; transform: translateY(-5px); }
+.card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 25px; border-radius: 18px; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.card:hover { border-color: #444; transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-h4 { font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
-h4 i { color: #fff; width: 20px; }
-p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 20px; height: 40px; }
+h4 { font-size: 1.15rem; color: #fff; display: flex; align-items: center; gap: 12px; }
+h4 i { color: #4ade80; font-size: 1.2rem; }
+p { font-size: 0.88rem; color: #888; line-height: 1.6; margin-bottom: 20px; height: 45px; overflow: hidden; }
 
-/* ===== STATUS TAG ===== */
-.status-tag { font-size: 0.6rem; padding: 3px 10px; border-radius: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-.active-tag { background: #111; color: #0f0; border: 1px solid #0f0; }
-.soon-tag { background: #111; color: #aaa; border: 1px solid #555; }
+/* ===== STATUS TAGS ===== */
+.status-tag { font-size: 0.65rem; padding: 4px 12px; border-radius: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; }
+.active-tag { background: rgba(15, 255, 15, 0.1); color: #0f0; border: 1px solid #0f0; }
+.soon-tag { background: rgba(170, 170, 170, 0.1); color: #aaa; border: 1px solid #555; }
 
 /* ===== RATE LIMIT ===== */
-.rate-limit { margin-bottom: 15px; }
-.rate-bar-bg { width: 100%; height: 4px; background: #222; border-radius: 2px; margin-top: 5px; }
-.rate-bar-fill { height: 100%; background: #fff; border-radius: 2px; width: 85%; }
-.rate-text { font-size: 0.65rem; color: #555; font-weight: 600; display: flex; justify-content: space-between; }
+.rate-limit { margin-bottom: 18px; }
+.rate-bar-bg { width: 100%; height: 5px; background: #1a1a1a; border-radius: 10px; margin-top: 8px; overflow: hidden; }
+.rate-bar-fill { height: 100%; background: linear-gradient(90deg, #4ade80, #22c55e); border-radius: 10px; transition: width 1s ease-in-out; }
+.rate-text { font-size: 0.7rem; color: #666; font-weight: 600; display: flex; justify-content: space-between; }
 
 /* ===== COPY BOX ===== */
-.copy-box { background: #111; border: 1px solid #222; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
-.copy-box:hover { border-color: #fff; background: #111; }
-.copy-box code { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #4ade80; }
-.copy-box i { color: #555; font-size: 0.9rem; }
+.copy-box { background: #000; border: 1px solid #222; border-radius: 10px; padding: 14px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.3s; }
+.copy-box:hover { border-color: #4ade80; background: #050505; }
+.copy-box code { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: #4ade80; }
+.copy-box i { color: #444; font-size: 1rem; }
 .copy-box:hover i { color: #fff; }
 
 /* ===== TOAST ===== */
-.toast { position: fixed; bottom: 30px; right: 30px; background: #0f0; color: #000; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); transform: translateX(200%); transition: 0.5s cubic-bezier(0.68,-0.55,0.265,1.55); z-index: 1000; }
+.toast { position: fixed; bottom: 30px; right: 30px; background: #4ade80; color: #000; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; box-shadow: 0 20px 40px rgba(0,255,100,0.2); transform: translateX(250%); transition: 0.6s cubic-bezier(0.68,-0.55,0.265,1.55); z-index: 1000; }
 .toast.show { transform: translateX(0); }
-.toast i { font-size: 1.4rem; }
+.toast i { font-size: 1.6rem; }
 
 @media (max-width: 600px) {
-    header h1 { font-size: 1.5rem; }
-    .toast { left: 20px; right: 20px; bottom: 20px; }
+    header h1 { font-size: 1.6rem; }
+    .api-grid { grid-template-columns: 1fr; }
+    .toast { left: 20px; right: 20px; bottom: 20px; transform: translateY(250%); }
+    .toast.show { transform: translateY(0); }
 }
 </style>
 </head>
@@ -62,7 +65,7 @@ p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 20px; heig
 
 <div class="container">
     <header>
-        <h1>Daminī API Hub</h1>
+        <h1>Daminī API <span>Hub</span></h1>
         <a href="./index.html"><i class="fas fa-chevron-left"></i> Workspace</a>
     </header>
 
@@ -72,20 +75,20 @@ p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 20px; heig
 <div id="toast" class="toast">
     <i class="fas fa-check-circle"></i>
     <div>
-        <strong style="display:block; font-size: 0.9rem;">Copied Successfully</strong>
-        <small id="toast-path" style="opacity: 0.9; font-size: 0.7rem; font-family: 'Fira Code';"></small>
+        <strong style="display:block; font-size: 0.95rem;">System Link Copied</strong>
+        <small id="toast-path" style="opacity: 0.8; font-size: 0.75rem; font-family: 'Fira Code';"></small>
     </div>
 </div>
 
 <script>
 const apis = [
-    { name: "Queen Dani AI", desc: "Text synthesis and summarization architect.", url: "/api/queendani", status: "active", icon: "fa-crown", limit: "85%" },
+    { name: "Queen Dani AI", desc: "Text synthesis and royal intelligence architect.", url: "/api/queendani", status: "active", icon: "fa-crown", limit: "92%" },
+    { name: "Veo Video", desc: "Cinematic video generation from text prompts.", url: "/api/veo", status: "active", icon: "fa-video", limit: "70%" },
     { name: "Earth 3D", desc: "Satellite tiles and elevation data stream.", url: "/api/earth", status: "active", icon: "fa-globe", limit: "40%" },
-    { name: "WebScraper", desc: "Real-time URL to JSON data extraction.", url: "/api/scrape", status: "active", icon: "fa-spider", limit: "60%" },
     { name: "IP-Locator", desc: "Global IP geolocation and ISP detection.", url: "/api/ip", status: "active", icon: "fa-map-marker-alt", limit: "90%" },
     { name: "SecureHash", desc: "SHA-256 and AES-256 encryption engine.", url: "/api/hash", status: "active", icon: "fa-lock", limit: "100%" },
     { name: "Primis AI", desc: "Advanced LLM conversational model.", url: "/api/primis", status: "soon", icon: "fa-robot", limit: "0%" },
-    { name: "VoiceSynth", desc: "Natural Text-to-Speech synthesis.", url: "/api/voice", status: "soon", icon: "fa-microphone", limit: "0%" },
+    { name: "DANI", desc: "Next-gen autonomous intelligence core.", url: "/api/dani", status: "soon", icon: "fa-bolt", limit: "0%" },
 ];
 
 const list = document.getElementById('api-list');
@@ -101,8 +104,8 @@ apis.forEach(api => {
         <p>${api.desc}</p>
         <div class="rate-limit">
             <div class="rate-text">
-                <span>Rate Limit</span>
-                <span>${api.limit} available</span>
+                <span>Core Stability</span>
+                <span>${api.limit}</span>
             </div>
             <div class="rate-bar-bg">
                 <div class="rate-bar-fill" style="width: ${api.limit}"></div>
