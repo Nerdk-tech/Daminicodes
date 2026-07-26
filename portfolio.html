@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daminī Codesphere | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/three.min.js"></script>
+
+<style>
+:root{
+  --accent:#8b5cf6;
+  --accent-glow:rgba(139,92,246,0.5);
+  --text:#e5e7eb;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background:#000;
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* STARFIELD */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+header h1{
+  font-family:'Orbitron';
+  letter-spacing:2px;
+}
+
+.menu-icon{
+  font-size:1.8rem;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.menu-icon:hover{
+  color:var(--accent);
+}
+
+/* SIDEBAR */
+.sidebar{
+  height:100%;
+  width:0;
+  position:fixed;
+  right:0;
+  top:0;
+  background:#0a0a0a;
+  backdrop-filter:blur(25px);
+  overflow-x:hidden;
+  transition:0.4s;
+  padding-top:80px;
+  z-index:200;
+  border-left:1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar a{
+  display:block;
+  padding:14px 30px;
+  font-weight:500;
+  color:#aaa;
+  transition:.3s;
+}
+
+.sidebar a:hover{
+  color:#fff;
+  padding-left:36px;
+}
+
+.sidebar .closebtn{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.badge-new{
+  background:var(--accent);
+  font-size:.6rem;
+  padding:3px 8px;
+  border-radius:20px;
+  margin-left:6px;
+}
+
+/* HERO */
+.hero{
+  min-height:40vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h2{
+  font-family:'Orbitron';
+  font-size:3rem;
+}
+
+.hero p{
+  max-width:800px;
+  margin-top:20px;
+  color:#aaa;
+  line-height:1.6;
+}
+
+/* SECTIONS */
+section{
+  padding:80px 8%;
+}
+
+.section-title{
+  font-family:'Orbitron';
+  text-align:center;
+  margin-bottom:50px;
+  font-size:2rem;
+}
+
+/* GRID & CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  padding:30px 25px;
+  border-radius:20px;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  border-color:var(--accent);
+  box-shadow:0 0 25px var(--accent-glow);
+}
+
+.card h4{
+  font-family:'Orbitron';
+  margin-bottom:15px;
+}
+
+.card p{
+  color:#aaa;
+  line-height:1.5;
+}
+
+.card .btn{
+  margin-top:15px;
+  display:inline-block;
+  padding:10px 25px;
+  border-radius:50px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.card .btn:hover{
+  box-shadow:0 0 20px var(--accent-glow);
+  transform:translateY(-3px);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px;
+  color:#555;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Daminī Codesphere</h1>
+<span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+</header>
+
+<!-- SIDEBAR -->
+<div id="mySidebar" class="sidebar">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="index.html">Home</a>
+<a href="#portfolio">Portfolio</a>
+<a href="api.html"><i class="fas fa-code"></i> API HUB <span class="badge-new">NEW</span></a>
+<a href="codespace.html"><i class="fas fa-terminal"></i> CODESPACE PRO</a>
+<a href="changelog.html"><i class="fas fa-history"></i> Changelog</a>
+<a href="tools.html"><i class="fas fa-wrench"></i> Dev Tools</a>
+<a href="ai.html">AI Chat (Primis)</a>
+<a href="partners.html">Partners</a>
+<a href="certifications.html">Certifications</a>
+<a href="events.html">Events</a>
+<a href="developers.html">Developers (Dami Codes)</a>
+<a href="support.html">Support</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="contact.html">Contact Us</a>
+<a href="earth.html">Daminī Earth</a>
+</div>
+
+<div class="hero">
+<h2>Our Portfolio</h2>
+<p>Explore the major projects built by Daminī Codesphere. From AI to productivity apps, each creation showcases innovation, design, and real-world application.</p>
+</div>
+
+<section id="portfolio">
+<h3 class="section-title">Highlighted Projects</h3>
+<div class="grid">
+<div class="card">
+<h4>PRIMIS AI</h4>
+<p>Chat, generate images & videos, automated vision, TTS/STT, personas and more — an all-in-one AI platform.</p>
+<a href="https://primisai.vercel.app" class="btn">Explore</a>
+</div>
+<div class="card">
+<h4>LUNA DIARY</h4>
+<p>A smart period tracker app with insights, reminders, and diary features for personal health management.</p>
+<a href="https://luna-diary.vercel.app" class="btn">Explore</a>
+</div>
+<div class="card">
+<div class="card">
+<h4>DANI</h4>
+<p>A smart and helpful AI mini assistant that generates images, speak, writes codes and talks like your best friend!.</p>
+<a href="https://daniai.vercel.app" class="btn">Explore</a>
+</div>
+<h4>DaniSearch</h4>
+<p>An advanced AI-powered search engine for web, images, videos, and more — next-level searching.</p>
+<a href="https://dani-search.vercel.app/" class="btn">Explore</a>
+</div>
+<div class="card">
+<h4>Queen Dani e-Model</h4>
+<p>An advanced dictionary & language model for accurate definitions, context, and smart suggestions.</p>
+<a href="https://daminidocx.vercel.app/dani.html" class="btn">Explore</a>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Daminī Codesphere. Mostly coding, mostly community.
+</footer>
+
+<script>
+function openNav(){document.getElementById("mySidebar").style.width="300px";}
+function closeNav(){document.getElementById("mySidebar").style.width="0";}
+
+/* STARFIELD */
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const geometry=new THREE.BufferGeometry();
+const vertices=[];
+for(let i=0;i<9000;i++){
+vertices.push(
+THREE.MathUtils.randFloatSpread(2000),
+THREE.MathUtils.randFloatSpread(2000),
+THREE.MathUtils.randFloatSpread(2000)
+);
+}
+geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+const material=new THREE.PointsMaterial({color:0xffffff,size:1});
+const stars=new THREE.Points(geometry,material);
+scene.add(stars);
+camera.position.z=1;
+
+function animate(){
+requestAnimationFrame(animate);
+stars.rotation.x+=0.0004;
+stars.rotation.y+=0.0004;
+renderer.render(scene,camera);
+}
+animate();
+</script>
+
+</body>
+</html>

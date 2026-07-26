@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Daminī Codesphere</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background:#000; color:#fff; line-height:1.8; scroll-behavior:smooth; }
+a { text-decoration:none; color:#fff; }
+.container { max-width:1000px; margin:auto; padding:0 20px; }
+
+/* HEADER */
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 0; position:sticky; top:0; background:#000; z-index:20;
+}
+header h1 { font-size:1.8rem; font-weight:800; color:#fff; }
+
+/* SIDEBAR/HAMBURGER */
+.menu-icon { font-size:2rem; cursor:pointer; color:#fff; }
+.sidebar {
+  height:100%; width:0; position:fixed; top:0; right:0; background:#000;
+  overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:25;
+}
+.sidebar a {
+  padding:8px 8px 8px 32px; display:block; font-size:1.5rem; font-weight:600; color:#fff; transition:0.3s;
+}
+.sidebar a:hover { color:#aaa; }
+.sidebar .closebtn { position:absolute; top:0; right:25px; font-size:36px; }
+
+/* SECTION */
+section { padding:60px 0; text-align:left; }
+section h2 { font-size:3rem; font-weight:800; margin-bottom:20px; text-align:center; color:#fff; }
+.sub-heading { font-size:1.5rem; font-weight:600; margin-bottom:40px; text-align:center; color:#ccc; }
+
+.policy-content h3 { color:#fff; margin-top:25px; margin-bottom:10px; font-size:1.5rem; }
+.policy-content p { margin-bottom:15px; color:#ccc; }
+.policy-content ul { margin-left:20px; margin-bottom:20px; }
+.policy-content li { margin-bottom:8px; color:#ccc; }
+
+/* FOOTER */
+footer { text-align:center; padding:40px 0; border-top:1px solid #fff; color:#aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Daminī Codesphere</h1>
+    <span class="menu-icon" onclick="openNav()"><i class="fas fa-bars"></i></span>
+  </header>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html#about" onclick="closeNav()">About</a>
+    <a href="index.html#features" onclick="closeNav()">Features</a>
+    <a href="index.html#courses" onclick="closeNav()">Courses</a>
+    <a href="index.html#join" onclick="closeNav()">Join</a>
+    <a href="index.html#rules" onclick="closeNav()">Rules</a>
+    <a href="ai.html" onclick="closeNav()">AI Chat</a>
+    <a href="partners.html" onclick="closeNav()">Partners</a>
+    <a href="contact.html" onclick="closeNav()">Contact</a>
+    <hr style="border-top:1px solid #fff; margin:20px 0;">
+    <a href="certifications.html" onclick="closeNav()">Course Certifications</a>
+    <a href="events.html" onclick="closeNav()">Events</a>
+    <a href="developers.html" onclick="closeNav()">Developers (Dami Codes)</a>
+    <a href="#" onclick="closeNav()">Privacy Policy</a>
+    <a href="tools.html">Dev Tools</a>
+    <a href="codespace.html">Codespace</a>
+  </div>
+
+  <section>
+    <h2>PRIVACY POLICY</h2>
+    <p class="sub-heading">Your trust is our top priority. Here’s how we protect and handle your information.</p>
+
+    <div class="policy-content">
+      <h3>1. Information We Collect</h3>
+      <p>We collect only the essential information needed to provide our services effectively and safely. This includes:</p>
+      <ul>
+        <li><strong>Personal Data:</strong> Name and email address you provide when submitting forms (contact or certification).</li>
+        <li><strong>Usage Data:</strong> Information about how you navigate and interact with our site, including page visits and AI Chat interactions.</li>
+      </ul>
+
+      <h3>2. How We Use Your Data</h3>
+      <p>We use your data responsibly for purposes such as:</p>
+      <ul>
+        <li>Responding to inquiries and support requests.</li>
+        <li>Processing certification registrations.</li>
+        <li>Analyzing site usage to improve functionality and user experience.</li>
+        <li>Maintaining and improving AI Chat and other services.</li>
+      </ul>
+
+      <h3>3. Data Security</h3>
+      <p>We implement industry-standard measures to safeguard your data. While no online system is 100% secure, we process information responsibly and avoid storing sensitive data wherever possible.</p>
+
+      <h3>4. Third-Party Services</h3>
+      <p>We rely on third-party providers for hosting and form processing. When you submit forms, your data is handled securely by the service providers. We encourage reviewing their privacy policies for complete transparency.</p>
+
+      <h3>5. Cookies & Tracking</h3>
+      <p>Our site may use minimal cookies for analytics and performance monitoring. These do not store personal information and are used only to enhance your experience.</p>
+
+      <h3>6. Your Rights</h3>
+      <p>You have the right to request access, correction, or deletion of your personal data. Contact us anytime via the Contact page to exercise these rights.</p>
+
+      <h3>7. Contact Us</h3>
+      <p>If you have questions or concerns regarding this Privacy Policy, please reach out via our <a href="contact.html" style="color:#fff; text-decoration:underline;">Contact page</a>. We take your privacy seriously and respond promptly.</p>
+
+      <p style="margin-top:20px; font-weight:600; color:#fff;">By using Daminī Codesphere, you agree to this Privacy Policy and the responsible handling of your information.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Daminī Codesphere • Mostly coding, mostly community.
+  </footer>
+</div>
+
+<script>
+function openNav(){document.getElementById("mySidebar").style.width="250px";}
+function closeNav(){document.getElementById("mySidebar").style.width="0";}
+</script>
+</body>
+</html>

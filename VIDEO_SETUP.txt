@@ -1,0 +1,23 @@
+HERO VIDEO SETUP
+================
+
+I couldn't download the video from my side (my sandbox can only reach a
+short allowlist of domains — mixkit.co isn't on it). You'll need to grab
+it yourself, which takes under a minute:
+
+1. Go to: https://mixkit.co/free-stock-video/working-on-a-laptop-at-night-17450/
+2. Click "Download low resolution for free" (720p, ~14MB, free for
+   personal use under the Mixkit license)
+3. Rename the downloaded file to: hero-typing.mp4
+4. Put it in: assets/video/hero-typing.mp4  (same folder structure as
+   in this zip)
+5. Optional: grab a still frame / poster image and save it as
+   assets/video/hero-poster.jpg (shows briefly before the video loads)
+
+Once that file is in place, index.html will pick it up automatically —
+no code changes needed. The <video> tag already points to
+assets/video/hero-typing.mp4.
+
+If you'd rather use a different clip, any MP4 works — just keep the
+same filename and folder, or update the <source src="..."> line in
+index.html's hero section.
