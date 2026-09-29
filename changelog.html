@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Changelog | Daminicodesphere</title>
 <meta name="description" content="The Daminicodesphere changelog — live updates straight from the repository, plus the milestones that got the lab here.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
@@ -324,11 +326,12 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
 .commit-meta a{color:var(--accent-light);}
 .commit-body{white-space:pre-wrap;color:var(--muted);font-size:.86rem;line-height:1.6;margin-top:8px;}
 .load-pill{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.75rem;color:var(--muted);border:1px solid var(--line);padding:8px 16px;border-radius:30px;}
+.tag{font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:30px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;align-self:flex-start;margin-top:2px;}
 .tag-added{background:rgba(123,216,143,.12);color:#7bd88f;}
 .tag-fixed{background:rgba(96,165,250,.12);color:#60a5fa;}
 .tag-improved{background:rgba(139,92,246,.14);color:var(--accent-light);}
 .log-list{list-style:none;margin-top:10px;}
-.log-list li{display:flex;gap:10px;font-size:.9rem;line-height:1.65;color:#b9b7c0;margin-bottom:9px;}
+.log-list li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;line-height:1.65;color:#b9b7c0;margin-bottom:10px;}
 .log-list li::before{content:'→';color:var(--accent);flex-shrink:0;}
 </style>
 </head>
@@ -360,7 +363,6 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
   <nav class="desktop-nav">
     <a href="/">Home</a>
     <a href="/#products">Products</a>
-    <a href="/codespace">Codespace</a>
     <a href="/changelog" style="color:#fff;">Changelog</a>
     <a href="/#contact">Contact</a>
   </nav>
@@ -375,7 +377,6 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/">Home</a>
   <a href="/#products">Products</a>
-  <a href="/codespace">Codespace</a>
   <a href="/changelog">Changelog</a>
   <a href="/#contact">Contact</a>
   <a href="https://dani.daminicodesphere.org" target="_blank">DANI Waitlist</a>
@@ -418,18 +419,18 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
       <div class="tl-date">February 1, 2026 · v4.0.0</div>
       <h4>The API &amp; IDE Overhaul</h4>
       <ul class="log-list">
-        <li><span class="tag tag-added" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Added</span> 15+ live API endpoints including Queen Dani AI and WebScraper.</li>
-        <li><span class="tag tag-added" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Added</span> Codespace Pro — a recursive file system for multi-folder projects.</li>
-        <li><span class="tag tag-improved" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Improved</span> UI/UX — toast notifications and real-time rate limiters.</li>
-        <li><span class="tag tag-fixed" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Fixed</span> LocalStorage persistence issue in the code editor.</li>
+        <li><span class="tag tag-added">Added</span> 15+ live API endpoints including Queen Dani AI and WebScraper.</li>
+        <li><span class="tag tag-added">Added</span> Codespace Pro — a recursive file system for multi-folder projects.</li>
+        <li><span class="tag tag-improved">Improved</span> UI/UX — toast notifications and real-time rate limiters.</li>
+        <li><span class="tag tag-fixed">Fixed</span> LocalStorage persistence issue in the code editor.</li>
       </ul>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date">January 15, 2026 · v3.2.0</div>
       <h4>Geospatial &amp; Earth</h4>
       <ul class="log-list">
-        <li><span class="tag tag-added" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Added</span> Codesphere Earth — 3D globe integration for geospatial data.</li>
-        <li><span class="tag tag-improved" style="font-size:.65rem;font-weight:800;padding:2px 8px;border-radius:4px;text-transform:uppercase;">Improved</span> Mobile sidebar navigation for better touch response.</li>
+        <li><span class="tag tag-added">Added</span> Codesphere Earth — 3D globe integration for geospatial data.</li>
+        <li><span class="tag tag-improved">Improved</span> Mobile sidebar navigation for better touch response.</li>
       </ul>
     </div>
   </div>
