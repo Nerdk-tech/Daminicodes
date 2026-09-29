@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DANI — Digital Artificial Neural Intelligence | Daminicodesphere</title>
-<meta name="description" content="DANI — Digital Artificial Neural Intelligence. The major project of the Daminicodesphere lab. She can code, she can chat, and she's friendly. Join the waitlist.">
+<meta name="description" content="DANI is Daminicodesphere's flagship artificial intelligence — a Digital Artificial Neural Intelligence engineered to code, converse, and see. Join the waitlist for early access.">
 <link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -320,9 +321,18 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
   .status-pill .blip{animation:none;}
 }
 
-/* ===== DANI-SPECIFIC ===== */
+/* ===== DANI BRAND OVERRIDES ===== */
+:root{
+  --display:'Space Grotesk',sans-serif;
+  --body:'Inter',sans-serif;
+}
 .page-hero{padding:170px 6% 50px;max-width:900px;}
 .dani-status{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.75rem;color:var(--muted);border:1px solid var(--line);padding:8px 16px;border-radius:30px;margin-top:24px;}
+.dani-quote{max-width:720px;margin:0 auto;padding:48px 28px;text-align:center;border:1px solid var(--line);border-radius:14px;background:var(--card);}
+.dani-quote p{font-family:var(--display);font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:500;line-height:1.55;color:#fff;}
+.dani-quote .who{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:16px;letter-spacing:.5px;}
+.principles{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+.principle{font-family:var(--mono);font-size:.72rem;color:var(--muted);border:1px solid var(--line);padding:9px 18px;border-radius:30px;}
 </style>
 </head>
 <body>
@@ -376,47 +386,64 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
 
 <!-- HERO -->
 <div class="page-hero">
-  <span class="eyebrow">Major Project</span>
-  <h1>DANI — <span class="accent">Digital Artificial<br>Neural Intelligence</span></h1>
+  <span class="eyebrow">The Flagship AI · Daminicodesphere</span>
+  <h1>Meet <span class="accent">DANI.</span></h1>
   <p class="lede">
-    The flagship project of the Daminicodesphere lab. She can code, she can chat,
-    and she's friendly — an AI built to be genuinely useful, not a demo.
+    DANI is Daminicodesphere's flagship artificial intelligence — a Digital
+    Artificial Neural Intelligence engineered to think like a developer,
+    converse like a friend, and see the world the way you do. One system.
+    Three disciplines. Built to an organization's standard, by a lab that
+    ships when it's ready.
   </p>
   <div class="dani-status"><span class="blip"></span> In development — waitlist open</div>
 </div>
 
-<!-- WHAT SHE DOES -->
-<section id="abilities">
+<!-- INTRO -->
+<section id="about-dani">
   <div class="section-head reveal">
-    <div class="section-eyebrow">Abilities</div>
-    <h3 class="section-title">What DANI can do</h3>
-    <p class="section-sub">The three pillars of DANI — full capability details arrive with the main launch.</p>
+    <div class="section-eyebrow">The AI</div>
+    <h3 class="section-title">Know more about the AI</h3>
+    <p class="section-sub">DANI isn't a chatbot with a wrapper. She's a complete intelligence — code, conversation, and vision working as one.</p>
   </div>
   <div class="grid">
     <div class="card reveal">
-      <span class="tag">Core brain</span>
-      <h4><svg class="icon"><use href="#icon-terminal"/></svg> Code</h4>
-      <p>Full apps, debugging, and code review — she works like a senior dev.</p>
+      <span class="tag">Engineering</span>
+      <h4><svg class="icon"><use href="#icon-terminal"/></svg> She codes</h4>
+      <p>Full applications, debugging, and code review. DANI approaches engineering the way a senior developer does — methodically, and to a standard.</p>
     </div>
     <div class="card reveal">
-      <span class="tag">Voice</span>
-      <h4><svg class="icon"><use href="#icon-chat"/></svg> Chat &amp; talk</h4>
-      <p>Real conversation — by text or voice. Friendly, not robotic.</p>
+      <span class="tag">Conversation</span>
+      <h4><svg class="icon"><use href="#icon-chat"/></svg> She talks</h4>
+      <p>Text or voice, DANI holds a real conversation. Friendly, articulate, and present — never scripted, never robotic.</p>
     </div>
     <div class="card reveal">
-      <span class="tag">Eyes</span>
-      <h4><svg class="icon"><use href="#icon-eye"/></svg> Vision &amp; images</h4>
-      <p>She sees what you send — screenshots, designs, photos — and works with them.</p>
+      <span class="tag">Perception</span>
+      <h4><svg class="icon"><use href="#icon-eye"/></svg> She sees</h4>
+      <p>Screenshots, designs, photographs — DANI understands what you show her and works with it, the way a colleague would.</p>
     </div>
   </div>
 </section>
 
-<!-- ASK ABOUT DANI -->
+<!-- PRINCIPLES -->
+<section id="principles">
+  <div class="dani-quote reveal">
+    <p>"An AI is only as good as the standard it was built to. DANI was built to ours."</p>
+    <div class="who">— DAMINICODESPHERE ENGINEERING PRINCIPLE</div>
+  </div>
+  <div class="principles reveal">
+    <span class="principle">Accuracy first</span>
+    <span class="principle">Privacy respected</span>
+    <span class="principle">Built in the open</span>
+    <span class="principle">Ships when ready</span>
+  </div>
+</section>
+
+<!-- ASK -->
 <section id="ask">
   <div class="section-head reveal">
     <div class="section-eyebrow">Questions</div>
     <h3 class="section-title">Ask about DANI here</h3>
-    <p class="section-sub">Anything you want to know about DANI — capabilities, access, timeline — ask directly.</p>
+    <p class="section-sub">Capabilities, access, timeline — questions about DANI are answered directly by the lab.</p>
   </div>
   <div class="community-actions reveal">
     <a href="mailto:support@daminicodesphere.org" class="btn"><svg class="icon"><use href="#icon-mail"/></svg> support@daminicodesphere.org</a>
@@ -427,7 +454,7 @@ footer .foot-links{margin-top:14px;display:flex;gap:16px;justify-content:center;
 <!-- WAITLIST -->
 <section>
   <div class="api-banner reveal">
-    <div class="label"><strong>The main DANI waitlist page is coming soon.</strong> Until then, early access goes to those on the list.</div>
+    <div class="label"><strong>DANI is in development.</strong> Early access goes to those on the waitlist — the main DANI page is coming soon.</div>
     <a href="https://dani.daminicodesphere.org" target="_blank" class="btn"><svg class="icon"><use href="#icon-bolt"/></svg> Join the Waitlist</a>
   </div>
 </section>
