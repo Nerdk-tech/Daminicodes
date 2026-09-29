@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daminī Codespace Pro</title>
+    <title>Daminicodesphere Codespace Pro</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
@@ -56,7 +57,7 @@
     <header>
         <div class="logo">
             <i class="fas fa-terminal" onclick="toggleSidebar()"></i>
-            <span>DAMINĪ <span style="color:var(--accent)">PRO</span></span>
+            <span>CODESPHERE <span style="color:var(--accent)">PRO</span></span>
         </div>
         <div class="btn-group">
             <select id="langPicker" class="lang-picker" onchange="onLangChange()" title="Language"></select>
@@ -84,7 +85,7 @@
 <script>
     let editor;
     let fs = JSON.parse(localStorage.getItem('dm_fs_v5')) || [
-        { id: '1', name: 'index.html', type: 'file', content: '<h1>Hello Daminī</h1>' },
+        { id: '1', name: 'index.html', type: 'file', content: '<h1>Hello Daminicodesphere</h1>' },
         { id: '2', name: 'style.css', type: 'file', content: 'body { background: #000; color: purple; }' },
         { id: '3', name: 'src', type: 'folder', children: [] }
     ];
